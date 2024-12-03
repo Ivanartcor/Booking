@@ -1,1 +1,36 @@
-<p>footer works!</p>
+<footer class="app-footer">
+    <div class="footer-container container">
+      <!-- Sección de enlaces comunes -->
+      <div class="footer-links">
+        <a href="/terms">Términos y Condiciones</a>
+        <a href="/privacy">Política de Privacidad</a>
+        <a href="/faq">FAQ</a>
+      </div>
+  
+      <!-- Selector de idioma -->
+      <div class="footer-language">
+        <label for="language-select">Idioma:</label>
+        <select id="language-select" (change)="changeLanguage($event)">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+  
+      <!-- Redes sociales -->
+      <div class="footer-social">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Bookify. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  
