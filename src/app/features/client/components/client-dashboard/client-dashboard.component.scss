@@ -12,6 +12,7 @@ body {
   color: $text-color;
 }
 
+/* Header Styles */
 header {
   display: flex;
   justify-content: space-between;
@@ -19,6 +20,7 @@ header {
   padding: 1rem 2rem; /* Más espacio lateral */
   background-color: $card-background;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .menu-btn {
@@ -38,6 +40,45 @@ select {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+/* Dropdown Styles */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 3rem; /* Ajustar según la altura del header */
+  left: 1rem;
+  background-color: $card-background;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+}
+
+.menu-dropdown.show {
+  display: block;
+}
+
+.menu-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-dropdown ul li {
+  margin: 0.5rem 0;
+}
+
+.menu-dropdown ul li a {
+  text-decoration: none;
+  color: $text-color;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.menu-dropdown ul li a:hover {
+  color: $primary-color;
 }
 
 /* Main Content */

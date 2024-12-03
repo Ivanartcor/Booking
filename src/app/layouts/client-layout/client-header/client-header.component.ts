@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,16 @@ export class ClientHeaderComponent {
   // Método para alternar el estado del dropdown
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen; // Cambia entre true y false
+  }
+
+  // Detectar clics fuera del desplegable
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: MouseEvent) {
+    // Verifica si el clic fue fuera del menú desplegable
+    const dropdown = document.querySelector('.nav-item.dropdown');
+    if (dropdown && !dropdown.contains(event.target as Node)) {
+      this.isDropdownOpen = false; // Cierra el menú si clicas fuera
+    }
   }
 
   logout() {

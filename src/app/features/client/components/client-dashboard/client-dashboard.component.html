@@ -1,5 +1,13 @@
 <header class="header">
-  <button class="menu-btn">☰</button>
+  <button class="menu-btn" (click)="toggleMenu()">☰</button>
+  <div class="menu-dropdown" [class.show]="isMenuOpen">
+    <ul>
+      <li><a href="#">Categoría 1</a></li>
+      <li><a href="#">Categoría 2</a></li>
+      <li><a href="#">Categoría 3</a></li>
+      <li><a href="#">Categoría 4</a></li>
+    </ul>
+  </div>
   <div class="user-dropdown">
     <span>Cliente</span>
     <select>
@@ -41,4 +49,3 @@
     </div>
   </section>
 </main>
-
