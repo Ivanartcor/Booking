@@ -1,0 +1,29 @@
+.nav-container {
+    background-color: #437a90; /* Azul acero */
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: #365f72; /* Azul más oscuro */
+      }
+    }
+  
+    a.active {
+      background-color: #fff;
+      color: #437a90;
+      font-weight: bold;
+    }
+  }
+  

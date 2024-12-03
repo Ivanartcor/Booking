@@ -10,9 +10,7 @@ import { EmployeeLayoutComponent } from './layouts/employee-layout/employee-layo
 import { EmployeeHeaderComponent } from './layouts/employee-layout/employee-header/employee-header.component';
 import { CompanyLayoutComponent } from './layouts/company-layout/company-layout.component';
 import { CompanyHeaderComponent } from './layouts/company-layout/company-header/company-header.component';
-import { LoginComponent } from './features/auth/components/login/login.component';
-import { RegisterComponent } from './features/auth/components/register/register.component';
-import { ForgotPasswordComponent } from './features/auth/components/forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -25,9 +23,7 @@ import { ForgotPasswordComponent } from './features/auth/components/forgot-passw
     CompanyLayoutComponent,
     CompanyHeaderComponent,
     //para pruebas de navegación
-    LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
+    
   ],
   imports: [
     BrowserModule,

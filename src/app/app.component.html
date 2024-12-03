@@ -1,27 +1,16 @@
 <div class="app-container">
 
-  <h1>Pruebas de Componentes</h1>
 
-  <!-- Login -->
-   <section>
-    <h2>Login Component</h2>
-  <app-login></app-login>
-   </section>
+  <div class="nav-container">
+    <nav class="navbar">
+      <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+      <a routerLink="/client/client-dashboard" routerLinkActive="active">Cliente</a>
+      <a routerLink="/company/company-dashboard" routerLinkActive="active">Empresa</a>
+      <a routerLink="/employee/employee-dashboard" routerLinkActive="active">Empleado</a>
+    </nav>
+  </div>
   
-
-  <!-- Register -->
-   <section>
-    <h2>Register Component</h2>
-  <app-register></app-register>
-   </section>
-  
-
-  <!-- Forgot Password -->
-   <section>
-    <h2>Forgot Password Component</h2>
-  <app-forgot-password></app-forgot-password>
-   </section>
-  
+ 
 
   <router-outlet></router-outlet>
 </div>
