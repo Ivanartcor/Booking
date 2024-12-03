@@ -16,14 +16,22 @@ body {
   }
 
   /* Caja de login con sombra */
-  .login-box {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    width: 320px;
-    text-align: center;
-  }
+  /* Caja de login con tamaño fijo */
+.login-box {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  width: 320px; /* Ancho fijo */
+  height: 560px; /* Altura fija */
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  justify-content: space-between; /* Espacia los elementos uniformemente */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center;
+  box-sizing: border-box; /* Incluye el padding en el tamaño total */
+}
+
 
   /* Estilo para el texto pequeño */
   .small-text {
