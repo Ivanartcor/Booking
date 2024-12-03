@@ -36,6 +36,10 @@ body {
     text-decoration: none;
   }
 
+  .small-text a:hover {
+    text-decoration: underline;
+  }
+
   /* Estilo para la imagen del logo */
   .logo-container .logo {
     width: 100px;
