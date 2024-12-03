@@ -1,13 +1,5 @@
-<header class="header">
-  <button class="menu-btn" (click)="toggleMenu()">☰</button>
-  <div class="menu-dropdown" [class.show]="isMenuOpen">
-    <ul>
-      <li><a href="#">Categoría 1</a></li>
-      <li><a href="#">Categoría 2</a></li>
-      <li><a href="#">Categoría 3</a></li>
-      <li><a href="#">Categoría 4</a></li>
-    </ul>
-  </div>
+<header>
+  <button class="menu-btn" (click)="toggleDropdown()">☰</button>
   <div class="user-dropdown">
     <span>Cliente</span>
     <select>
@@ -16,6 +8,17 @@
       <option>Barcelona</option>
       <option>Valencia</option>
     </select>
+  </div>
+
+  <!-- Dropdown para categorías -->
+  <div class="menu-dropdown" [class.show]="isDropdownOpen">
+    <div class="dropdown-header">Categorías</div>
+    <ul>
+      <li><a href="#">Salud</a></li>
+      <li><a href="#">Estética</a></li>
+      <li><a href="#">Limpieza</a></li>
+      <li><a href="#">Otros</a></li>
+    </ul>
   </div>
 </header>
 

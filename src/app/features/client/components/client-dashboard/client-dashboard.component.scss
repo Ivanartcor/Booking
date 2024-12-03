@@ -1,5 +1,6 @@
 /* Variables */
-$primary-color: #0097b2;
+$primary-color: #0097b2; /* Azul principal */
+$dark-blue: #006680; /* Azul oscuro para separadores */
 $background-color: #f5f5f5;
 $text-color: #333;
 $card-background: #ffffff;
@@ -12,12 +13,11 @@ body {
   color: $text-color;
 }
 
-/* Header Styles */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem; /* Más espacio lateral */
+  padding: 1rem 2rem;
   background-color: $card-background;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -53,11 +53,22 @@ select {
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 0.5rem 1rem;
+  padding: 0; /* Sin padding inicial */
+  width: 200px; /* Ajustar el ancho del menú */
+  overflow: hidden; /* Evitar desbordamiento */
 }
 
 .menu-dropdown.show {
   display: block;
+}
+
+.menu-dropdown .dropdown-header {
+  background-color: $primary-color; /* Fondo azul */
+  color: #fff; /* Texto blanco */
+  font-size: 1.2rem; /* Tamaño de texto mayor */
+  font-weight: bold;
+  padding: 0.75rem 1rem; /* Espaciado interno */
+  text-align: center; /* Centrado */
 }
 
 .menu-dropdown ul {
@@ -67,58 +78,68 @@ select {
 }
 
 .menu-dropdown ul li {
-  margin: 0.5rem 0;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-dropdown ul li a {
   text-decoration: none;
-  color: $text-color;
+  color: $text-color; /* Color del texto */
   font-size: 1rem;
-  transition: color 0.2s ease;
+  padding: 0.75rem 1rem; /* Espaciado interno */
+  display: block; /* Ocupa todo el ancho */
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .menu-dropdown ul li a:hover {
-  color: $primary-color;
+  background-color: $primary-color; /* Fondo azul al pasar el ratón */
+  color: #fff; /* Texto blanco al pasar el ratón */
+}
+
+.menu-dropdown ul li + li {
+  border-top: 1px solid $dark-blue; /* Separador azul oscuro */
 }
 
 /* Main Content */
 .main-container {
-  padding: 2rem 4rem; /* Aumentar márgenes laterales */
+  padding: 2rem 4rem; /* Márgenes laterales */
 }
 
 .company-card {
   display: flex;
-  background-color: $card-background;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 1rem; /* Espaciado interno */
+  background-color: #ffffff; /* Fondo blanco */
+  margin-bottom: 1.5rem; /* Espaciado entre tarjetas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+  overflow: hidden; /* Evitar desbordes de contenido */
+  width: 90%; /* Ajustar el tamaño de la tarjeta con porcentaje */
+  max-width: 1400px; /* Limitar el ancho máximo */
+  height: 400px; /* Altura fija para hacer la tarjeta más alargada */
+  margin-left: auto; /* Centrar horizontalmente */
+  margin-right: auto; /* Centrar horizontalmente */
+  display: flex; /* Asegurarse que el contenido y la imagen se alineen */
 }
 
-.company-image {
-  width: 150px;
-  height: auto;
-  object-fit: cover;
+.company-card img {
+  width: 40%; /* Imagen ocupa el 40% del ancho total */
+  height: 100%; /* Imagen ocupa el 100% de la altura */
+  object-fit: cover; /* Imagen adaptada al contenedor */
 }
 
 .company-info {
-  flex: 1; /* Ocupa todo el espacio disponible */
-  padding: 4rem; /* Espaciado interno más amplio */
+  flex: 1; /* Ocupa el resto del espacio */
+  padding: 2rem; /* Aumentar espaciado interno */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Centra horizontalmente el texto */
-  text-align: center; /* Alinea el texto en el centro */
+  justify-content: center; /* Centrar verticalmente contenido */
 }
 
-h2 {
+.company-info h2 {
   margin: 0;
-  color: $primary-color;
+  color: $dark-blue; /* Color principal */
 }
 
-p {
-  margin: 0.5rem 0 0;
-  line-height: 1.5;
-  text-align: justify; /* Justifica el texto de los párrafos */
+.company-info p {
+  margin-top: 0.5rem; /* Separación del título */
+  line-height: 1.5; /* Altura de línea para mejor legibilidad */
+  text-align: justify; /* Justificar texto */
 }
