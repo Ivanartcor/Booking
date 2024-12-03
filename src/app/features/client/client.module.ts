@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClientRoutingModule } from './client-routing.module';
-import { ProfileComponent } from './components/profile/profile.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
+import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    DashboardComponent
+    ClientDashboardComponent,
+    ClientProfileComponent
   ],
   imports: [
     CommonModule,

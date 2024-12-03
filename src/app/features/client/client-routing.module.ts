@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientLayoutComponent } from 'src/app/layouts/client-layout/client-layout.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
+import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ClientLayoutComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'client-dashboard', component: ClientDashboardComponent },
+      { path: 'client-profile', component: ClientProfileComponent },
     ],
   },
 ];
