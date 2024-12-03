@@ -22,7 +22,7 @@ body {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
-  width: 320px; /* Ancho fijo */
+  width: 360px; /* Ancho fijo */
   height: 560px; /* Altura fija */
   display: flex;
   flex-direction: column; /* Coloca los elementos en columna */
@@ -68,7 +68,7 @@ body {
   }
 
   .form-control {
-    width: 80%; /* Campos más anchos */
+    width: 100%; /* Campos más anchos */
     padding: 12px 16px;
     border: 1px solid #ccc;
     border-radius: 25px;
@@ -89,7 +89,7 @@ body {
     background-color: #437A90;
     border: none;
     padding: 12px;
-    width: 80%;
+    width: 100%;
     font-size: 16px;
     color: #fff;
     border-radius: 25px;
