@@ -1,0 +1,85 @@
+/* Aplicar la fuente Roboto a todo el cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Contenedor general para centrar la caja de login */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://wallpapercat.com/w/full/9/9/7/2112823-3840x2160-desktop-4k-minimalist-wallpaper-image.jpg);
+    background-size: cover;
+  }
+
+  /* Caja de login con sombra */
+  .login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    width: 320px;
+    text-align: center;
+  }
+
+  /* Estilo para el texto pequeño */
+  .small-text {
+    font-size: 11px;
+    margin-bottom: 15px;
+  }
+
+  /* Estilo para la imagen del logo */
+  .logo-container .logo {
+    width: 100px;
+    height: auto;
+  }
+
+  /* Título "Bienvenido a Bookify" */
+  .titulo {
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 0; /* Eliminar margen */
+  }
+
+  /* Estilos para los campos del formulario */
+  .form-group {
+    margin-bottom: 20px; /* Reducir el margen entre los campos */
+
+  }
+
+  .form-control {
+    width: 80%; /* Campos más anchos */
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    background-color: #f0f0f0; /* Fondo gris claro */
+  }
+
+  .form-control:focus {     
+    box-shadow: 0 0 5px #437A90;
+    outline: none;
+  }
+
+  /* Estilo del botón de registro */
+  .btn-register {
+    background-color: #437A90;
+    border: none;
+    padding: 12px;
+    width: 90%;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-register:hover {
+    background-color: #0056b3;
+  }
