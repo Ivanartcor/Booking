@@ -1,0 +1,120 @@
+// Fuente base
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente de Google Fonts */
+  }
+  
+  .dashboard-container {
+    padding: 20px;
+    background-color: #f5f5f5; /* Color de fondo gris claro */
+  
+    .row {
+      margin-bottom: 15px; /* Espaciado entre filas */
+    }
+  
+    .header {
+      display: flex; /* Imagen y texto en la misma fila */
+      flex-direction: row;
+      align-items: stretch;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      .header-image {
+        flex: 2; /* Imagen ocupa 2 partes */
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+  
+      .header-text {
+        flex: 1; /* Texto ocupa 1 parte */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffe6f2; /* Fondo rosado */
+        color: #333;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+  
+    .statistics {
+      background-color: white;
+      border-radius: 8px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+      }
+  
+      .chart {
+        img {
+          width: 80%; /* Tamaño del gráfico */
+          height: auto;
+          margin: 0 auto;
+        }
+      }
+    }
+  
+    .services {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      label {
+        margin-right: 10px;
+        font-size: 1rem;
+        color: #333;
+      }
+  
+      input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+  
+      .change-button {
+        background-color: #007b8f; /* Azul oscuro personalizado */
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: none;
+        font-size: 1rem; /* Tamaño de letra ajustado */
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #005f6b;
+        }
+      }
+    }
+  
+    .add-service {
+      button {
+        background-color: #007b8f; /* Azul oscuro */
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #005f6b; /* Hover más oscuro */
+        }
+      }
+    }
+  }
+  
