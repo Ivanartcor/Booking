@@ -10,7 +10,8 @@ const routes: Routes = [
     component: CompanyLayoutComponent,
     children: [
       { path: 'company-dashboard', component: CompanyDashboardComponent },
-      { path: 'company-profile', component: CompanyProfileComponent }
+      { path: 'company-profile', component: CompanyProfileComponent },
+      { path: '', redirectTo: 'company-dashboard', pathMatch: 'full' },
     ],
   },
 ];

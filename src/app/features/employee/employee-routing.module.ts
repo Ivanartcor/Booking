@@ -11,7 +11,8 @@ const routes: Routes = [
     component: EmployeeLayoutComponent,
     children: [
       { path: 'employee-dashboard', component: EmployeeDashboardComponent },
-      { path: 'employee-profile', component: EmployeeProfileComponent }
+      { path: 'employee-profile', component: EmployeeProfileComponent },
+      { path: '', redirectTo: 'employee-dashboard', pathMatch: 'full' },
     ],
   },
 ];

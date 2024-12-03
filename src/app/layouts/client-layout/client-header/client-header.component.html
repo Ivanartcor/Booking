@@ -1,7 +1,9 @@
 <header>
     <p>header de cliente</p>
     <nav>
-        <p><a routerLink="/client/client-dashboard" routerLinkActive="active">Dashboard</a></p>
-        <p><a routerLink="/client/client-profile" routerLinkActive="active">Perfil</a></p>
+        <a routerLink="/client/client-dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/client/client-appointments" routerLinkActive="active">Citas</a>
+        <a routerLink="/client/client-profile" routerLinkActive="active">Perfil</a>
+        <button (click)="logout()">Cerrar Sesión</button>
     </nav>
 </header>
