@@ -63,7 +63,7 @@ select {
 }
 
 .menu-dropdown .dropdown-header {
-  background-color: $primary-color; /* Fondo azul */
+  background-color: $dark-blue; /* Fondo azul */
   color: #fff; /* Texto blanco */
   font-size: 1.2rem; /* Tamaño de texto mayor */
   font-weight: bold;
@@ -92,8 +92,8 @@ select {
 }
 
 .menu-dropdown ul li a:hover {
-  background-color: $primary-color; /* Fondo azul al pasar el ratón */
-  color: #fff; /* Texto blanco al pasar el ratón */
+  background-color: #f0f0f0; /* Fondo azul al pasar el ratón */
+  color: black; /* Texto blanco al pasar el ratón */
 }
 
 .menu-dropdown ul li + li {
