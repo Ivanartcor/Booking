@@ -1,71 +1,102 @@
 <div class="container dashboard-container">
   <!-- Cabecera con imagen y calendario -->
   <div class="row align-items-stretch">
-      <!-- Imagen principal -->
-      <div class="col-md-8 header-image p-0">
-          <img src="/assets/images/employee-image.jpg" alt="Imagen principal" class="img-fluid w-100 h-100" />
-      </div>
-      <!-- Calendario funcional -->
-      <div class="col-md-4 d-flex justify-content-center align-items-center p-3">
-          <div class="calendar">
-              <div class="calendar-header">
-                  <button class="prev-month">&lt;</button>
-                  <span class="current-month">Diciembre 2024</span>
-                  <button class="next-month">&gt;</button>
-              </div>
-              <div class="calendar-body">
-                  <div class="calendar-weekdays">
-                      <span>Dom</span>
-                      <span>Lun</span>
-                      <span>Mar</span>
-                      <span>Mié</span>
-                      <span>Jue</span>
-                      <span>Vie</span>
-                      <span>Sáb</span>
-                  </div>
-                  <div class="calendar-days">
-                      <!-- Placeholder: Días del mes -->
-                      <!-- Días previos al inicio del mes -->
-                      <span class="day prev-month-day">26</span>
-                      <span class="day prev-month-day">27</span>
-                      <span class="day prev-month-day">28</span>
-                      <span class="day prev-month-day">29</span>
-                      <span class="day prev-month-day">30</span>
-                      <span class="day">1</span>
-                      <span class="day">2</span>
-                      <!-- Días del mes actual -->
-                      <span class="day">3</span>
-                      <span class="day">4</span>
-                      <span class="day">5</span>
-                      <span class="day">6</span>
-                      <span class="day">7</span>
-                      <span class="day">8</span>
-                      <span class="day">9</span>
-                      <span class="day">10</span>
-                      <span class="day">11</span>
-                      <span class="day">12</span>
-                      <span class="day">13</span>
-                      <span class="day">14</span>
-                      <span class="day">15</span>
-                      <span class="day">16</span>
-                      <span class="day">17</span>
-                      <span class="day">18</span>
-                      <span class="day">19</span>
-                      <span class="day">20</span>
-                      <span class="day">21</span>
-                      <span class="day">22</span>
-                      <span class="day">23</span>
-                      <span class="day">24</span>
-                      <span class="day">25</span>
-                      <span class="day">26</span>
-                      <span class="day">27</span>
-                      <span class="day">28</span>
-                      <span class="day">29</span>
-                      <span class="day">30</span>
-                      <span class="day">31</span>
-                  </div>
-              </div>
+    <!-- Imagen principal -->
+    <div class="col-md-8 header-image p-0">
+      <img src="/assets/images/employee-image.jpg" alt="Imagen principal" class="img-fluid w-100 h-100" />
+    </div>
+    <!-- Calendario funcional -->
+    <div class="col-md-4 d-flex justify-content-center align-items-center p-3">
+      <div class="calendar">
+        <div class="calendar-header">
+          <button class="prev-month">&lt;</button>
+          <span class="current-month">Diciembre 2024</span>
+          <button class="next-month">&gt;</button>
+        </div>
+        <div class="calendar-body">
+          <div class="calendar-weekdays">
+            <span>Dom</span>
+            <span>Lun</span>
+            <span>Mar</span>
+            <span>Mié</span>
+            <span>Jue</span>
+            <span>Vie</span>
+            <span>Sáb</span>
           </div>
+          <div class="calendar-days">
+            <!-- Días del mes de diciembre 2024 -->
+            <span class="day prev-month-day">29</span>
+            <span class="day prev-month-day">30</span>
+            <span class="day prev-month-day">1</span>
+            <span class="day">2</span>
+            <span class="day">3</span>
+            <span class="day">4</span>
+            <span class="day">5</span>
+            <span class="day">6</span>
+            <span class="day">7</span>
+            <span class="day">8</span>
+            <span class="day">9</span>
+            <span class="day">10</span>
+            <span class="day">11</span>
+            <span class="day">12</span>
+            <span class="day">13</span>
+            <span class="day">14</span>
+            <span class="day">15</span>
+            <span class="day">16</span>
+            <span class="day">17</span>
+            <span class="day">18</span>
+            <span class="day">19</span>
+            <span class="day">20</span>
+            <span class="day">21</span>
+            <span class="day">22</span>
+            <span class="day">23</span>
+            <span class="day">24</span>
+            <span class="day">25</span>
+            <span class="day">26</span>
+            <span class="day">27</span>
+            <span class="day">28</span>
+            <span class="day">29</span>
+            <span class="day">30</span>
+            <span class="day">31</span>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Mis Servicios -->
+  <div class="container dashboard-container">
+    <!-- Mis Servicios -->
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="services-section">
+          <div class="services-header">
+            <h5 class="text-white fw-bold">Mis Servicios:</h5>
+          </div>
+          <ul class="list-unstyled services-list mt-3">
+            <li>
+              <span class="service-name">Consulta médica general</span>
+              <input type="text" class="service-input" placeholder="-" />
+              <input type="text" class="service-input" placeholder="-" />
+            </li>
+            <li>
+              <span class="service-name">Atención de urgencias</span>
+              <input type="text" class="service-input" placeholder="-" />
+              <input type="text" class="service-input" placeholder="-" />
+            </li>
+            <li>
+              <span class="service-name">Exámenes diagnósticos</span>
+              <input type="text" class="service-input" placeholder="-" />
+              <input type="text" class="service-input" placeholder="-" />
+            </li>
+            <li>
+              <span class="service-name">Programas de bienestar</span>
+              <input type="text" class="service-input" placeholder="-" />
+              <input type="text" class="service-input" placeholder="-" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
