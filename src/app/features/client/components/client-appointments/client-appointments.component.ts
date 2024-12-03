@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-client-appointments',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-appointments.component.scss']
 })
 export class ClientAppointmentsComponent {
+  @Output() close = new EventEmitter<void>();
 
+  closeModal() {
+    this.close.emit(); // Emite un evento para notificar el cierre
+  }
 }

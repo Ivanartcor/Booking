@@ -2,6 +2,7 @@
 <header>
   <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
   <nav>
+    <a (click)="openAppointmentsModal()">Mis citas v2</a>
     <a (click)="openModal()">Mis citas</a>
     <!-- Desplegable para el perfil -->
     <div class="nav-item dropdown" [class.show]="isDropdownOpen">
@@ -16,8 +17,15 @@
       </ul>
     </div>
   </nav>
+  
 </header>
 
+<!-- Modal de citas -->
+  <app-client-appointments
+    *ngIf="showAppointmentsModal"
+    (close)="closeAppointmentsModal()"
+  ></app-client-appointments>
+  
 <!-- Modal de Mis Citas -->
 <div class="modal" [class.show]="isModalOpen" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
@@ -26,3 +34,5 @@
     <button (click)="closeModal()">Cerrar</button>
   </div>
 </div>
+
+

@@ -10,7 +10,7 @@ import { EmployeeLayoutComponent } from './layouts/employee-layout/employee-layo
 import { EmployeeHeaderComponent } from './layouts/employee-layout/employee-header/employee-header.component';
 import { CompanyLayoutComponent } from './layouts/company-layout/company-layout.component';
 import { CompanyHeaderComponent } from './layouts/company-layout/company-header/company-header.component';
-
+import { ClientModule } from './features/client/client.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { CompanyHeaderComponent } from './layouts/company-layout/company-header/
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

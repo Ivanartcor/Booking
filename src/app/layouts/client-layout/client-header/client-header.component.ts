@@ -11,6 +11,8 @@ export class ClientHeaderComponent {
   isDropdownOpen = false;
   isModalOpen = false; // Variable para controlar la visibilidad del modal
 
+  showAppointmentsModal = false;
+
   // Función para abrir el modal
   openModal() {
     this.isModalOpen = true;
@@ -25,6 +27,14 @@ export class ClientHeaderComponent {
   // Método para alternar el estado del dropdown
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen; // Cambia entre true y false
+  }
+
+  openAppointmentsModal() {
+    this.showAppointmentsModal = true;
+  }
+
+  closeAppointmentsModal() {
+    this.showAppointmentsModal = false;
   }
 
   // Detectar clics fuera del desplegable

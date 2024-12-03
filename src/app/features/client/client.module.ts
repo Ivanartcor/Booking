@@ -16,6 +16,9 @@ import { ClientAppointmentsComponent } from './components/client-appointments/cl
   imports: [
     CommonModule,
     ClientRoutingModule
-  ]
+  ],
+  exports: [
+    ClientAppointmentsComponent, // Exportación
+  ],
 })
 export class ClientModule { }
