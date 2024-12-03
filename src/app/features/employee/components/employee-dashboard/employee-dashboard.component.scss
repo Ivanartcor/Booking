@@ -77,31 +77,34 @@
 
 .services-section {
   display: inline-block;
-  padding: 0px;
+  padding: 2px;
   border-radius: 8px;
   /* Eliminada la sombra */
   box-shadow: none;
 
   .services-header {
     background-color: #005f6b;
-    padding: 5px 5px;
-    border-radius: 4px;
+    padding: 5px; /* Elimina espacio interno */
+    margin: 0; /* Elimina espacio externo */
+    display: inline-block; /* Hace que el fondo se ajuste al contenido */
+    border-radius: 4px; /* Mantiene bordes redondeados */
 
     h5 {
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1.2rem; /* Tamaño del texto del título */
+      line-height: 1; 
     }
   }
 
   .services-list {
-    margin-top: 10px;
-    padding: 0px;
+    margin-top: 5px;
     list-style: none;
     text-align: left;
 
     li {
       color: #005f6b;
       font-size: 1rem;
+      padding: 3px;
       margin-bottom: 15px;
       display: flex;
       align-items: center;
@@ -114,7 +117,7 @@
 
       .service-input {
         width: 120px;
-        padding: 5px;
+        padding: 4px;
         border: 1px solid #ccc;
         border-radius: 12px;
         font-size: 0.9rem;
