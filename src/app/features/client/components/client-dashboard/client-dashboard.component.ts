@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class ClientDashboardComponent {
   isMenuOpen = false;
   isDropdownOpen: boolean = false;
+  
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;

@@ -9,6 +9,18 @@ import { Router } from '@angular/router';
 export class ClientHeaderComponent {
   // Propiedad que controla si el dropdown está abierto o cerrado
   isDropdownOpen = false;
+  isModalOpen = false; // Variable para controlar la visibilidad del modal
+
+  // Función para abrir el modal
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  // Función para cerrar el modal
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
 
   // Método para alternar el estado del dropdown
   toggleDropdown() {
