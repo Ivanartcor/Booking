@@ -1,8 +1,20 @@
 <header>
     <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
     <nav>
-        <a routerLink="/client/client-appointments" routerLinkActive="active">Mis citas</a>
-        <img src="/assets/images/foto-perfil.jpg" alt="User Profile" class="profile-pic">
+      <a routerLink="/client/client-appointments" routerLinkActive="active">Mis citas</a>
+  
+      <!-- Desplegable para el perfil -->
+      <div class="nav-item dropdown" [class.show]="isDropdownOpen">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" (click)="toggleDropdown()">
+          <img src="/assets/images/foto-perfil.jpg" alt="User Profile" class="profile-pic">
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Mis citas</a></li>
+          <li><a class="dropdown-item" href="#">Mis datos</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+        </ul>
+      </div>
     </nav>
-</header>
-
+  </header>
+  

@@ -7,11 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./client-header.component.scss']
 })
 export class ClientHeaderComponent {
-  constructor(private router: Router) {}
+  // Propiedad que controla si el dropdown está abierto o cerrado
+  isDropdownOpen = false;
+
+  // Método para alternar el estado del dropdown
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen; // Cambia entre true y false
+  }
 
   logout() {
-    // Aquí puedes agregar la lógica de cierre de sesión, como borrar el token
     console.log('Cerrando sesión...');
-    this.router.navigate(['/auth/login']); // Redirigir a la página de login
+    // Lógica para cerrar sesión aquí
   }
 }
