@@ -1,49 +1,76 @@
-.dashboard-container {
-    background-color: #f5f5f5;
-    padding: 20px;
-  
-    .header-image {
-      img {
-        object-fit: cover;
-      }
-    }
-  
-    .calendar-container {
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+
+  .calendar-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-      img {
-        width: 100%;
-        max-width: 300px; /* Ajusta el tamaño del calendario */
-        height: auto;
-        border-radius: 8px;
+      width: 100%;
+      margin-bottom: 15px;
+
+      .prev-month,
+      .next-month {
+          background-color: #007b8f;
+          color: #ffffff;
+          border: none;
+          padding: 8px 12px;
+          border-radius: 4px;
+          font-size: 1rem;
+          cursor: pointer;
+
+          &:hover {
+              background-color: #005f6b;
+          }
       }
-    }
-  
-    .jornada-container {
-      background-color: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-      h5 {
-        color: #007b8f;
-        margin-bottom: 15px;
+
+      .current-month {
+          font-weight: bold;
+          font-size: 1.2rem;
+          color: #333;
       }
-  
-      .form-label {
-        font-weight: bold;
-        color: #333;
-      }
-  
-      .form-control {
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-    }
   }
-  
+
+  .calendar-body {
+      width: 100%;
+
+      .calendar-weekdays {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          text-align: center;
+          font-weight: bold;
+          color: #007b8f;
+          margin-bottom: 10px;
+      }
+
+      .calendar-days {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          text-align: center;
+
+          .day {
+              padding: 10px;
+              margin: 5px;
+              background-color: #f5f5f5;
+              border-radius: 4px;
+              color: #333;
+              cursor: pointer;
+
+              &.prev-month-day {
+                  color: #ccc;
+              }
+
+              &:hover {
+                  background-color: #007b8f;
+                  color: white;
+              }
+          }
+      }
+  }
+}
