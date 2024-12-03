@@ -24,6 +24,12 @@ a {
   font-weight: 600; /* Peso medio */
   font-size: 1rem; /* Tamaño de texto ajustado */
   padding: 0 1rem; /* Espaciado interno entre las líneas verticales */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Transición suave para el color y sombra */
+}
+
+a:hover {
+  color: #0056b3; /* Cambia el color a un azul más oscuro */
+  text-shadow: 0 0 10px rgba(0, 86, 179, 0.6), 0 0 20px rgba(0, 86, 179, 0.4); /* Efecto de resplandor */
 }
 
 .profile-pic {
