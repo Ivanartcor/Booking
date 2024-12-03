@@ -31,6 +31,15 @@
       margin-bottom: 15px;
     }
 
+    .small-text a {
+      color: #437A90;
+      text-decoration: none;
+    }
+
+    .small-text a:hover {
+      text-decoration: underline;
+    }
+
     /* Estilo para la imagen del logo */
     .logo-container .logo {
       width: 100px;
@@ -72,7 +81,7 @@
       background-color: #437A90;
       border: none;
       padding: 12px;
-      width: 90%;
+      width: 80%;
       font-size: 16px;
       color: #fff;
       border-radius: 25px;
@@ -82,13 +91,4 @@
 
     .btn-register:hover {
       background-color: #0056b3;
-    }
-
-    .forgot-password a {
-      color: #437A90;
-      text-decoration: none;
-    }
-
-    .forgot-password a:hover {
-      text-decoration: underline;
     }
