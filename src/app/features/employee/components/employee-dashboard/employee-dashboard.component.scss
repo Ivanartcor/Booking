@@ -77,14 +77,14 @@
 
 .services-section {
   display: inline-block;
-  padding: 10px;
+  padding: 0px;
   border-radius: 8px;
   /* Eliminada la sombra */
   box-shadow: none;
 
   .services-header {
     background-color: #005f6b;
-    padding: 5px 10px;
+    padding: 5px 5px;
     border-radius: 4px;
 
     h5 {
@@ -95,7 +95,7 @@
 
   .services-list {
     margin-top: 10px;
-    padding: 0;
+    padding: 0px;
     list-style: none;
     text-align: left;
 
@@ -114,7 +114,7 @@
 
       .service-input {
         width: 120px;
-        padding: 8px;
+        padding: 5px;
         border: 1px solid #ccc;
         border-radius: 12px;
         font-size: 0.9rem;
