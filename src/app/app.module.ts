@@ -10,6 +10,11 @@ import { EmployeeLayoutComponent } from './layouts/employee-layout/employee-layo
 import { EmployeeHeaderComponent } from './layouts/employee-layout/employee-header/employee-header.component';
 import { CompanyLayoutComponent } from './layouts/company-layout/company-layout.component';
 import { CompanyHeaderComponent } from './layouts/company-layout/company-header/company-header.component';
+import { LoginComponent } from './features/auth/components/login/login.component';
+import { RegisterComponent } from './features/auth/components/register/register.component';
+import { ForgotPasswordComponent } from './features/auth/components/forgot-password/forgot-password.component';
+import { DashboardComponent } from './features/client/components/dashboard/dashboard.component';
+import { ProfileComponent } from './features/client/components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,11 @@ import { CompanyHeaderComponent } from './layouts/company-layout/company-header/
     EmployeeLayoutComponent,
     EmployeeHeaderComponent,
     CompanyLayoutComponent,
-    CompanyHeaderComponent
+    CompanyHeaderComponent,
+    //para pruebas de navegación
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
