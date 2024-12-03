@@ -1,84 +1,68 @@
 .app-footer {
-    background-color: #437a90; /* Azul acero */
-    color: #fff;
-    padding: 2rem 1rem;
-  
-    .footer-container {
+  background-color: #e6e6e6; /* Gris claro */
+  padding: 0.5rem 1rem;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; /* Espaciado entre secciones */
+    font-size: 0.875rem; /* Tamaño de texto ajustado */
+
+    /* Idioma */
+    .footer-language a {
+      color: #437a90; /* Azul */
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    /* FAQ */
+    .footer-links a {
+      color: #437a90; /* Azul */
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    /* Redes sociales */
+    .footer-social {
       display: flex;
-      flex-wrap: wrap; /* Permite que las secciones se ajusten en pantallas pequeñas */
-      justify-content: space-between;
-      align-items: center;
       gap: 1rem;
-  
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-  
-        a {
-          color: #fff;
-          text-decoration: none;
-          font-weight: bold;
-  
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-  
-      .footer-language {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-  
-        select {
-          padding: 0.5rem;
-          border: none;
-          border-radius: 5px;
-          background-color: #fff;
-          color: #437a90;
-          font-weight: bold;
-  
-          &:focus {
-            outline: none;
-          }
-        }
-      }
-  
-      .footer-social {
-        display: flex;
-        gap: 1rem;
-  
-        a {
-          color: #fff;
-          font-size: 1.5rem;
-  
-          &:hover {
-            color: #e6e6e6; /* Gris claro */
-          }
-  
-          i {
-            pointer-events: none;
-          }
+
+      a {
+        color: #437a90;
+        font-size: 1.5rem;
+
+        &:hover {
+          color: #365f72; /* Azul más oscuro */
         }
       }
     }
-  
-    .footer-bottom {
-      text-align: center;
-      margin-top: 1rem;
-  
-      p {
-        margin: 0;
-        font-size: 0.875rem;
-      }
-    }
-  
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column; /* Cambia a diseño vertical en pantallas pequeñas */
-        align-items: center;
-      }
+
+    /* Línea vertical */
+    .vertical-line {
+      width: 1px;
+      height: 20px; /* Altura de la línea */
+      background-color: #ccc; /* Gris claro */
     }
   }
-  
+
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column; /* Diseño vertical en pantallas pequeñas */
+      align-items: center;
+      gap: 0.5rem; /* Menor espaciado */
+    }
+
+    .vertical-line {
+      display: none; /* Ocultar líneas verticales en dispositivos pequeños */
+    }
+  }
+}
