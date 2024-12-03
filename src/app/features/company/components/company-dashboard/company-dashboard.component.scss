@@ -1,0 +1,108 @@
+.container {
+    .row.g-3 {
+      gap: 1rem; /* Espaciado entre columnas */
+    }
+  
+    /* Contenedor principal */
+    .w-60 {
+      flex: 1.5; /* Ajustar tamaño proporcional del contenedor de la imagen */
+      max-width: 60%; /* Limitar tamaño máximo al 60% del contenedor */
+    }
+  
+    .w-40 {
+      flex: 1; /* Ajustar tamaño proporcional del contenedor de estadísticas */
+      max-width: 40%; /* Limitar tamaño máximo al 40% del contenedor */
+    }
+  
+    .shadow {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Sombra suave */
+    }
+  
+    /* Imagen principal */
+    img {
+      object-fit: cover; /* Mantener proporción de imagen */
+    }
+  
+    /* Fondo y texto */
+    .bg-light {
+      background-color: #f5f5f5 !important; /* Fondo gris claro */
+    }
+  
+    .bg-white {
+      background-color: #ffffff !important; /* Fondo blanco */
+    }
+  
+    .bg-dark {
+      background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+    }
+  
+    .text-white {
+      color: #ffffff !important; /* Texto blanco */
+    }
+  
+    .text-secondary {
+      color: #666666 !important; /* Texto secundario */
+    }
+  
+    /* Texto en la imagen */
+    .text-overlay {
+      position: absolute; /* Permite colocar el texto dentro de la imagen */
+      bottom: 0; /* Coloca el texto en la parte inferior */
+      left: 0; /* Alinea el texto a la izquierda */
+      padding: 0.5rem 1rem; /* Espaciado interno */
+      background-color: #ffffff; /* Fondo blanco */
+      color: #007b8f; /* Color verde corporativo */
+    }
+  
+    /* Servicios */
+    input.form-control {
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      padding: 8px;
+      font-size: 1rem;
+    }
+  
+    /* Botones */
+    .btn-custom {
+      background-color: #007b8f; /* Azul oscuro */
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 4px;
+  
+      &:hover {
+        background-color: #005f6b; /* Azul más oscuro */
+      }
+    }
+  
+    .btn-primary {
+      background-color: #007b8f; /* Azul oscuro */
+      color: #ffffff;
+      border: none;
+  
+      &:hover {
+        background-color: #005f6b; /* Hover azul más oscuro */
+      }
+    }
+  
+    /* Cuadro de estadísticas */
+    .stats-box {
+      background-color: #ffffff;
+      border: 1px solid #dcdcdc; /* Borde gris claro */
+    }
+  
+    .stat-item {
+      padding: 1rem;
+      border-bottom: 1px solid #f5f5f5;
+    }
+  
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+  
+    .text-green {
+      color: #007b8f; /* Verde corporativo */
+    }
+  }
+  
+  

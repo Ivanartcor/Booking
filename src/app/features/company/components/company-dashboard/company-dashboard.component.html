@@ -1,1 +1,59 @@
-<p>company-dashboard works!</p>
+<div class="container bg-light py-4">
+    <!-- Cabecera -->
+    <div class="row g-3 align-items-stretch">
+        <!-- Contenedor principal para Empresa y Estadísticas -->
+        <div class="col-12 d-flex p-0 bg-white rounded shadow position-relative">
+            <!-- Imagen principal -->
+            <div class="w-60 position-relative" style="flex: 1.5;">
+                <img src="/assets/images/doctor-service.jpg" 
+                     alt="Imagen de Empresa" 
+                     class="img-fluid h-100 w-100 rounded-start" 
+                     style="object-fit: cover;" />
+                <!-- Texto dentro de la imagen -->
+                <div class="text-overlay position-absolute bottom-0 start-0 bg-white text-green p-2 rounded-end">
+                    <h1 class="fs-3 fw-bold mb-0">MediCare</h1>
+                </div>
+            </div>
+            <!-- Estadísticas -->
+            <div class="w-40 bg-light d-flex flex-column align-items-center p-3 rounded-end shadow" style="flex: 1;">
+                <h3 class="fs-5 fw-bold text-secondary mb-3">Estadísticas</h3>
+                <div class="stats-box p-3 border rounded shadow-sm w-100">
+                    <div class="stat-item mb-3">
+                        <h5 class="fs-6 fw-bold text-green">Pacientes Atendidos</h5>
+                        <p class="fs-3 fw-bold text-green">1,234</p>
+                    </div>
+                    <div class="stat-item mb-3">
+                        <h5 class="fs-6 fw-bold text-green">Consultas Realizadas</h5>
+                        <p class="fs-3 fw-bold text-green">3,567</p>
+                    </div>
+                    <div class="stat-item mb-3">
+                        <h5 class="fs-6 fw-bold text-green">Servicios Prestados</h5>
+                        <p class="fs-3 fw-bold text-green">890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Servicios -->
+    <div class="row g-3 mt-4">
+        <div class="col-12 bg-white rounded shadow p-3">
+            <label for="service-input" class="form-label text-secondary fw-bold mb-2 d-block">Servicios:</label>
+            <div class="d-flex align-items-center">
+                <input type="text" id="service-input" class="form-control me-3" placeholder="Texto" />
+                <button class="btn btn-custom px-4">Cambiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Añadir Servicio -->
+    <div class="row g-3 mt-3">
+        <div class="col-12 text-center">
+            <button class="btn btn-primary btn-lg">Añadir Servicio</button>
+        </div>
+    </div>
+</div>
+
+  
+  
+  
