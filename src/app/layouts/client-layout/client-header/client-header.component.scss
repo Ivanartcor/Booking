@@ -1,73 +1,66 @@
 header {
-    background-color: #437a90; /* Azul acero */
-    color: #fff;
-    padding: 1rem 2rem;
+  background-color: #fff; /* Fondo blanco */
+  color: #437a90; /* Texto azul */
+  padding: 0.5rem 2rem; /* Espaciado superior e inferior reducido */
+  display: flex;
+  justify-content: space-between; /* Espaciado entre logo y navegación */
+  align-items: center; /* Alineación vertical de los elementos */
+
+  .logo {
+    width: 50px; /* Tamaño reducido del logo */
+    height: auto; /* Mantener proporciones */
+  }
+
+  nav {
     display: flex;
-    flex-direction: column; /* Ajuste para diseño vertical en pantallas pequeñas */
     align-items: center;
-  
-    p {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0 0 1rem 0;
-      text-transform: uppercase;
+    gap: 1rem; /* Separación entre elementos de la navegación */
+
+    .vertical-line {
+      width: 1px; /* Grosor de la línea */
+      height: 40px; /* Altura igual al perfil y enlace */
+      background-color: #ccc; /* Color gris claro */
     }
-  
+
+    a {
+      text-decoration: none;
+      color: #437a90;
+      font-weight: 600; /* Peso medio */
+      font-size: 1rem; /* Tamaño de texto ajustado */
+      padding: 0 1rem; /* Espaciado interno entre las líneas verticales */
+    }
+
+    .profile-pic {
+      width: 40px; /* Tamaño del avatar */
+      height: 40px;
+      border-radius: 50%; /* Forma circular */
+      object-fit: cover; /* Ajuste de imagen */
+      border: 1px solid #ccc; /* Borde suave */
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Alinear en columna para pantallas pequeñas */
+    align-items: center; /* Centrar contenido */
+    gap: 0.5rem; /* Separación entre logo y navegación */
+
+    .logo {
+      margin-bottom: 0.5rem; /* Separación adicional del logo */
+    }
+
     nav {
-      display: flex;
-      flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
-      justify-content: center;
-      gap: 1rem;
-  
-      a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: #365f72; /* Azul más oscuro */
-        }
-      }
-  
-      a.active {
-        background-color: #fff;
-        color: #437a90;
-      }
-  
-      button {
-        background-color: transparent;
-        border: 2px solid #fff;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s ease, color 0.3s ease;
-  
-        &:hover {
-          background-color: #fff;
-          color: #437a90;
-        }
-      }
+      flex-direction: column; /* Navegación vertical */
+      gap: 0.5rem;
+    }
+
+    .vertical-line {
+      display: none; /* Ocultar líneas en pantallas pequeñas */
     }
   }
-  
-  @media (min-width: 768px) {
-    header {
-      flex-direction: row; /* Diseño horizontal en pantallas más grandes */
-      justify-content: space-between;
-      align-items: center;
-  
-      p {
-        margin: 0;
-      }
-  
-      nav {
-        justify-content: flex-end;
-      }
-    }
-  }
+}
+
+
+
   

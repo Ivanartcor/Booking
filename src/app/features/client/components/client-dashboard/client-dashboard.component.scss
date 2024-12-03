@@ -63,7 +63,7 @@ select {
 
 .company-info {
   flex: 1; /* Ocupa todo el espacio disponible */
-  padding: 1rem;
+  padding: 4rem; /* Espaciado interno más amplio */
   display: flex;
   flex-direction: column;
   justify-content: center;
