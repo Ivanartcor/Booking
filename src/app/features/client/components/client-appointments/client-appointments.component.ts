@@ -19,9 +19,9 @@ export class ClientAppointmentsComponent {
     },
     {
       id: 2,
-      company: 'Empresa',
+      company: 'Mazón',
       service: 'Corte de pelo',
-      price: 12.0,
+      price: 16.0,
       date: new Date(2024, 8, 17),
       time: '10:15'
     },
@@ -29,9 +29,9 @@ export class ClientAppointmentsComponent {
       id: 3,
       company: 'Empresa',
       service: 'Corte de pelo',
-      price: 12.0,
-      date: new Date(2024, 8, 17),
-      time: '10:15'
+      price: 12222.0,
+      date: new Date(2024, 8, 18),
+      time: '5:15'
     }
   ];
   closeModal() {
