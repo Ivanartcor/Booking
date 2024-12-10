@@ -12,6 +12,7 @@
     color: #555; /* Color gris suave para el texto */
     line-height: 1.5; /* Mejora la legibilidad */
     margin-bottom: 2rem; /* Espaciado con el siguiente título */
+    margin-left: 2%;
   }
 
   h2 {
@@ -29,6 +30,7 @@
     margin: 0;
 
     li {
+      margin-left: 2%;
       margin-bottom: 1.5rem; /* Separación entre servicios */
       padding: 1rem;
       background-color: #f9f9f9; /* Fondo claro */
