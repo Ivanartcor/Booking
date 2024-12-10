@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import users from '../../assets/data/users.json'; // Importamos el JSON
+import users from 'src/assets/data/users.json'; // Importamos el JSON
 
 @Injectable({
   providedIn: 'root',
@@ -11,25 +11,23 @@ export class AuthService {
   constructor(private router: Router) {}
 
   login(email: string, password: string): boolean {
-    // Simulamos la autenticación buscando al usuario en el JSON
     const user = users.find((u) => u.email === email);
 
     if (user) {
-      this.loggedInUser = user; // Guardamos el usuario autenticado
-      this.redirectByRole(user.role); // Redirigimos según el rol
+      this.loggedInUser = user;
+      this.redirectByRole(user.role);
       return true;
     }
-
     return false;
   }
 
   logout() {
     this.loggedInUser = null;
-    this.router.navigate(['/auth/login']); // Redirigir al login
+    this.router.navigate(['/auth/login']);
   }
 
   getUser() {
-    return this.loggedInUser; // Retorna el usuario autenticado
+    return this.loggedInUser;
   }
 
   private redirectByRole(role: string) {
