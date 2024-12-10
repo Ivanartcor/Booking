@@ -93,7 +93,7 @@ select {
 }
 
 .menu-dropdown ul li a:hover {
-  background-color: #f0f0f0; /* Fondo azul al pasar el ratón */
+  background-color: #f3f3f3; /* Fondo azul al pasar el ratón */
   text-decoration: underline;
 }
 
@@ -110,7 +110,7 @@ select {
   display: flex;
   background-color: #ffffff; /* Fondo blanco */
   margin-bottom: 1.5rem; /* Espaciado entre tarjetas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
   overflow: hidden; /* Evitar desbordes de contenido */
   width: 90%; /* Ajustar el tamaño de la tarjeta con porcentaje */
   max-width: 1400px; /* Limitar el ancho máximo */
@@ -118,6 +118,13 @@ select {
   margin-left: auto; /* Centrar horizontalmente */
   margin-right: auto; /* Centrar horizontalmente */
   display: flex; /* Asegurarse que el contenido y la imagen se alineen */
+  cursor: pointer; /* Cambia el cursor a puntero */
+  transition: transform 0.3s ease; /* Efecto suave al pasar el cursor */
+}
+
+.company-card:hover {
+  transform: scale(1.01); /* Escala ligeramente al pasar el cursor */
+  box-shadow: 0 4px 8px rgba(39, 73, 100, 0.2); /* Añade una sombra */
 }
 
 .company-card img {
