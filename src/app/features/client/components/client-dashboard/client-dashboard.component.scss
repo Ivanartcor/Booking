@@ -118,7 +118,7 @@ select {
   margin-left: auto; /* Centrar horizontalmente */
   margin-right: auto; /* Centrar horizontalmente */
   display: flex; /* Asegurarse que el contenido y la imagen se alineen */
-  cursor: pointer; /* Cambia el cursor a puntero */
+  cursor: pointer; /* Cambia el cursor a puntero para destacar al usuario que es un item clikable */
   transition: transform 0.3s ease; /* Efecto suave al pasar el cursor */
 }
 
