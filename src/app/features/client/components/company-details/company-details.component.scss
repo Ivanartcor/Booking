@@ -1,0 +1,38 @@
+.company-details {
+    padding: 2rem;
+  
+    h1 {
+      color: #437a90;
+    }
+  
+    h2 {
+      margin-top: 2rem;
+      color: #333;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        button {
+          background-color: #437a90;
+          color: #fff;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          cursor: pointer;
+  
+          &:hover {
+            background-color: #365f72;
+          }
+        }
+      }
+    }
+  }
+  

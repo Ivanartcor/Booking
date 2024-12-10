@@ -1,0 +1,20 @@
+<div class="company-details">
+    <h1>{{ company.name }}</h1>
+    <p>{{ company.description }}</p>
+  
+    <h2>Servicios</h2>
+    <ul>
+      <li *ngFor="let service of company.services">
+        {{ service.name }} - {{ service.price | currency: 'EUR' }}
+        <button 
+          *ngIf="!service.reserved" 
+          (click)="reserveService(service.id)"
+          class="reserve-btn"
+        >
+          Reservar
+        </button>
+        <span *ngIf="service.reserved" class="reserved-msg">Reservado</span>
+      </li>
+    </ul>
+  </div>
+  

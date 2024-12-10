@@ -5,13 +5,15 @@ import { ClientRoutingModule } from './client-routing.module';
 import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { ClientAppointmentsComponent } from './components/client-appointments/client-appointments.component';
+import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 
 
 @NgModule({
   declarations: [
     ClientDashboardComponent,
     ClientProfileComponent,
-    ClientAppointmentsComponent
+    ClientAppointmentsComponent,
+    CompanyDetailsComponent
   ],
   imports: [
     CommonModule,

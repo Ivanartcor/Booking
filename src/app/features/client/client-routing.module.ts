@@ -4,6 +4,7 @@ import { ClientLayoutComponent } from 'src/app/layouts/client-layout/client-layo
 import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { ClientAppointmentsComponent } from './components/client-appointments/client-appointments.component';
+import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,8 @@ const routes: Routes = [
       { path: 'client-dashboard', component: ClientDashboardComponent },
       { path: 'client-profile', component: ClientProfileComponent },
       { path: 'client-appointments', component: ClientAppointmentsComponent },
+      { path: 'company/:id', component: CompanyDetailsComponent },
+      //La ruta company/:id usa un parámetro dinámico (id) para identificar la empresa seleccionada.
       { path: '', redirectTo: 'client-dashboard', pathMatch: 'full' },
     ],
   },

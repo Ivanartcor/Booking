@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "cliente",
+      "email": "cliente@gmail.com",
+      "role": "client" 
+    },
+    {
+      "id": 2,
+      "name": "empresa",
+      "email": "empresa@gmail.com",
+      "role": "company" 
+    },
+    {
+      "id": 3,
+      "name": "empleado",
+      "email": "empleado@gmail.com",
+      "role": "employee" 
+    }
+  ]
+  

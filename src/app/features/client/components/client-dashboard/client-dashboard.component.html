@@ -23,6 +23,8 @@
 </header>
 
 <main class="main-container">
+
+
   <!-- Primera empresa -->
   <section class="company-card">
     <img src="../assets/images/peluqueria-image.jpg">
@@ -49,6 +51,18 @@
         tratamiento personalizados y un ambiente acogedor diseñado para minimizar cualquier ansiedad relacionada con el dentista. 
         ¡Reserva tu cita hoy y da el primer paso hacia una sonrisa saludable y brillante!
       </p>
+    </div>
+  </section>
+
+  <section
+    class="company-card"
+    *ngFor="let company of companies"
+    (click)="goToCompanyDetails(company.id)"
+  >
+    <img [src]="company.image" alt="{{ company.name }}">
+    <div class="company-info">
+      <h2>{{ company.name }}</h2>
+      <p>{{ company.description }}</p>
     </div>
   </section>
 </main>
