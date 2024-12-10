@@ -85,7 +85,7 @@ select {
 
 .menu-dropdown ul li a {
   text-decoration: none;
-  color: $text-color; /* Color del texto */
+  color: $dark-blue; /* Color del texto */
   font-size: 1rem;
   padding: 0.75rem 1rem; /* Espaciado interno */
   display: block; /* Ocupa todo el ancho */
@@ -94,7 +94,7 @@ select {
 
 .menu-dropdown ul li a:hover {
   background-color: #f0f0f0; /* Fondo azul al pasar el ratón */
-  color: black; /* Texto blanco al pasar el ratón */
+  text-decoration: underline;
 }
 
 .menu-dropdown ul li + li {
