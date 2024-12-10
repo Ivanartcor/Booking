@@ -124,7 +124,7 @@ select {
 
 .company-card:hover {
   transform: scale(1.01); /* Escala ligeramente al pasar el cursor */
-  box-shadow: 0 4px 8px rgba(39, 73, 100, 0.2); /* Añade una sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra */
 }
 
 .company-card img {
