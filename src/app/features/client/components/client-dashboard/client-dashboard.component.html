@@ -1,7 +1,6 @@
 <header>
-  <button class="menu-btn" (click)="toggleDropdown()">☰</button>
+  <button class="menu-btn" (click)="toggleDropdown($event)">☰</button>
   <div class="user-dropdown">
-    <span>Cliente</span>
     <select>
       <option>Ciudad</option>
       <option>Madrid</option>
@@ -10,8 +9,10 @@
     </select>
   </div>
 
+
+
   <!-- Dropdown para categorías -->
-  <div class="menu-dropdown" [class.show]="isDropdownOpen">
+  <div class="menu-dropdown" [class.show]="isDropdownOpen" (click)="stopPropagation($event)">
     <div class="dropdown-header">Categorías</div>
     <ul>
       <li><a href="#">Salud</a></li>
@@ -25,11 +26,7 @@
 <main class="main-container">
 
   <!-- Empresas cargadas dinamicamente según datos -->
-  <section
-    class="company-card"
-    *ngFor="let company of companies"
-    (click)="goToCompanyDetails(company.id)"
-  >
+  <section class="company-card" *ngFor="let company of companies" (click)="goToCompanyDetails(company.id)">
     <img [src]="company.image" alt="{{ company.name }}">
     <div class="company-info">
       <h2>{{ company.name }}</h2>
