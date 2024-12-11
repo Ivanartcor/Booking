@@ -15,10 +15,18 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    const success = this.authService.login(this.email, this.password);
-
-    if (!success) {
-      this.errorMessage = 'Credenciales incorrectas';
-    }
+    this.authService.login(this.email).subscribe({
+      next: (success) => {
+        if (!success) {
+          this.errorMessage = 'Usuario o contraseña incorrectos. Inténtelo de nuevo.';
+        } else {
+          this.errorMessage = ''; // Limpia el mensaje de error si el login es exitoso
+        }
+      },
+      error: (err) => {
+        console.error('Error durante la autenticación:', err);
+        this.errorMessage = 'Ocurrió un error. Inténtelo más tarde.';
+      },
+    });
   }
 }

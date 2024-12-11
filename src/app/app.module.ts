@@ -11,6 +11,8 @@ import { EmployeeHeaderComponent } from './layouts/employee-layout/employee-head
 import { CompanyLayoutComponent } from './layouts/company-layout/company-layout.component';
 import { CompanyHeaderComponent } from './layouts/company-layout/company-header/company-header.component';
 import { ClientModule } from './features/client/client.module';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ClientModule } from './features/client/client.module';
     BrowserModule,
     AppRoutingModule,
     ClientModule,
+    HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

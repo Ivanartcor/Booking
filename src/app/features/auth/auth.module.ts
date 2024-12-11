@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AuthRoutingModule
   ]
 })
