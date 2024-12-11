@@ -1,30 +1,33 @@
 <header>
   <button class="menu-btn" (click)="toggleDropdown($event)">☰</button>
+
+  <!-- Dropdown de ciudades -->
   <div class="user-dropdown">
-    <select>
-      <option>Ciudad</option>
-      <option>Madrid</option>
-      <option>Barcelona</option>
-      <option>Valencia</option>
+    <select (change)="selectCity($event)">
+      <option value="">Ciudad</option>
+      <option value="Madrid">Madrid</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Valencia">Valencia</option>
+      <option value="">Todas</option>
     </select>
+    
   </div>
 
   <!-- Dropdown para categorías -->
   <div class="menu-dropdown" [class.show]="isDropdownOpen" (click)="stopPropagation($event)">
     <div class="dropdown-header">Categorías</div>
     <ul>
-      <li><a href="#">Salud</a></li>
-      <li><a href="#">Estética</a></li>
-      <li><a href="#">Limpieza</a></li>
-      <li><a href="#">Otros</a></li>
+      <li><a href="#" (click)="selectCategory($event, 'Salud')">Salud</a></li>
+      <li><a href="#" (click)="selectCategory($event, 'Estética')">Estética</a></li>
+      <li><a href="#" (click)="selectCategory($event, 'Limpieza')">Limpieza</a></li>
+      <li><a href="#" (click)="selectCategory($event, '')">Todos</a></li> <!-- Opción para mostrar todas las categorías -->
     </ul>
   </div>
 </header>
 
 <main class="main-container">
-
-  <!-- Empresas cargadas dinamicamente según datos -->
-  <section class="company-card" *ngFor="let company of companies" (click)="goToCompanyDetails(company.id)">
+  <!-- Empresas cargadas dinámicamente según los datos -->
+  <section class="company-card" *ngFor="let company of filteredCompanies" (click)="goToCompanyDetails(company.id)">
     <img [src]="company.image" alt="{{ company.name }}">
     <div class="company-info">
       <h2>{{ company.name }}</h2>

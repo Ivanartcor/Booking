@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 export class ClientDashboardComponent {
   isMenuOpen = false;
   isDropdownOpen = false;
+  selectedCategory: string = '';
+  selectedCity: string = ''; // Agregar la ciudad seleccionada
+
+  // Lista de ciudades disponibles
+  cities = ['Madrid', 'Barcelona', 'Valencia'];
 
   companies = [
     {
@@ -21,6 +26,8 @@ export class ClientDashboardComponent {
         Además, garantizamos un ambiente cómodo y relajante. ¡Reserva tu cita ahora y vive una experiencia única en el cuidado de tu cabello!
       `,
       image: 'https://images.pexels.com/photos/7755449/pexels-photo-7755449.jpeg?auto=compress&cs=tinysrgb&w=400',
+      categoria: 'Estética',
+      ciudad: 'Madrid',
     },
     {
       id: 2,
@@ -33,7 +40,25 @@ export class ClientDashboardComponent {
         ¡Reserva tu cita hoy y da el primer paso hacia una sonrisa saludable y brillante!
       `,
       image: 'https://images.pexels.com/photos/4269942/pexels-photo-4269942.jpeg?auto=compress&cs=tinysrgb&w=400',
+      categoria: 'Salud',
+      ciudad: 'Barcelona',
     },
+    {
+      id: 3,
+      name: 'Spa Relax',
+      description: `El lugar ideal para desconectar, disfrutar de tratamientos faciales y corporales en un ambiente relajante.`,
+      image: 'https://www.wonderbox.es/wondermedias/sys_master/productmedias/h8d/hc8/952708-560x373.jpg',
+      categoria: 'Estética',
+      ciudad: 'Valencia',
+    },
+    {
+      id: 4,
+      name: 'Limpiezas Express',
+      description: `Servicios rápidos y eficientes de limpieza para hogares y oficinas.`,
+      image: 'https://images.pexels.com/photos/4327679/pexels-photo-4327679.jpeg?auto=compress&cs=tinysrgb&w=400',
+      categoria: 'Limpieza',
+      ciudad: 'Madrid',
+    }
   ];
 
   constructor(private router: Router) { }
@@ -47,31 +72,51 @@ export class ClientDashboardComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  // Método para evitar el cierre al hacer clic dentro del dropdown
   stopPropagation(event: Event): void {
-    event.stopPropagation(); // Evita que el clic dentro del menú cierre el desplegable
+    event.stopPropagation(); // Detiene la propagación del clic
   }
 
-  // Detecta clics fuera del dropdown
   @HostListener('document:click', ['$event'])
   closeOnClickOutside(event: Event): void {
     const target = event.target as HTMLElement;
     const dropdown = document.querySelector('.menu-dropdown');
-    const menuButton = document.querySelector('.menu-button'); // Si tienes un botón específico
+    const menuButton = document.querySelector('.menu-btn');
 
-    // Cierra el dropdown si se hace clic fuera de él y del botón
     if (dropdown && !dropdown.contains(target) && !menuButton?.contains(target)) {
       this.isDropdownOpen = false;
     }
 
-    // Cierra el menú si se hace clic fuera
     const menu = document.querySelector('.menu');
     if (menu && !menu.contains(target)) {
       this.isMenuOpen = false;
     }
   }
 
+  get filteredCompanies() {
+    return this.companies.filter(company => {
+      const matchesCategory = this.selectedCategory ? company.categoria === this.selectedCategory : true;
+      const matchesCity = this.selectedCity ? company.ciudad === this.selectedCity : true;
+      return matchesCategory && matchesCity;
+    });
+  }
+
+  selectCategory(event: Event, category: string): void {
+    event.preventDefault(); // Prevenir el comportamiento por defecto de los enlaces
+    this.selectedCategory = category;
+    this.isDropdownOpen = false; // Cierra el dropdown después de seleccionar la categoría
+  }
+  
+  selectCity(event: Event): void {
+    const target = event.target as HTMLSelectElement;  // Aseguramos que target es un HTMLSelectElement
+    if (target) {
+      this.selectedCity = target.value;  // Accedemos al valor del select
+    }
+    this.isDropdownOpen = false;  // Cierra el dropdown después de seleccionar
+  }
+  
+  
+
   goToCompanyDetails(id: number): void {
-    this.router.navigate([`/client/company`, id]); // Navega a la página de detalles de la empresa
+    this.router.navigate([`/client/company`, id]);
   }
 }
