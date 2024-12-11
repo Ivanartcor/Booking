@@ -1,0 +1,52 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2rem;
+    width: 500px;
+    max-width: 80%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1001;
+  
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #333;
+      cursor: pointer;
+    }
+  
+    .modal-title {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #005f6b;
+    }
+  
+    .service-info {
+      p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+  
+      .btn {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  

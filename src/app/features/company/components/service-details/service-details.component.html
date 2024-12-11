@@ -1,1 +1,14 @@
-<p>service-details works!</p>
+<div class="modal-overlay" (click)="closeModal()"></div>
+
+<div class="modal-content">
+  <button class="close-btn" (click)="closeModal()">×</button>
+  <h2 class="modal-title">{{ service?.name }}</h2>
+
+  <div class="service-info" *ngIf="service">
+    <p><strong>Descripción:</strong> {{ service.description }}</p>
+    <p><strong>Precio:</strong> €{{ service.price }}</p>
+    <p><strong>Categoría:</strong> {{ service.category }}</p>
+    <button class="btn btn-warning" (click)="editService()">Editar</button>
+    <button class="btn btn-danger" (click)="deleteService()">Eliminar</button>
+  </div>
+</div>

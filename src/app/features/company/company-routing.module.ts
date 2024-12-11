@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CompanyLayoutComponent } from 'src/app/layouts/company-layout/company-layout.component';
 import { CompanyDashboardComponent } from './components/company-dashboard/company-dashboard.component';
 import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
+import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'company-dashboard', component: CompanyDashboardComponent },
       { path: 'company-profile', component: CompanyProfileComponent },
+      { path: 'services/:id', component: ServiceDetailsComponent },
       { path: '', redirectTo: 'company-dashboard', pathMatch: 'full' },
     ],
   },

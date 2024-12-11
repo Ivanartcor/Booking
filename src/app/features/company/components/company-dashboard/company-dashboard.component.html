@@ -33,23 +33,28 @@
         </div>
     </div>
 
-    <div class="container bg-light py-4">
-        <!-- Servicios -->
-        <div class="row g-3 mt-4">
-          <div class="col-12 bg-white rounded shadow p-3">
-           <h3>Servicios:</h3>
-            
-            <!-- Mostrar los servicios -->
-            <div class="d-flex flex-column align-items-end mb-3">
-              <div *ngFor="let service of services" class="service-item w-100 mb-3 p-3 border rounded shadow">
-                <h5>{{ service.name }}</h5>
-                <p>{{ service.description }}</p>
-                <p><strong>Precio: ${{ service.price }}</strong></p>
-              </div>
-            </div>
-          </div>
+    <!-- Servicios -->
+  <div class="row g-3 mt-4">
+    <div class="col-12 bg-white rounded shadow p-3">
+      <h3 class="">Servicios</h3>
+      <div class="row">
+        <!-- Usar el componente ServiceCard -->
+        <div class="col-md-4 w-100" *ngFor="let service of services" (click)="openServiceDetails(service.id)">
+          <app-service-card [service]="service"></app-service-card>
         </div>
+      </div>
+    </div>
+  </div>
       
+
+    <!-- Modal de detalles del servicio -->
+    <app-service-details
+    *ngIf="showServiceDetailsModal"
+    [serviceId]="selectedServiceId"
+    (close)="closeServiceDetailsModal()"
+  ></app-service-details>
+
+
         <!-- Botón Añadir Servicio -->
         <div class="row g-3 mt-3">
           <div class="col-12 text-center">

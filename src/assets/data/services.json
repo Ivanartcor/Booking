@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "companyId": 2,
+      "name": "Consulta Médica General",
+      "description": "Consulta para revisión médica general.",
+      "price": "50",
+      "category": "Salud"
+    },
+    {
+      "id": 2,
+      "companyId": 2,
+      "name": "Vacunación",
+      "description": "Servicio de vacunación preventiva.",
+      "price": "30",
+      "category": "Salud"
+    },
+    {
+      "id": 3,
+      "companyId": 2,
+      "name": "Corte de Pelo",
+      "description": "Servicio de corte de cabello profesional.",
+      "price": "20",
+      "category": "Belleza"
+    }
+  ]
+  

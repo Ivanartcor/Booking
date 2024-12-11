@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-service-details',
@@ -7,12 +7,34 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./service-details.component.scss']
 })
 export class ServiceDetailsComponent implements OnInit {
-  serviceId: string | null = null;
+  @Input() serviceId: number | null = null;
+  @Output() close = new EventEmitter<void>();
 
-  constructor(private route: ActivatedRoute) {}
+  service: any;
 
-  ngOnInit(): void {
-    // Obtener el ID del servicio desde la URL
-    this.serviceId = this.route.snapshot.paramMap.get('id');
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    if (this.serviceId) {
+      this.loadServiceDetails();
+    }
+  }
+
+  loadServiceDetails() {
+    this.http.get<any[]>('assets/data/services.json').subscribe((services) => {
+      this.service = services.find((s) => s.id === this.serviceId);
+    });
+  }
+
+  closeModal() {
+    this.close.emit(); // Emite el evento de cierre
+  }
+
+  editService() {
+    console.log('Editando servicio...');
+  }
+
+  deleteService() {
+    console.log('Eliminando servicio...');
   }
 }
