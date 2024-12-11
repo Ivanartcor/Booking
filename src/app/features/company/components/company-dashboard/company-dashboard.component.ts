@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CompanyDashboardComponent {
 
+
   services = [
     {
       name: 'Corte de cabello',
@@ -24,5 +25,6 @@ export class CompanyDashboardComponent {
       description: 'Masaje terapéutico para aliviar el estrés y la tensión muscular.',
     }
   ];
+
 
 }

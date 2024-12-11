@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-client-header',
@@ -12,7 +13,7 @@ export class ClientHeaderComponent {
   
   showAppointmentsModal = false;
 
-  
+  constructor(private authService: AuthService) {}
 
   // Método para alternar el estado del dropdown
   toggleDropdown() {
@@ -39,6 +40,6 @@ export class ClientHeaderComponent {
 
   logout() {
     console.log('Cerrando sesión...');
-    // Lógica para cerrar sesión aquí
+    this.authService.logout(); // Llama al método del AuthService
   }
 }
