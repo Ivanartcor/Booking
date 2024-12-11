@@ -7,6 +7,7 @@ import { CompanyDashboardComponent } from './components/company-dashboard/compan
 import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
 import { ServiceCardComponent } from './components/service-card/service-card.component';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
+import { AddServiceComponent } from './components/add-service/add-service.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ServiceDetailsComponent } from './components/service-details/service-de
     CompanyDashboardComponent,
     CompanyProfileComponent,
     ServiceCardComponent,
-    ServiceDetailsComponent
+    ServiceDetailsComponent,
+    AddServiceComponent
   ],
   imports: [
     CommonModule,
