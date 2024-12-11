@@ -55,7 +55,7 @@ export class ClientDashboardComponent {
       id: 4,
       name: 'Limpiezas Express',
       description: `Servicios rápidos y eficientes de limpieza para hogares y oficinas.`,
-      image: 'https://images.pexels.com/photos/4327679/pexels-photo-4327679.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://inafe.es/wp-content/uploads/%C2%BFBuscas-una-aseguranza-para-negocio-de-limpieza-en-2023.webp',
       categoria: 'Limpieza',
       ciudad: 'Madrid',
     }
@@ -105,7 +105,7 @@ export class ClientDashboardComponent {
     this.selectedCategory = category;
     this.isDropdownOpen = false; // Cierra el dropdown después de seleccionar la categoría
   }
-  
+
   selectCity(event: Event): void {
     const target = event.target as HTMLSelectElement;  // Aseguramos que target es un HTMLSelectElement
     if (target) {

@@ -5,10 +5,8 @@
         <div class="col-12 d-flex p-0 bg-white rounded shadow position-relative">
             <!-- Imagen principal -->
             <div class="w-60 position-relative" style="flex: 1.5;">
-                <img src="/assets/images/doctor-service.jpg" 
-                     alt="Imagen de Empresa" 
-                     class="img-fluid h-100 w-100 rounded-start" 
-                     style="object-fit: cover;" />
+                <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa"
+                    class="img-fluid h-100 w-100 rounded-start" style="object-fit: cover;" />
                 <!-- Texto dentro de la imagen -->
                 <div class="text-overlay position-absolute bottom-0 start-0 bg-white text-green p-2 rounded-end">
                     <h1 class="fs-3 fw-bold mb-0">MediCare</h1>
@@ -38,27 +36,25 @@
     <div class="container bg-light py-4">
         <!-- Servicios -->
         <div class="row g-3 mt-4">
-            <div class="col-12 bg-white rounded shadow p-3">
-                <label for="service-input" class="form-label text-secondary fw-bold mb-2 d-block">Servicios:</label>
-                <div class="d-flex flex-column align-items-end mb-3">
-                    <!-- Buscador con ícono -->
-                    <div class="input-group mb-2" style="max-width: 300px;">
-                        <span class="input-group-text">
-                            <i class="fas fa-search"></i> <!-- Ícono de búsqueda -->
-                        </span>
-                        <input type="text" id="search-input" class="form-control" placeholder="Buscar servicio" />
-                    </div>
-                    <!-- Botón Cambiar (más pequeño) -->
-                    <button class="btn btn-custom-sm px-3 py-1 w-100" style="max-width: 150px;">Cambiar</button>
-                </div>
+          <div class="col-12 bg-white rounded shadow p-3">
+            <label for="service-input" class="form-label text-secondary fw-bold mb-2 d-block">Servicios:</label>
+            
+            <!-- Mostrar los servicios -->
+            <div class="d-flex flex-column align-items-end mb-3">
+              <div *ngFor="let service of services" class="service-item w-100 mb-3 p-3 border rounded shadow">
+                <h5>{{ service.name }}</h5>
+                <p>{{ service.description }}</p>
+                <p><strong>Precio: ${{ service.price }}</strong></p>
+              </div>
             </div>
+          </div>
         </div>
-    
+      
         <!-- Botón Añadir Servicio -->
         <div class="row g-3 mt-3">
-            <div class="col-12 text-center">
-                <button class="btn btn-primary btn-lg">Añadir Servicio</button>
-            </div>
+          <div class="col-12 text-center">
+            <button class="btn btn-primary btn-lg">Añadir Servicio</button>
+          </div>
         </div>
-    </div>
-    
+      </div>
+      
