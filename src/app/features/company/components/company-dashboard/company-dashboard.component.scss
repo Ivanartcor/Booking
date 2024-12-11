@@ -103,64 +103,7 @@
     .text-green {
       color: #007b8f; /* Verde corporativo */
     }
-  
-    /* Estilo para el buscador (más pequeño) */
-    .input-group {
-      width: auto; /* Cambié el ancho a automático */
-      max-width: 250px; /* Limitar el ancho máximo */
-    }
-  
-    .input-group .form-control {
-      border-radius: 0 4px 4px 0; /* Esquinas redondeadas a la derecha */
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-  }
-  
-    .input-group button {
-      background-color: #007b8f; /* Azul oscuro */
-      border-radius: 4px;
-      color: white;
-      border: none;
-      padding: 0.5rem;
-    }
-  
-    .input-group button:hover {
-      background-color: #005f6b; /* Hover azul más oscuro */
-    }
-  
-    .input-group .fas.fa-search {
-      font-size: 1rem; /* Reducir el tamaño del ícono */
-    }
+   
   }
 
-  .input-group-text {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 4px 0 0 4px; /* Esquinas redondeadas a la izquierda */
-}
-
-.input-group-text i {
-    font-size: 1rem; /* Tamaño del ícono */
-    color: #007b8f; /* Azul oscuro */
-}
-
-
-.btn-custom-sm {
-  background-color: #007b8f; /* Azul oscuro */
-  color: #ffffff;
-  font-size: 0.875rem; /* Texto más pequeño */
-  font-weight: bold;
-  border-radius: 4px;
-  border: none;
-}
-
-.btn-custom-sm:hover {
-  background-color: #005f6b; /* Hover azul más oscuro */
-}
-  
-  
-  
-  
-  
+ 
