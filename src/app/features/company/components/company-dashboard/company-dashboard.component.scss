@@ -103,6 +103,18 @@
     .text-green {
       color: #007b8f; /* Verde corporativo */
     }
+
+    /* Estilo para cada servicio */
+.service-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  cursor: pointer;
+}
+
+.service-item:hover {
+  transform: scale(1.01); /* Agranda el elemento al 105% de su tamaño original */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Aplica una sombra al pasar el ratón */
+}
+
    
   }
 
