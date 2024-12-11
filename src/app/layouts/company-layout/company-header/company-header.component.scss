@@ -1,62 +1,95 @@
 header {
-    background-color: #fff; /* Fondo blanco */
-    color: #437a90; /* Texto azul */
-    padding: 0.5rem 2rem; /* Espaciado superior e inferior reducido */
-    display: flex;
-    justify-content: space-between; /* Espaciado entre logo y navegación */
-    align-items: center; /* Alineación vertical de los elementos */
-  
-    .logo {
-      width: 50px; /* Tamaño reducido del logo */
-      height: auto; /* Mantener proporciones */
-    }
-  
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1rem; /* Separación entre elementos de la navegación */
-  
-      .vertical-line {
-        width: 1px; /* Grosor de la línea */
-        height: 40px; /* Altura igual al perfil y enlace */
-        background-color: #ccc; /* Color gris claro */
-      }
-  
-      a {
-        text-decoration: none;
-        color: #437a90;
-        font-weight: 600; /* Peso medio */
-        font-size: 1rem; /* Tamaño de texto ajustado */
-        padding: 0 1rem; /* Espaciado interno entre las líneas verticales */
-      }
-  
-      .profile-pic {
-        width: 40px; /* Tamaño del avatar */
-        height: 40px;
-        border-radius: 50%; /* Forma circular */
-        object-fit: cover; /* Ajuste de imagen */
-        border: 1px solid #ccc; /* Borde suave */
-      }
-    }
-  }
-  
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column; /* Alinear en columna para pantallas pequeñas */
-      align-items: center; /* Centrar contenido */
-      gap: 0.5rem; /* Separación entre logo y navegación */
-  
-      .logo {
-        margin-bottom: 0.5rem; /* Separación adicional del logo */
-      }
-  
-      nav {
-        flex-direction: column; /* Navegación vertical */
-        gap: 0.5rem;
-      }
-  
-      .vertical-line {
-        display: none; /* Ocultar líneas en pantallas pequeñas */
-      }
-    }
-  }
+  background-color: #fff; /* Fondo blanco */
+  color: #437a90; /* Texto azul */
+  padding: 0.5rem 2rem; /* Espaciado superior e inferior reducido */
+  display: flex;
+  justify-content: space-between; /* Espaciado entre logo y navegación */
+  align-items: center; /* Alineación vertical de los elementos */
+}
+
+.logo {
+  width: 50px; /* Tamaño reducido del logo */
+  height: auto; /* Mantener proporciones */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Separación entre elementos de la navegación */
+}
+
+a {
+  text-decoration: none;
+  color: #437a90;
+  font-weight: 600; /* Peso medio */
+  font-size: 1rem; /* Tamaño de texto ajustado */
+  padding: 0 1rem; /* Espaciado interno entre las líneas verticales */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Transición suave para el color y sombra */
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+.profile-pic {
+  width: 40px; /* Tamaño del avatar */
+  height: 40px;
+  border-radius: 50%; /* Forma circular */
+  object-fit: cover; /* Ajuste de imagen */
+  border: 1px solid #ccc; /* Borde suave */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Efecto de transición */
+}
+
+.profile-pic:hover {
+  transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
+}
+
+/* Estilos del desplegable */
+.nav-item.dropdown {
+  position: relative; /* Asegura que el dropdown esté posicionado correctamente */
+}
+
+.nav-item.dropdown .dropdown-toggle::after {
+  display: none; /* Esto elimina la flecha */
+}
+
+.dropdown-menu {
+  min-width: 180px; /* Ancho mínimo del menú desplegable */
+  background-color: #fff;
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  display: none; /* Inicialmente oculto */
+  position: absolute; /* Posición flotante debajo de la imagen */
+  z-index: 1000; /* Asegura que esté encima de otros elementos */
+  top: 100%; /* Posición al pie de la imagen de perfil */
+  left: -120%; /* Alineación a la izquierda */
+}
+
+.nav-item.dropdown.show .dropdown-menu {
+  display: block; /* Muestra el desplegable cuando se hace clic */
+}
+
+.dropdown-item {
+  color: #437a90;
+  font-weight: 500; /* Peso de fuente */
+  padding: 10px 20px; /* Espaciado dentro de cada opción */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f3f3;
+}
+
+/* Divider */
+.dropdown-divider {
+  background-color: #ccc;
+}
+
+/* Estilo para el contenedor del dropdown para asegurar que no se solapen otros elementos */
+.nav-item.dropdown {
+  position: relative;
+}
