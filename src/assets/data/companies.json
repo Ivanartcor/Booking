@@ -66,7 +66,58 @@
     "createdAt": "2023-09-10T08:00:00",
     "services": [7, 8],
     "employees": [6, 7]
-  }
+  },
+  {
+    "id": 5,
+    "name": "Clínica Vista Clara",
+    "shortDescription": "Especialistas en oftalmología y corrección visual.",
+    "description": "Clínica Vista Clara ofrece tratamientos avanzados para la salud visual. Contamos con un equipo médico altamente cualificado y la última tecnología en cirugía ocular, diagnósticos y lentes correctoras.",
+    "image": {
+      "src": "https://images.pexels.com/photos/3758828/pexels-photo-3758828.jpeg",
+      "title": "Clínica Vista Clara - Especialistas en salud ocular",
+      "alt": "Interior moderno de la clínica con equipos de diagnóstico ocular avanzados."
+    },
+    "city": "Sevilla",
+    "address": "Avenida Luz 50",
+    "category": "Salud",
+    "createdAt": "2024-01-15T10:00:00",
+    "services": [10, 11],
+    "employees": [10, 11]
+  },
+  {
+    "id": 6,
+    "name": "Estética Bella Vida",
+    "shortDescription": "Centro de belleza y bienestar.",
+    "description": "En Estética Bella Vida, ofrecemos tratamientos de cuidado personal, desde faciales rejuvenecedores hasta masajes relajantes. Nuestro personal está altamente cualificado para proporcionar la mejor experiencia.",
+    "image": {
+      "src": "https://img.freepik.com/foto-gratuito/primo-piano-di-una-scimmia-di-babbuino-sbadigliando-con-uno-sfondo-sfocato_181624-23721.jpg",
+      "title": "Estética Bella Vida - Bienestar y belleza",
+      "alt": "Spa moderno con sala de tratamientos faciales y masajes relajantes."
+    },
+    "city": "Granada",
+    "address": "Calle Belleza 12",
+    "category": "Estética",
+    "createdAt": "2024-02-05T11:00:00",
+    "services": [12, 13],
+    "employees": [12, 13]
+  },
+  {
+    "id": 7,
+    "name": "Blackthorn Agency",
+    "shortDescription": "Soluciones discretas para problemas complejos.",
+    "description": "Blackthorn Agency es una firma clandestina especializada en operaciones encubiertas, inteligencia privada y soluciones definitivas. Con un equipo altamente cualificado, nuestros métodos son precisos, eficientes y absolutamente confidenciales. Contacta solo si estás listo para resolver cualquier situación de manera definitiva.",
+    "image": {
+      "src": "https://images.pexels.com/photos/1059663/pexels-photo-1059663.jpeg",
+      "title": "Blackthorn Agency - Operaciones encubiertas y soluciones definitivas",
+      "alt": "Oficina oscura con un ambiente misterioso, usada para operaciones encubiertas."
+    },
+    "city": "Londres",
+    "address": "Calle Sombra 13",
+    "category": "Soluciones Especiales",
+    "createdAt": "2024-03-15T22:00:00",
+    "services": [14, 15],
+    "employees": [14, 15, 16]
+  }  
 ]
 
   

@@ -1,3 +1,4 @@
+/* Contenedor principal del perfil */
 .profile-container {
   max-width: 600px;
   margin: 2rem auto;
@@ -60,5 +61,134 @@
     &:hover {
       background: #003f4a;
     }
+  }
+}
+
+/* Modal de edición */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  width: 90%;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+
+    &:hover {
+      color: #005f6b;
+    }
+  }
+
+  .modal-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.profile-picture-edit {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+
+  label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #005f6b;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    .camera-icon {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: rgba(0, 95, 107, 0.8);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+  }
+
+  .error-text {
+    color: red;
+    font-size: 0.9rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+
+  label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
+
+.btn-success {
+  display: block;
+  margin: 2rem auto 0;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  text-align: center;
+
+  &:hover {
+    background: #218838;
   }
 }

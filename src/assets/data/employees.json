@@ -88,5 +88,75 @@
     "position": "Ortodoncista",
     "hireDate": "2023-11-15T09:00:00",
     "specialization": ["Salud"]
+  },
+  {
+    "id": 10,
+    "name": "Julia Morales",
+    "email": "julia@clinicavista.com",
+    "role": "employee",
+    "companyId": 5,
+    "position": "Oftalmóloga",
+    "hireDate": "2024-01-10T09:00:00",
+    "specialization": ["Salud"]
+  },
+  {
+    "id": 11,
+    "name": "Daniel Pérez",
+    "email": "daniel@clinicavista.com",
+    "role": "employee",
+    "companyId": 5,
+    "position": "Óptico",
+    "hireDate": "2024-01-15T10:00:00",
+    "specialization": ["Salud"]
+  },
+  {
+    "id": 12,
+    "name": "Carolina López",
+    "email": "carolina@bellavida.com",
+    "role": "employee",
+    "companyId": 6,
+    "position": "Cosmetóloga",
+    "hireDate": "2024-02-01T08:30:00",
+    "specialization": ["Estética"]
+  },
+  {
+    "id": 13,
+    "name": "Raúl Fernández",
+    "email": "raul@bellavida.com",
+    "role": "employee",
+    "companyId": 6,
+    "position": "Masajista",
+    "hireDate": "2024-02-05T09:00:00",
+    "specialization": ["Estética"]
+  },
+  {
+    "id": 14,
+    "name": "Raven Black",
+    "email": "raven@blackthorn.com",
+    "role": "employee",
+    "companyId": 7,
+    "position": "Especialista en Extracción",
+    "hireDate": "2024-01-10T23:00:00",
+    "specialization": ["Operaciones Encubiertas"]
+  },
+  {
+    "id": 15,
+    "name": "Silas Viper",
+    "email": "silas@blackthorn.com",
+    "role": "employee",
+    "companyId": 7,
+    "position": "Analista de Inteligencia",
+    "hireDate": "2024-02-01T21:00:00",
+    "specialization": ["Inteligencia Privada"]
+  },
+  {
+    "id": 16,
+    "name": "Nova Steele",
+    "email": "nova@blackthorn.com",
+    "role": "employee",
+    "companyId": 7,
+    "position": "Agente de Campo",
+    "hireDate": "2024-02-15T20:00:00",
+    "specialization": ["Infiltración"]
   }
 ]

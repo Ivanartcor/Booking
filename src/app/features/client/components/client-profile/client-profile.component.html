@@ -1,11 +1,16 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<!-- Contenedor Principal -->
 <div class="profile-container">
   <h2>Mis Datos</h2>
 
-  <!-- Imagen de perfil -->
+  <!-- Imagen de Perfil -->
   <div class="profile-picture">
     <img [src]="currentUser?.profilePicture || '/assets/images/foto-perfil.jpg'" alt="Foto de perfil">
   </div>
 
+  <!-- Información de Perfil -->
   <div class="profile-info">
     <div class="info-item">
       <label>Nombre:</label>
@@ -29,4 +34,54 @@
   </div>
 
   <button class="btn btn-primary" (click)="editProfile()">Editar Perfil</button>
+</div>
+
+<!-- Modal de Edición -->
+<div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()"></div>
+
+<div class="modal-content" *ngIf="showEditModal">
+  <button class="close-btn" (click)="closeEditModal()">×</button>
+  <h2 class="modal-title">Editar Perfil</h2>
+
+  <!-- Foto de Perfil Editable -->
+  <div class="profile-picture-edit">
+    <label for="profilePictureInput">
+      <img
+        [src]="editUser.profilePicture || '/assets/images/foto-perfil.jpg'"
+        alt="Foto de perfil"
+        class="profile-img"
+      />
+      <div class="camera-icon">
+        <i class="fas fa-camera"></i>
+      </div>
+      <input
+        type="file"
+        id="profilePictureInput"
+        accept="image/*"
+        (change)="onFileSelectedTemporal($event)"
+        hidden
+      />
+    </label>
+    <small *ngIf="uploadError" class="error-text">{{ uploadError }}</small>
+  </div>
+
+  <!-- Formulario de Edición -->
+  <form (ngSubmit)="saveProfile()">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" [(ngModel)]="editUser.name" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="editUser.email" name="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Teléfono</label>
+      <input type="text" id="phone" [(ngModel)]="editUser.phone" name="phone" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+  </form>
 </div>

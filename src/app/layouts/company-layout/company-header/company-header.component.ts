@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -7,10 +7,15 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './company-header.component.html',
   styleUrls: ['./company-header.component.scss']
 })
-export class CompanyHeaderComponent {
+export class CompanyHeaderComponent implements OnInit{
   isDropdownOpen = false;
+  currentUser: any;
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
+  }
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;

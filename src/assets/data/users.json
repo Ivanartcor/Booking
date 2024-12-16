@@ -6,7 +6,8 @@
     "password": "cliente123",
     "role": "client",
     "registeredAt": "2024-01-01T10:00:00",
-    "phone": "+34123456789"
+    "phone": "+34123456789",
+    "profilePicture": "/assets/images/cuervo_fumando.jpg"
   },
   {
     "id": 2,
@@ -16,7 +17,8 @@
     "role": "company",
     "registeredAt": "2024-01-01T10:00:00",
     "phone": "+34123456789",
-    "companyId": 1
+    "companyId": 1,
+    "profilePicture": ""
   },
   {
     "id": 3,
@@ -26,6 +28,7 @@
     "role": "employee",
     "registeredAt": "2024-01-01T10:00:00",
     "phone": "+34123456789",
-    "companyId": 1
+    "companyId": 1,
+    "profilePicture": ""
   }
 ]

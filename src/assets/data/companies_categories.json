@@ -1,6 +1,8 @@
 [
     { "id": 1, "name": "Salud" },
     { "id": 2, "name": "Estética" },
-    { "id": 3, "name": "Limpieza" }
+    { "id": 3, "name": "Limpieza" },
+    { "id": 4, "name": "Soluciones Especiales" }
+
   ]
   
