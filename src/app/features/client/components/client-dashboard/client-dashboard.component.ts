@@ -12,8 +12,49 @@ export class ClientDashboardComponent {
   selectedCategory: string = '';
   selectedCity: string = ''; // Agregar la ciudad seleccionada
 
-  // Lista de ciudades disponibles
-  cities = ['Madrid', 'Barcelona', 'Valencia'];
+  companies: any[] = [];
+  filteredCompanies: any[] = [];
+  categories: any[] = [];
+  cities: any[] = [];
+//
+  constructor(private router: Router, private companyService: CompanyService) {}
+
+  ngOnInit(): void {
+    this.loadCompanies();
+    this.loadCategories();
+    this.loadCities();
+  }
+
+  loadCompanies(): void {
+    this.companyService.getCompanies().subscribe((data) => {
+      this.companies = data;
+      this.applyFilters();
+    });
+  }
+
+  loadCategories(): void {
+    this.companyService.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
+  }
+
+  loadCities(): void {
+    this.companyService.getCities().subscribe((data) => {
+      this.cities = data;
+    });
+  }
+
+  applyFilters(): void {
+    this.filteredCompanies = this.companies.filter((company) => {
+      const matchesCategory = this.selectedCategory
+        ? company.category === this.selectedCategory
+        : true;
+      const matchesCity = this.selectedCity
+        ? company.city === this.selectedCity
+        : true;
+      return matchesCategory && matchesCity;
+    });
+  }
 
   toggleDropdown(event: Event): void {
     event.stopPropagation(); // Detiene la propagación del clic
