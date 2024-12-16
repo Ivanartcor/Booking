@@ -6,7 +6,7 @@ import { map, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class CategoryService {
-  private categoriesUrl = 'assets/data/companies-categories.json';
+  private categoriesUrl = 'assets/data/companies_categories.json';
 
   constructor(private http: HttpClient) {}
 

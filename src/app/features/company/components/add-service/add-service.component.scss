@@ -1,0 +1,181 @@
+/* Fondo semitransparente detrás del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  
+  /* Contenedor principal del modal */
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2rem;
+    width: 700px;
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1001;
+    overflow-y: auto; /* Permite desplazamiento */
+    scroll-behavior: smooth;
+  
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #333;
+      cursor: pointer;
+  
+      &:hover {
+        color: #005f6b;
+      }
+    }
+  
+    .modal-title {
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #005f6b;
+      text-align: center;
+      font-weight: bold;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+  
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+  
+        label {
+          font-size: 1rem;
+          font-weight: bold;
+          color: #333;
+        }
+  
+        input,
+        textarea,
+        select {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          outline: none;
+          transition: border-color 0.3s ease;
+  
+          &:focus {
+            border-color: #005f6b;
+            box-shadow: 0 0 5px rgba(0, 95, 107, 0.5);
+          }
+        }
+  
+        textarea {
+          height: 100px;
+          resize: none;
+        }
+      }
+  
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+  
+        label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 1rem;
+  
+          input[type='checkbox'] {
+            width: auto;
+            height: auto;
+            cursor: pointer;
+          }
+        }
+      }
+  
+      .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+  
+        .btn {
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
+          font-weight: bold;
+          border-radius: 5px;
+          cursor: pointer;
+          border: none;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+  
+          &.btn-success {
+            background-color: #28a745;
+            color: #fff;
+  
+            &:hover {
+              background-color: #218838;
+              transform: scale(1.05);
+            }
+          }
+  
+          &.btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+  
+            &:hover {
+              background-color: #c82333;
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Asegura que el modal se centre correctamente incluso en pantallas más pequeñas */
+  @media (max-height: 600px) {
+    .modal-content {
+      top: 5%;
+      transform: translate(-50%, 0);
+      max-height: 85vh;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .modal-content {
+      width: 95%;
+      padding: 1.5rem;
+    }
+  
+    form {
+      .form-group {
+        label {
+          font-size: 0.9rem;
+        }
+  
+        input,
+        textarea,
+        select {
+          font-size: 0.9rem;
+        }
+      }
+  
+      .modal-title {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
