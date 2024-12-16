@@ -17,7 +17,7 @@ export class ClientDashboardComponent implements OnInit {
   filteredCompanies: any[] = [];
   categories: any[] = [];
   cities: any[] = [];
-
+//
   constructor(private router: Router, private companyService: CompanyService) {}
 
   ngOnInit(): void {
