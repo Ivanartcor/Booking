@@ -10,9 +10,10 @@ import { ServiceService } from 'src/app/core/services/service.service';
 })
 export class CompanyDashboardComponent implements OnInit {
   services: any[] = [];
-  companyId: number | null = null;
+  companyId: number = 0;
 
   showServiceDetailsModal = false;
+  showAddServiceModal = false;
   selectedServiceId: number | null = null;
 
   constructor(
@@ -51,5 +52,18 @@ export class CompanyDashboardComponent implements OnInit {
   closeServiceDetailsModal(): void {
     this.showServiceDetailsModal = false;
     this.selectedServiceId = null;
+  }
+
+  openAddServiceModal(): void {
+    this.showAddServiceModal = true;
+  }
+
+  closeAddServiceModal(): void {
+    this.showAddServiceModal = false;
+  }
+
+  onServiceAdded(newService: any): void {
+    this.services.push(newService); // Actualiza la lista de servicios
+    this.closeAddServiceModal();   // Cierra el modal
   }
 }
