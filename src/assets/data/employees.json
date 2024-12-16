@@ -1,53 +1,92 @@
 [
-    {
-      "id": 3,
-      "name": "Carlos López",
-      "email": "carlos@vitaldent.com",
-      "role": "employee",
-      "companyId": 2,
-      "position": "Dentista",
-      "hireDate": "2023-05-01T09:00:00",
-      "specialization": ["Salud"]
-    },
-    {
-      "id": 4,
-      "name": "María González",
-      "email": "maria@peluquerialola.com",
-      "role": "employee",
-      "companyId": 1,
-      "position": "Estilista",
-      "hireDate": "2023-07-15T10:00:00",
-      "specialization": ["Estética"]
-    },
-    {
-      "id": 5,
-      "name": "Luis Fernández",
-      "email": "luis@sparelax.com",
-      "role": "employee",
-      "companyId": 3,
-      "position": "Masajista",
-      "hireDate": "2023-09-10T09:00:00",
-      "specialization": ["Estética"]
-    },
-    {
-      "id": 6,
-      "name": "Ana Martínez",
-      "email": "ana@limpiezasexpress.com",
-      "role": "employee",
-      "companyId": 4,
-      "position": "Supervisora de Limpieza",
-      "hireDate": "2023-08-01T08:00:00",
-      "specialization": ["Limpieza"]
-    },
-    {
-      "id": 7,
-      "name": "Javier Ramos",
-      "email": "javier@limpiezasexpress.com",
-      "role": "employee",
-      "companyId": 4,
-      "position": "Operario de Limpieza",
-      "hireDate": "2023-06-20T08:00:00",
-      "specialization": ["Limpieza"]
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Laura Pérez",
+    "email": "laura@peluquerialola.com",
+    "role": "employee",
+    "companyId": 1,
+    "position": "Recepcionista",
+    "hireDate": "2023-03-10T09:00:00",
+    "specialization": ["Estética"]
+  },
+  {
+    "id": 2,
+    "name": "Miguel Sánchez",
+    "email": "miguel@peluquerialola.com",
+    "role": "employee",
+    "companyId": 1,
+    "position": "Técnico Capilar",
+    "hireDate": "2023-04-25T09:30:00",
+    "specialization": ["Estética"]
+  },
+  {
+    "id": 3,
+    "name": "Carlos López",
+    "email": "carlos@vitaldent.com",
+    "role": "employee",
+    "companyId": 2,
+    "position": "Dentista",
+    "hireDate": "2023-05-01T09:00:00",
+    "specialization": ["Salud"]
+  },
+  {
+    "id": 4,
+    "name": "María González",
+    "email": "maria@peluquerialola.com",
+    "role": "employee",
+    "companyId": 1,
+    "position": "Estilista",
+    "hireDate": "2023-07-15T10:00:00",
+    "specialization": ["Estética"]
+  },
+  {
+    "id": 5,
+    "name": "Luis Fernández",
+    "email": "luis@sparelax.com",
+    "role": "employee",
+    "companyId": 3,
+    "position": "Masajista",
+    "hireDate": "2023-09-10T09:00:00",
+    "specialization": ["Estética"]
+  },
+  {
+    "id": 6,
+    "name": "Ana Martínez",
+    "email": "ana@limpiezasexpress.com",
+    "role": "employee",
+    "companyId": 4,
+    "position": "Supervisora de Limpieza",
+    "hireDate": "2023-08-01T08:00:00",
+    "specialization": ["Limpieza"]
+  },
+  {
+    "id": 7,
+    "name": "Javier Ramos",
+    "email": "javier@limpiezasexpress.com",
+    "role": "employee",
+    "companyId": 4,
+    "position": "Operario de Limpieza",
+    "hireDate": "2023-06-20T08:00:00",
+    "specialization": ["Limpieza"]
+  },
+  {
+    "id": 8,
+    "name": "Sofía Ramírez",
+    "email": "sofia@vitaldent.com",
+    "role": "employee",
+    "companyId": 2,
+    "position": "Higienista Dental",
+    "hireDate": "2023-10-05T08:30:00",
+    "specialization": ["Salud"]
+  },
+  {
+    "id": 9,
+    "name": "Fernando Torres",
+    "email": "fernando@vitaldent.com",
+    "role": "employee",
+    "companyId": 2,
+    "position": "Ortodoncista",
+    "hireDate": "2023-11-15T09:00:00",
+    "specialization": ["Salud"]
+  }
+]

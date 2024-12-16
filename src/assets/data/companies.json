@@ -31,7 +31,7 @@
     "category": "Salud",
     "createdAt": "2023-12-01T10:00:00",
     "services": [3, 4],
-    "employees": [3]
+    "employees": [3,8,9]
   },
   {
     "id": 3,

@@ -1,0 +1,44 @@
+<div class="employees-container">
+    <h2 class="title">Gestión de Empleados</h2>
+  
+    <!-- Lista de empleados -->
+    <div *ngIf="employees.length; else noEmployees">
+      <table class="employees-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Posición</th>
+            <th>Fecha de Contratación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.position }}</td>
+            <td>{{ employee.hireDate | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <ng-template #noEmployees>
+      <p class="no-employees">No hay empleados registrados.</p>
+    </ng-template>
+  
+    <!-- Botón para agregar empleados -->
+    <button class="btn btn-success add-employee-btn" (click)="openAddEmployeeModal()">Añadir Empleado</button>
+  
+    <!-- Modal para añadir empleados -->
+    <app-add-employee
+      *ngIf="showAddEmployeeModal"
+      (employeeAdded)="onEmployeeAdded($event)"
+      (close)="closeAddEmployeeModal()"
+    ></app-add-employee>
+  </div>
+  
