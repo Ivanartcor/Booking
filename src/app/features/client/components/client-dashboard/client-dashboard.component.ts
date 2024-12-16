@@ -1,22 +1,23 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CompanyService } from 'src/app/core/services/company.service';
 
 @Component({
   selector: 'app-client-dashboard',
   templateUrl: './client-dashboard.component.html',
   styleUrls: ['./client-dashboard.component.scss']
 })
-export class ClientDashboardComponent {
+export class ClientDashboardComponent implements OnInit {
   isMenuOpen = false;
   isDropdownOpen = false;
   selectedCategory: string = '';
-  selectedCity: string = ''; // Agregar la ciudad seleccionada
+  selectedCity: string = '';
 
   companies: any[] = [];
   filteredCompanies: any[] = [];
   categories: any[] = [];
   cities: any[] = [];
-//
+
   constructor(private router: Router, private companyService: CompanyService) {}
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class ClientDashboardComponent {
   }
 
   toggleDropdown(event: Event): void {
-    event.stopPropagation(); // Detiene la propagación del clic
+    event.stopPropagation();
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
@@ -66,7 +67,7 @@ export class ClientDashboardComponent {
   }
 
   stopPropagation(event: Event): void {
-    event.stopPropagation(); // Detiene la propagación del clic
+    event.stopPropagation();
   }
 
   @HostListener('document:click', ['$event'])
@@ -85,29 +86,21 @@ export class ClientDashboardComponent {
     }
   }
 
-  get filteredCompanies() {
-    return this.companies.filter(company => {
-      const matchesCategory = this.selectedCategory ? company.categoria === this.selectedCategory : true;
-      const matchesCity = this.selectedCity ? company.ciudad === this.selectedCity : true;
-      return matchesCategory && matchesCity;
-    });
-  }
-
   selectCategory(event: Event, category: string): void {
-    event.preventDefault(); // Prevenir el comportamiento por defecto de los enlaces
+    event.preventDefault();
     this.selectedCategory = category;
-    this.isDropdownOpen = false; // Cierra el dropdown después de seleccionar la categoría
+    this.isDropdownOpen = false;
+    this.applyFilters();
   }
 
   selectCity(event: Event): void {
-    const target = event.target as HTMLSelectElement;  // Aseguramos que target es un HTMLSelectElement
+    const target = event.target as HTMLSelectElement;
     if (target) {
-      this.selectedCity = target.value;  // Accedemos al valor del select
+      this.selectedCity = target.value;
     }
-    this.isDropdownOpen = false;  // Cierra el dropdown después de seleccionar
+    this.isDropdownOpen = false;
+    this.applyFilters();
   }
-  
-  
 
   goToCompanyDetails(id: number): void {
     this.router.navigate([`/client/company`, id]);
