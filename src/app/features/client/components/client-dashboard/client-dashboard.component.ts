@@ -12,6 +12,7 @@ export class ClientDashboardComponent implements OnInit {
   isDropdownOpen = false;
   selectedCategory: string = '';
   selectedCity: string = '';
+  searchQuery = '';
 
   companies: any[] = [];
   filteredCompanies: any[] = [];
@@ -47,13 +48,10 @@ export class ClientDashboardComponent implements OnInit {
 
   applyFilters(): void {
     this.filteredCompanies = this.companies.filter((company) => {
-      const matchesCategory = this.selectedCategory
-        ? company.category === this.selectedCategory
-        : true;
-      const matchesCity = this.selectedCity
-        ? company.city === this.selectedCity
-        : true;
-      return matchesCategory && matchesCity;
+      const matchesCategory = this.selectedCategory ? company.category === this.selectedCategory : true;
+      const matchesCity = this.selectedCity ? company.city === this.selectedCity : true;
+      const matchesSearchQuery = company.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      return matchesCategory && matchesCity && matchesSearchQuery;
     });
   }
 

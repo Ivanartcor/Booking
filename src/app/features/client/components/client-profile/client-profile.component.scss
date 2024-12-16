@@ -1,79 +1,64 @@
-// Estilos generales
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f9f9f9;
+.profile-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
     color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    margin-bottom: 1.5rem;
   }
-  
-  .profile-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+  .profile-picture {
+    margin-bottom: 1.5rem;
+
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #005f6b;
+    }
   }
-  
-  .title {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  .user-profile {
-    display: grid;
-    gap: 15px;
-  }
-  
-  .profile-item {
+
+  .profile-info {
     display: flex;
     flex-direction: column;
-  }
-  
-  .label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #555;
-  }
-  
-  .value {
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
-  }
-  
-  .specialization {
-    color: #007bff;
-  }
-  
-  @media (max-width: 600px) {
-    .profile-container {
-      padding: 15px;
-    }
-  
-    .title {
-      font-size: 20px;
-    }
-  
-    .value {
-      font-size: 14px;
+    gap: 1rem;
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+
+      label {
+        font-weight: bold;
+        color: #005f6b;
+      }
+
+      span {
+        color: #333;
+      }
     }
   }
-  
+
+  .btn {
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    background: #005f6b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #003f4a;
+    }
+  }
+}

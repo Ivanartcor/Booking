@@ -1,4 +1,3 @@
-
 /* Variables */
 $primary-color: #0097b2; /* Azul principal */
 $dark-blue: #006680; /* Azul oscuro para separadores */
@@ -22,16 +21,40 @@ header {
   background-color: $card-background;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
+  gap: 2rem;
+
+  .menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 }
 
-.menu-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+/* Barra de Búsqueda Centrada */
+.search-bar {
+  flex: 1; /* Ocupa el espacio central */
+  text-align: center;
+
+  input[type='text'] {
+    width: 70%; /* Ancho central */
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 5px rgba(0, 151, 178, 0.5);
+    }
+  }
 }
 
-.user-dropdown {
+/* Dropdowns */
+.user-dropdown,
+.menu-dropdown {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -47,16 +70,14 @@ select {
 .menu-dropdown {
   display: none;
   position: absolute;
-  top: 3rem; /* Ajustar según la altura del header */
+  top: 4rem; /* Ajustar según la altura del header */
   left: 1rem;
   background-color: $card-background;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 0; /* Sin padding inicial */
   width: 200px; /* Ajustar el ancho del menú */
-  overflow: hidden; /* Evitar desbordamiento */
 }
 
 .menu-dropdown.show {
@@ -64,12 +85,12 @@ select {
 }
 
 .menu-dropdown .dropdown-header {
-  background-color: $dark-blue; /* Fondo azul */
-  color: #fff; /* Texto blanco */
-  font-size: 1.2rem; /* Tamaño de texto mayor */
+  background-color: $dark-blue;
+  color: #fff;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.75rem 1rem; /* Espaciado interno */
-  text-align: center; /* Centrado */
+  padding: 0.75rem 1rem;
+  text-align: center;
 }
 
 .menu-dropdown ul {
@@ -78,76 +99,69 @@ select {
   padding: 0;
 }
 
-.menu-dropdown ul li {
-  margin: 0;
-  padding: 0;
-}
-
 .menu-dropdown ul li a {
   text-decoration: none;
-  color: $dark-blue; /* Color del texto */
+  color: $dark-blue;
   font-size: 1rem;
-  padding: 0.75rem 1rem; /* Espaciado interno */
-  display: block; /* Ocupa todo el ancho */
+  padding: 0.75rem 1rem;
+  display: block;
   transition: background-color 0.2s ease, color 0.2s ease;
-}
 
-.menu-dropdown ul li a:hover {
-  background-color: #f3f3f3; /* Fondo azul al pasar el ratón */
-  text-decoration: underline;
+  &:hover {
+    background-color: #f3f3f3;
+    text-decoration: underline;
+  }
 }
 
 .menu-dropdown ul li + li {
-  border-top: 1px solid $dark-blue; /* Separador azul oscuro */
+  border-top: 1px solid $dark-blue;
 }
 
 /* Main Content */
 .main-container {
-  padding: 2rem 4rem; /* Márgenes laterales */
+  padding: 2rem 4rem;
 }
 
 .company-card {
   display: flex;
-  background-color: #ffffff; /* Fondo blanco */
-  margin-bottom: 1.5rem; /* Espaciado entre tarjetas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-  overflow: hidden; /* Evitar desbordes de contenido */
-  width: 90%; /* Ajustar el tamaño de la tarjeta con porcentaje */
-  max-width: 1400px; /* Limitar el ancho máximo */
-  height: 400px; /* Altura fija para hacer la tarjeta más alargada */
-  margin-left: auto; /* Centrar horizontalmente */
-  margin-right: auto; /* Centrar horizontalmente */
-  display: flex; /* Asegurarse que el contenido y la imagen se alineen */
-  cursor: pointer; /* Cambia el cursor a puntero para destacar al usuario que es un item clikable */
-  transition: transform 0.3s ease; /* Efecto suave al pasar el cursor */
-}
+  background-color: #ffffff;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 90%;
+  max-width: 1400px;
+  height: 400px;
+  margin: 1rem auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 
-.company-card:hover {
-  transform: scale(1.01); /* Escala ligeramente al pasar el cursor */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra */
-}
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 
-.company-card img {
-  width: 40%; /* Imagen ocupa el 40% del ancho total */
-  height: 100%; /* Imagen ocupa el 100% de la altura */
-  object-fit: cover; /* Imagen adaptada al contenedor */
-}
+  img.company-image {
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.company-info {
-  flex: 1; /* Ocupa el resto del espacio */
-  padding: 2rem; /* Aumentar espaciado interno */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centrar verticalmente contenido */
-}
+  .company-info {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-.company-info h2 {
-  margin: 0;
-  color: $dark-blue; /* Color principal */
-}
+    h2 {
+      margin: 0;
+      color: $dark-blue;
+    }
 
-.company-info p {
-  margin-top: 0.5rem; /* Separación del título */
-  line-height: 1.5; /* Altura de línea para mejor legibilidad */
-  text-align: justify; /* Justificar texto */
+    p {
+      margin-top: 0.5rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+  }
 }

@@ -1,62 +1,94 @@
 header {
-    background-color: #fff; /* Fondo blanco */
-    color: #437a90; /* Texto azul */
-    padding: 0.5rem 2rem; /* Espaciado superior e inferior reducido */
-    display: flex;
-    justify-content: space-between; /* Espaciado entre logo y navegación */
-    align-items: center; /* Alineación vertical de los elementos */
-  
-    .logo {
-      width: 50px; /* Tamaño reducido del logo */
-      height: auto; /* Mantener proporciones */
-    }
-  
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1rem; /* Separación entre elementos de la navegación */
-  
-      .vertical-line {
-        width: 1px; /* Grosor de la línea */
-        height: 40px; /* Altura igual al perfil y enlace */
-        background-color: #ccc; /* Color gris claro */
-      }
-  
-      a {
-        text-decoration: none;
-        color: #437a90;
-        font-weight: 600; /* Peso medio */
-        font-size: 1rem; /* Tamaño de texto ajustado */
-        padding: 0 1rem; /* Espaciado interno entre las líneas verticales */
-      }
-  
-      .profile-pic {
-        width: 40px; /* Tamaño del avatar */
-        height: 40px;
-        border-radius: 50%; /* Forma circular */
-        object-fit: cover; /* Ajuste de imagen */
-        border: 1px solid #ccc; /* Borde suave */
-      }
-    }
+  background-color: #fff;
+  color: #437a90;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #437a90;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0 1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos del desplegable */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.nav-item.dropdown .dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  min-width: 180px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  top: 100%;
+  left: -120%;
+}
+
+.nav-item.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  color: #437a90;
+  font-weight: 500;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f3f3;
+}
+
+.dropdown-item.text-danger {
+  color: rgb(185, 0, 0);
+  font-weight: bold;
+
+  &:hover {
+    background: rgba(255, 0, 0, 0.1);
   }
-  
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column; /* Alinear en columna para pantallas pequeñas */
-      align-items: center; /* Centrar contenido */
-      gap: 0.5rem; /* Separación entre logo y navegación */
-  
-      .logo {
-        margin-bottom: 0.5rem; /* Separación adicional del logo */
-      }
-  
-      nav {
-        flex-direction: column; /* Navegación vertical */
-        gap: 0.5rem;
-      }
-  
-      .vertical-line {
-        display: none; /* Ocultar líneas en pantallas pequeñas */
-      }
-    }
-  }
+}
