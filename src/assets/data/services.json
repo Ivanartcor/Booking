@@ -253,5 +253,22 @@
       }
     },
     "assignedEmployees": [15]
+  },
+  {
+    "id": 16,
+    "companyId": 2,
+    "name": "Te rompemos todos los dientes",
+    "description": "Cogemos entre todos y te dejamos mellao de los bimbazos que empiezan a lloverte",
+    "price": "2",
+    "durationMinutes": 10,
+    "category": "Soluciones Especiales",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "20:00",
+        "end": "20:10"
+      }
+    },
+    "assignedEmployees": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   }
 ]

@@ -16,26 +16,34 @@
   background: #fff;
   padding: 2rem;
   width: 700px;
-  max-width: 80%;
+  max-width: 90%;
+  max-height: 90vh; /* Limita la altura */
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   z-index: 1001;
+  overflow-y: auto; /* Habilita desplazamiento vertical */
+  scroll-behavior: smooth;
 
   .close-btn {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 15px;
+    right: 20px;
     background: none;
     border: none;
     font-size: 2rem;
     color: #333;
     cursor: pointer;
+
+    &:hover {
+      color: #005f6b;
+    }
   }
 
   .modal-title {
     margin-bottom: 1rem;
     font-size: 1.8rem;
     color: #005f6b;
+    text-align: center;
   }
 
   .service-info {
@@ -54,10 +62,56 @@
 
     .action-buttons {
       margin-top: 2rem;
+      text-align: center;
 
       .btn {
         margin-right: 0.5rem;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+
+        &.btn-warning {
+          background: #ffc107;
+          color: #fff;
+
+          &:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+          }
+        }
+
+        &.btn-danger {
+          background: #dc3545;
+          color: #fff;
+
+          &:hover {
+            background: #c82333;
+            transform: scale(1.05);
+          }
+        }
       }
     }
+  }
+}
+
+/* Asegura que el modal se ajuste en pantallas pequeñas */
+@media (max-height: 600px) {
+  .modal-content {
+    top: 5%;
+    transform: translate(-50%, 0);
+    max-height: 85vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
   }
 }
