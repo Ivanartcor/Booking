@@ -4,12 +4,6 @@
   <button class="close-btn" (click)="closeModal()">×</button>
   <h2 class="modal-title">Añadir Nuevo Servicio</h2>
 
-  <!-- Mostrar mensajes de error -->
-  <div class="error-messages" *ngIf="errors.length > 0">
-    <ul>
-      <li *ngFor="let error of errors">{{ error }}</li>
-    </ul>
-  </div>
 
   <form (ngSubmit)="addService()">
     <div class="form-group">
