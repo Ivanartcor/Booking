@@ -24,8 +24,8 @@ export class ClientDashboardComponent implements OnInit {
     this.loadCompanies();
     this.loadCategories();
     this.loadCities();
-  }
-
+  } 
+//g
   loadCompanies(): void {
     this.companyService.getCompanies().subscribe((data) => {
       this.companies = data;
