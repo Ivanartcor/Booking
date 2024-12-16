@@ -1,39 +1,39 @@
 <div class="container bg-light py-4">
-    <!-- Cabecera -->
-    <div class="row g-3 align-items-stretch">
-        <!-- Contenedor principal para Empresa y Estadísticas -->
-        <div class="col-12 d-flex p-0 bg-white rounded shadow position-relative">
-            <!-- Imagen principal -->
-            <div class="w-60 position-relative" style="flex: 1.5;">
-                <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa"
-                    class="img-fluid h-100 w-100 rounded-start" style="object-fit: cover;" />
-                <!-- Texto dentro de la imagen -->
-                <div class="text-overlay position-absolute bottom-0 start-0 bg-white text-green p-2 rounded-end">
-                    <h1 class="fs-3 fw-bold mb-0">MediCare</h1>
-                </div>
-            </div>
-            <!-- Estadísticas -->
-            <div class="w-40 bg-light d-flex flex-column align-items-center p-3 rounded-end shadow" style="flex: 1;">
-                <h3 class="fs-5 fw-bold text-secondary mb-3">Estadísticas</h3>
-                <div class="stats-box p-3 border rounded shadow-sm w-100">
-                    <div class="stat-item mb-3">
-                        <h5 class="fs-6 fw-bold text-green">Pacientes Atendidos</h5>
-                        <p class="fs-3 fw-bold text-green">1,234</p>
-                    </div>
-                    <div class="stat-item mb-3">
-                        <h5 class="fs-6 fw-bold text-green">Consultas Realizadas</h5>
-                        <p class="fs-3 fw-bold text-green">3,567</p>
-                    </div>
-                    <div class="stat-item mb-3">
-                        <h5 class="fs-6 fw-bold text-green">Servicios Prestados</h5>
-                        <p class="fs-3 fw-bold text-green">890</p>
-                    </div>
-                </div>
-            </div>
+  <!-- Cabecera -->
+  <div class="row g-3 align-items-stretch">
+    <!-- Contenedor principal para Empresa y Estadísticas -->
+    <div class="col-12 d-flex p-0 bg-white rounded shadow position-relative">
+      <!-- Imagen principal -->
+      <div class="w-60 position-relative" style="flex: 1.5;">
+        <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa" class="img-fluid h-100 w-100 rounded-start"
+          style="object-fit: cover;" />
+        <!-- Texto dentro de la imagen -->
+        <div class="text-overlay position-absolute bottom-0 start-0 bg-white text-green p-2 rounded-end">
+          <h1 class="fs-3 fw-bold mb-0">MediCare</h1>
         </div>
+      </div>
+      <!-- Estadísticas -->
+      <div class="w-40 bg-light d-flex flex-column align-items-center p-3 rounded-end shadow" style="flex: 1;">
+        <h3 class="fs-5 fw-bold text-secondary mb-3">Estadísticas</h3>
+        <div class="stats-box p-3 border rounded shadow-sm w-100">
+          <div class="stat-item mb-3">
+            <h5 class="fs-6 fw-bold text-green">Pacientes Atendidos</h5>
+            <p class="fs-3 fw-bold text-green">1,234</p>
+          </div>
+          <div class="stat-item mb-3">
+            <h5 class="fs-6 fw-bold text-green">Consultas Realizadas</h5>
+            <p class="fs-3 fw-bold text-green">3,567</p>
+          </div>
+          <div class="stat-item mb-3">
+            <h5 class="fs-6 fw-bold text-green">Servicios Prestados</h5>
+            <p class="fs-3 fw-bold text-green">890</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Servicios -->
+  <!-- Servicios -->
   <div class="row g-3 mt-4">
     <div class="col-12 bg-white rounded shadow p-3">
       <h3 class="">Servicios</h3>
@@ -45,26 +45,21 @@
       </div>
     </div>
   </div>
-      
-
-    <!-- Modal de detalles del servicio -->
-    <app-service-details
-    *ngIf="showServiceDetailsModal"
-    [serviceId]="selectedServiceId"
-    (close)="closeServiceDetailsModal()"
-  ></app-service-details>
 
 
-        <!-- Botón Añadir Servicio -->
-        <div class="row g-3 mt-3">
-          <div class="col-12 text-center">
-            <button class="btn btn-primary btn-lg">Añadir Servicio</button>
-          </div>
-        </div>
-      </div>
-      
+  <!-- Modal de detalles del servicio -->
+  <app-service-details *ngIf="showServiceDetailsModal" [serviceId]="selectedServiceId"
+    (close)="closeServiceDetailsModal()"></app-service-details>
 
 
-    
-    
+  <!-- Botón Añadir Servicio -->
+  <div class="row g-3 mt-3">
+    <div class="col-12 text-center">
+      <button class="btn btn-primary btn-lg">Añadir Servicio</button>
+    </div>
+  </div>
+</div>
 
+<!-- Modal de Añadir Servicio -->
+<app-add-service *ngIf="showAddServiceModal" [companyId]="companyId" (close)="closeAddServiceModal()"
+  (serviceAdded)="onServiceAdded($event)"></app-add-service>

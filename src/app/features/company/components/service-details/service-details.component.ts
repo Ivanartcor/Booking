@@ -53,6 +53,15 @@ export class ServiceDetailsComponent implements OnInit {
   }
 
   deleteService(): void {
-    console.log('Eliminando servicio...');
+    if (this.serviceId) {
+      this.serviceService.deleteService(this.serviceId).subscribe((success) => {
+        if (success) {
+          alert('Servicio eliminado con éxito.');
+          this.closeModal(); // Cierra el modal tras eliminar
+        } else {
+          alert('Error al eliminar el servicio.');
+        }
+      });
+    }
   }
 }

@@ -1,1 +1,67 @@
-<p>add-service works!</p>
+<div class="modal-overlay" (click)="closeModal()"></div>
+
+<div class="modal-content">
+  <button class="close-btn" (click)="closeModal()">×</button>
+  <h2 class="modal-title">Añadir Nuevo Servicio</h2>
+
+  <form (ngSubmit)="addService()">
+    <div class="form-group">
+      <label for="name">Nombre del Servicio</label>
+      <input type="text" id="name" [(ngModel)]="service.name" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea id="description" [(ngModel)]="service.description" name="description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Precio (€)</label>
+      <input type="number" id="price" [(ngModel)]="service.price" name="price" required />
+    </div>
+
+    <div class="form-group">
+      <label for="duration">Duración (minutos)</label>
+      <input type="number" id="duration" [(ngModel)]="service.durationMinutes" name="duration" required />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categoría</label>
+      <select id="category" [(ngModel)]="service.category" name="category" required>
+        <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="assignedEmployees">Empleados Asignados</label>
+      <select
+        id="assignedEmployees"
+        multiple
+        [(ngModel)]="service.assignedEmployees"
+        name="assignedEmployees"
+      >
+        <option *ngFor="let employee of employees" [value]="employee.id">
+          {{ employee.name }} - {{ employee.position }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Días Disponibles</label>
+      <div class="checkbox-group">
+        <label *ngFor="let day of availableDays">
+          <input type="checkbox" [value]="day" [(ngModel)]="service.availability.days" name="days" /> {{ day }}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Horario de Disponibilidad</label>
+      <input type="time" [(ngModel)]="service.availability.hours.start" name="startHour" required />
+      a
+      <input type="time" [(ngModel)]="service.availability.hours.end" name="endHour" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+  </form>
+</div>
