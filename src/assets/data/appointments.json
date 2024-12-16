@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "clientId": 1,
+        "companyId": 1,
+        "serviceId": 1,
+        "appointmentDate": "2024-09-17T10:15:00",
+        "status": "Confirmada",
+        "createdAt": "2024-09-15T12:00:00"
+      },
+      {
+        "id": 2,
+        "clientId": 1,
+        "companyId": 2,
+        "serviceId": 2,
+        "appointmentDate": "2024-09-18T14:00:00",
+        "status": "Pendiente",
+        "createdAt": "2024-09-16T15:00:00"
+      }
+  ]
+  

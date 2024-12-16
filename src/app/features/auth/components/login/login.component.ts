@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,13 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    this.authService.login(this.email).subscribe({
+
+    if (!this.email || !this.password) {
+      this.errorMessage = 'Por favor, complete todos los campos.';
+      return;
+    }
+    
+    this.authService.login(this.email, this.password).subscribe({
       next: (success) => {
         if (!success) {
           this.errorMessage = 'Usuario o contraseña incorrectos. Inténtelo de nuevo.';

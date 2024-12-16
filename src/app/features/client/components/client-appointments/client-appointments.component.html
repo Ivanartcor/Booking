@@ -3,18 +3,22 @@
   <button class="close-btn" (click)="closeModal()">×</button>
   <h2 class="modal-title">Mis Citas</h2>
 
-  <div class="appointments-list">
+  <div class="appointments-list" *ngIf="appointments.length; else noAppointments">
     <div class="appointment-card" *ngFor="let appointment of appointments">
       <div class="appointment-info">
-        <p class="appointment-company">{{ appointment.company }}</p>
-        <p class="appointment-service">{{ appointment.service }}</p>
+        <p class="appointment-company">{{ appointment.companyName }}</p>
+        <p class="appointment-service">{{ appointment.serviceName }}</p>
         <p class="appointment-price">{{ appointment.price | currency: 'EUR' }}</p>
       </div>
       <div class="appointment-date">
-        <p>{{ appointment.date | date: 'fullDate' }}</p>
+        <p>{{ appointment.date }}</p>
         <p>{{ appointment.time }}</p>
       </div>
       <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancelar</button>
     </div>
   </div>
+
+  <ng-template #noAppointments>
+    <p class="no-appointments-msg">No tienes citas programadas.</p>
+  </ng-template>
 </div>

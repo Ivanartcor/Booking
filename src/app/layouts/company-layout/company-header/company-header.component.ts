@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { AuthService } from 'src/app/core/auth/auth.service'; // Asegúrate de tener este servicio para manejar la autenticación
+import { AuthService } from 'src/app/core/services/auth.service'; // Asegúrate de tener este servicio para manejar la autenticación
 
 @Component({
   selector: 'app-company-header',

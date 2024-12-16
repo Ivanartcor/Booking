@@ -1,14 +1,32 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
 
-<div class="modal-content">
+<div class="modal-content" *ngIf="service">
   <button class="close-btn" (click)="closeModal()">×</button>
-  <h2 class="modal-title">{{ service?.name }}</h2>
+  <h2 class="modal-title">{{ service.name }}</h2>
 
-  <div class="service-info" *ngIf="service">
+  <div class="service-info">
     <p><strong>Descripción:</strong> {{ service.description }}</p>
     <p><strong>Precio:</strong> €{{ service.price }}</p>
+    <p><strong>Duración:</strong> {{ service.durationMinutes }} minutos</p>
     <p><strong>Categoría:</strong> {{ service.category }}</p>
-    <button class="btn btn-warning" (click)="editService()">Editar</button>
-    <button class="btn btn-danger" (click)="deleteService()">Eliminar</button>
+
+    <h3 class="section-title">Disponibilidad</h3>
+    <p><strong>Días:</strong> {{ service.availability.days.join(', ') }}</p>
+    <p><strong>Horario:</strong> {{ service.availability.hours.start }} - {{ service.availability.hours.end }}</p>
+
+    <h3 class="section-title">Empleados Asignados</h3>
+    <ul *ngIf="assignedEmployees.length > 0; else noEmployees">
+      <li *ngFor="let employee of assignedEmployees">
+        {{ employee.name }} - {{ employee.position }}
+      </li>
+    </ul>
+    <ng-template #noEmployees>
+      <p>No hay empleados asignados a este servicio.</p>
+    </ng-template>
+
+    <div class="action-buttons">
+      <button class="btn btn-warning" (click)="editService()">Editar</button>
+      <button class="btn btn-danger" (click)="deleteService()">Eliminar</button>
+    </div>
   </div>
 </div>

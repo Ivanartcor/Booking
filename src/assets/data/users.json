@@ -1,21 +1,31 @@
 [
-    {
-      "id": 1,
-      "name": "cliente",
-      "email": "cliente@gmail.com",
-      "role": "client" 
-    },
-    {
-      "id": 2,
-      "name": "empresa",
-      "email": "empresa@gmail.com",
-      "role": "company" 
-    },
-    {
-      "id": 3,
-      "name": "empleado",
-      "email": "empleado@gmail.com",
-      "role": "employee" 
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "cliente",
+    "email": "cliente@gmail.com",
+    "password": "cliente123",
+    "role": "client",
+    "registeredAt": "2024-01-01T10:00:00",
+    "phone": "+34123456789"
+  },
+  {
+    "id": 2,
+    "name": "empresa",
+    "email": "empresa@gmail.com",
+    "password": "empresa123",
+    "role": "company",
+    "registeredAt": "2024-01-01T10:00:00",
+    "phone": "+34123456789",
+    "companyId": 1
+  },
+  {
+    "id": 3,
+    "name": "empleado",
+    "email": "empleado@gmail.com",
+    "password": "empleado123",
+    "role": "employee",
+    "registeredAt": "2024-01-01T10:00:00",
+    "phone": "+34123456789",
+    "companyId": 1
+  }
+]

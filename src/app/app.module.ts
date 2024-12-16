@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { ClientHeaderComponent } from './layouts/client-layout/client-header/client-header.component';
@@ -13,6 +14,11 @@ import { CompanyHeaderComponent } from './layouts/company-layout/company-header/
 import { ClientModule } from './features/client/client.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+//Servicios
+import { AppointmentService } from './core/services/appointment.service';
+import { AuthService } from './core/services/auth.service';
+import { CompanyService } from './core/services/company.service';
+import { ServiceService } from './core/services/service.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,11 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    CompanyService,
+    ServiceService,
+    AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

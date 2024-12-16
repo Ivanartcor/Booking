@@ -1,40 +1,58 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ServiceService } from 'src/app/core/services/service.service';
+import { EmployeeService } from 'src/app/core/services/employee.service';
 
 @Component({
   selector: 'app-service-details',
   templateUrl: './service-details.component.html',
-  styleUrls: ['./service-details.component.scss']
+  styleUrls: ['./service-details.component.scss'],
 })
 export class ServiceDetailsComponent implements OnInit {
   @Input() serviceId: number | null = null;
   @Output() close = new EventEmitter<void>();
 
   service: any;
+  assignedEmployees: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private serviceService: ServiceService,
+    private employeeService: EmployeeService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.serviceId) {
       this.loadServiceDetails();
     }
   }
 
-  loadServiceDetails() {
-    this.http.get<any[]>('assets/data/services.json').subscribe((services) => {
-      this.service = services.find((s) => s.id === this.serviceId);
-    });
+  loadServiceDetails(): void {
+    if (this.serviceId) {
+      this.serviceService.getServiceById(this.serviceId).subscribe((service) => {
+        this.service = service;
+        this.loadAssignedEmployees();
+      });
+    }
   }
 
-  closeModal() {
+  loadAssignedEmployees(): void {
+    if (this.service && this.service.assignedEmployees) {
+      this.employeeService
+        .getEmployeesByIds(this.service.assignedEmployees)
+        .subscribe((employees) => {
+          this.assignedEmployees = employees;
+        });
+    }
+  }
+
+  closeModal(): void {
     this.close.emit(); // Emite el evento de cierre
   }
 
-  editService() {
+  editService(): void {
     console.log('Editando servicio...');
   }
 
-  deleteService() {
+  deleteService(): void {
     console.log('Eliminando servicio...');
   }
 }

@@ -1,26 +1,25 @@
 <header>
   <button class="menu-btn" (click)="toggleDropdown($event)">☰</button>
 
-  <!-- Dropdown de ciudades -->
+  <!-- Dropdown de ciudades cargadas dinámicamente -->
   <div class="user-dropdown">
     <select (change)="selectCity($event)">
-      <option value="">Ciudad</option>
-      <option value="Madrid">Madrid</option>
-      <option value="Barcelona">Barcelona</option>
-      <option value="Valencia">Valencia</option>
       <option value="">Todas</option>
+      <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
     </select>
     
   </div>
 
-  <!-- Dropdown para categorías -->
+  <!-- Dropdown para categorías cargadas dinámicamente -->
   <div class="menu-dropdown" [class.show]="isDropdownOpen" (click)="stopPropagation($event)">
     <div class="dropdown-header">Categorías</div>
     <ul>
-      <li><a href="#" (click)="selectCategory($event, 'Salud')">Salud</a></li>
-      <li><a href="#" (click)="selectCategory($event, 'Estética')">Estética</a></li>
-      <li><a href="#" (click)="selectCategory($event, 'Limpieza')">Limpieza</a></li>
-      <li><a href="#" (click)="selectCategory($event, '')">Todos</a></li> <!-- Opción para mostrar todas las categorías -->
+      <li>
+        <a href="#" (click)="selectCategory($event, '')">Todos</a>
+      </li>
+      <li *ngFor="let category of categories">
+        <a href="#" (click)="selectCategory($event, category.name)">{{ category.name }}</a>
+      </li>
     </ul>
   </div>
 </header>
@@ -31,7 +30,7 @@
     <img [src]="company.image" alt="{{ company.name }}">
     <div class="company-info">
       <h2>{{ company.name }}</h2>
-      <p>{{ company.description }}</p>
+      <p>{{ company.shortDescription }}</p>
     </div>
   </section>
 </main>

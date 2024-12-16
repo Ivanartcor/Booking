@@ -1,27 +1,155 @@
 [
-    {
-      "id": 1,
-      "companyId": 2,
-      "name": "Consulta Médica General",
-      "description": "Consulta para revisión médica general.",
-      "price": "50",
-      "category": "Salud"
+  {
+    "id": 4,
+    "companyId": 1,
+    "name": "Corte de Pelo Unisex",
+    "description": "Corte profesional para hombres y mujeres.",
+    "price": "20",
+    "durationMinutes": 45,
+    "category": "Estética",
+    "availability": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "hours": {
+        "start": "09:00",
+        "end": "18:00"
+      }
     },
-    {
-      "id": 2,
-      "companyId": 2,
-      "name": "Vacunación",
-      "description": "Servicio de vacunación preventiva.",
-      "price": "30",
-      "category": "Salud"
+    "assignedEmployees": [3, 4]
+  },
+  {
+    "id": 1,
+    "companyId": 2,
+    "name": "Consulta Médica General",
+    "description": "Consulta para revisión médica general.",
+    "price": "50",
+    "durationMinutes": 60,
+    "category": "Salud",
+    "availability": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "hours": {
+        "start": "09:00",
+        "end": "18:00"
+      }
     },
-    {
-      "id": 3,
-      "companyId": 2,
-      "name": "Corte de Pelo",
-      "description": "Servicio de corte de cabello profesional.",
-      "price": "20",
-      "category": "Belleza"
-    }
-  ]
-  
+    "assignedEmployees": [5, 6]
+  },
+  {
+    "id": 2,
+    "companyId": 2,
+    "name": "Vacunación",
+    "description": "Servicio de vacunación preventiva.",
+    "price": "30",
+    "durationMinutes": 30,
+    "category": "Salud",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "10:00",
+        "end": "15:00"
+      }
+    },
+    "assignedEmployees": [7]
+  },
+  {
+    "id": 3,
+    "companyId": 2,
+    "name": "Consulta Dental Completa",
+    "description": "Revisión general con limpieza y diagnóstico.",
+    "price": "60",
+    "durationMinutes": 45,
+    "category": "Salud",
+    "availability": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "hours": {
+        "start": "09:00",
+        "end": "17:00"
+      }
+    },
+    "assignedEmployees": []
+  },
+  {
+    "id": 9,
+    "companyId": 2,
+    "name": "Implante Dental",
+    "description": "Colocación de implante dental con materiales de calidad.",
+    "price": "1200",
+    "durationMinutes": 120,
+    "category": "Salud",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "09:00",
+        "end": "16:00"
+      }
+    },
+    "assignedEmployees": []
+  },
+  {
+    "id": 5,
+    "companyId": 3,
+    "name": "Masaje Relajante",
+    "description": "Masaje de cuerpo completo con aceites esenciales.",
+    "price": "80",
+    "durationMinutes": 90,
+    "category": "Estética",
+    "availability": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "hours": {
+        "start": "10:00",
+        "end": "18:00"
+      }
+    },
+    "assignedEmployees": []
+  },
+  {
+    "id": 6,
+    "companyId": 3,
+    "name": "Facial Antiedad",
+    "description": "Tratamiento rejuvenecedor con productos naturales.",
+    "price": "90",
+    "durationMinutes": 75,
+    "category": "Estética",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "09:00",
+        "end": "16:00"
+      }
+    },
+    "assignedEmployees": []
+  },
+  {
+    "id": 7,
+    "companyId": 4,
+    "name": "Limpieza Profunda de Hogar",
+    "description": "Servicio completo de limpieza para toda la casa.",
+    "price": "150",
+    "durationMinutes": 180,
+    "category": "Limpieza",
+    "availability": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "hours": {
+        "start": "08:00",
+        "end": "17:00"
+      }
+    },
+    "assignedEmployees": []
+  },
+  {
+    "id": 8,
+    "companyId": 4,
+    "name": "Desinfección de Oficinas",
+    "description": "Desinfección total para oficinas y locales comerciales.",
+    "price": "200",
+    "durationMinutes": 240,
+    "category": "Limpieza",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "09:00",
+        "end": "18:00"
+      }
+    },
+    "assignedEmployees": [3]
+  }
+]

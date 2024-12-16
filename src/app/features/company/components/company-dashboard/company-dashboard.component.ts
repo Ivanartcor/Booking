@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { ServiceService } from 'src/app/core/services/service.service';
 
 @Component({
   selector: 'app-company-dashboard',
@@ -14,7 +15,10 @@ export class CompanyDashboardComponent implements OnInit {
   showServiceDetailsModal = false;
   selectedServiceId: number | null = null;
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private serviceService: ServiceService
+  ) {}
   
   ngOnInit() {
     const currentUser = this.authService.getCurrentUser();
@@ -29,18 +33,22 @@ export class CompanyDashboardComponent implements OnInit {
     this.loadServices();
   }
 
-  loadServices() {
-    this.http.get<any[]>('assets/data/services.json').subscribe((services) => {
-      this.services = services.filter((s) => s.companyId === this.companyId);
-    });
+  loadServices(): void {
+    if (this.companyId) {
+      this.serviceService
+        .getServicesByCompany(this.companyId)
+        .subscribe((services) => {
+          this.services = services;
+        });
+    }
   }
 
-  openServiceDetails(serviceId: number) {
+  openServiceDetails(serviceId: number): void {
     this.selectedServiceId = serviceId;
     this.showServiceDetailsModal = true;
   }
 
-  closeServiceDetailsModal() {
+  closeServiceDetailsModal(): void {
     this.showServiceDetailsModal = false;
     this.selectedServiceId = null;
   }

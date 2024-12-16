@@ -1,0 +1,55 @@
+[
+    {
+      "id": 1,
+      "name": "Peluquería Lola",
+      "shortDescription": "Especialistas en cuidado capilar con productos orgánicos y técnicas avanzadas.",
+      "description": "En un rincón especializado lleno de amabilidad y estilo, Peluquería Lola destaca por su atención personalizada. Ofrecemos servicios de calidad para el cuidado del cabello, con productos 100% orgánicos y profesionales altamente capacitados. Disfruta de cortes modernos, peinados para ocasiones especiales, tintes personalizados y tratamientos capilares avanzados. Además, garantizamos un ambiente cómodo y relajante. ¡Reserva tu cita ahora y vive una experiencia única en el cuidado de tu cabello!",
+      "image": "https://images.pexels.com/photos/7755449/pexels-photo-7755449.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "city": "Madrid",
+      "address": "Avenida Estilo 45",
+      "category": "Estética",
+      "createdAt": "2023-11-15T09:00:00",
+      "services": [1, 2],
+      "employees": [1, 2]
+    },
+    {
+      "id": 2,
+      "name": "Vitaldent",
+      "shortDescription": "Servicios dentales avanzados con profesionales altamente capacitados.",
+      "description": "Tu sonrisa es nuestra prioridad. Con tecnología avanzada y un equipo experto, Vitaldent ofrece servicios de alta calidad en odontología. Desde limpiezas dentales de rutina hasta tratamientos complejos como implantes y ortodoncia, estamos comprometidos con tu bienestar dental. Nuestros servicios incluyen diagnósticos digitales de última generación, planes de tratamiento personalizados y un ambiente acogedor diseñado para minimizar cualquier ansiedad relacionada con el dentista. ¡Reserva tu cita hoy y da el primer paso hacia una sonrisa saludable y brillante!",
+      "image": "https://images.pexels.com/photos/4269942/pexels-photo-4269942.jpeg",
+      "city": "Barcelona",
+      "address": "Calle Principal 123",
+      "category": "Salud",
+      "createdAt": "2023-12-01T10:00:00",
+      "services": [3, 4],
+      "employees": [3]
+    },
+    {
+      "id": 3,
+      "name": "Spa Relax",
+      "shortDescription": "Tratamientos de relajación y bienestar en un ambiente acogedor.",
+      "description": "El lugar ideal para desconectar, disfrutar de tratamientos faciales y corporales en un ambiente relajante. Ofrecemos masajes terapéuticos, tratamientos antiedad, y experiencias personalizadas para rejuvenecer cuerpo y mente. Nuestro equipo está altamente cualificado y listo para ofrecer una experiencia de bienestar única.",
+      "image": "https://www.wonderbox.es/wondermedias/sys_master/productmedias/h8d/hc8/952708-560x373.jpg",
+      "city": "Valencia",
+      "address": "Calle Relax 78",
+      "category": "Estética",
+      "createdAt": "2023-10-20T11:00:00",
+      "services": [5, 6],
+      "employees": [4, 5]
+    },
+    {
+      "id": 4,
+      "name": "Limpiezas Express",
+      "shortDescription": "Servicios de limpieza rápidos y efectivos para hogares y oficinas.",
+      "description": "Ofrecemos servicios de limpieza de alta calidad, rápidos y efectivos para hogares, oficinas y locales comerciales. Nuestra prioridad es brindar un ambiente limpio y saludable mediante técnicas modernas y productos ecológicos. Contamos con un equipo especializado y flexible para adaptarnos a tus necesidades.",
+      "image": "https://inafe.es/wp-content/uploads/%C2%BFBuscas-una-aseguranza-para-negocio-de-limpieza-en-2023.webp",
+      "city": "Madrid",
+      "address": "Avenida Limpieza 10",
+      "category": "Limpieza",
+      "createdAt": "2023-09-10T08:00:00",
+      "services": [7, 8],
+      "employees": [6, 7]
+    }
+  ]
+  
