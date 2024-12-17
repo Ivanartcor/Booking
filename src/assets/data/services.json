@@ -270,5 +270,22 @@
       }
     },
     "assignedEmployees": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  },
+  {
+    "id": 17,
+    "companyId": 3,
+    "name": "Masaje especial con final feliz",
+    "description": "masaje de cuerpo completo con aceites naturales de humanos. Si te portas bien te llevas un premio",
+    "price": "2000000",
+    "durationMinutes": 3,
+    "category": "Soluciones Especiales",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "20:00",
+        "end": "20:10"
+      }
+    },
+    "assignedEmployees": [5]
   }
 ]
