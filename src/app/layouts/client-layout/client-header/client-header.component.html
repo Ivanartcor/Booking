@@ -6,12 +6,16 @@
     <!-- Desplegable para el perfil -->
     <div class="nav-item dropdown" [class.show]="isDropdownOpen">
       <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" (click)="toggleDropdown()">
-        <img src="/assets/images/foto-perfil.jpg" alt="User Profile" class="profile-pic">
+        <img
+          [src]="currentUser?.profilePicture || '/assets/images/foto-perfil.jpg'"
+          alt="Foto de Perfil"
+          class="profile-pic"
+        />
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Mis citas</a></li>
-        <li><a class="dropdown-item" href="#">Mis datos</a></li>
-        <li><a class="dropdown-item" href="#" style="color: rgb(185, 0, 0);">Cerrar sesión</a></li>
+        <li><a class="dropdown-item" (click)="openAppointmentsModal()">Mis citas</a></li>
+        <li><a class="dropdown-item" routerLink="/client/client-profile">Mis datos</a></li>
+        <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>

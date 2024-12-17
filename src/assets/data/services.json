@@ -151,5 +151,124 @@
       }
     },
     "assignedEmployees": [3]
+  },
+  {
+    "id": 10,
+    "companyId": 5,
+    "name": "Consulta Oftalmológica",
+    "description": "Evaluación completa de la salud visual.",
+    "price": "80",
+    "durationMinutes": 60,
+    "category": "Salud",
+    "availability": {
+      "days": ["Monday", "Thursday"],
+      "hours": {
+        "start": "09:00",
+        "end": "16:00"
+      }
+    },
+    "assignedEmployees": [10]
+  },
+  {
+    "id": 11,
+    "companyId": 5,
+    "name": "Cirugía Láser Ocular",
+    "description": "Corrección visual mediante láser de última generación.",
+    "price": "1200",
+    "durationMinutes": 120,
+    "category": "Salud",
+    "availability": {
+      "days": ["Wednesday"],
+      "hours": {
+        "start": "10:00",
+        "end": "14:00"
+      }
+    },
+    "assignedEmployees": [11]
+  },
+  {
+    "id": 12,
+    "companyId": 6,
+    "name": "Limpieza Facial Profunda",
+    "description": "Tratamiento facial intensivo para una piel fresca y saludable.",
+    "price": "60",
+    "durationMinutes": 75,
+    "category": "Estética",
+    "availability": {
+      "days": ["Tuesday", "Friday"],
+      "hours": {
+        "start": "09:00",
+        "end": "18:00"
+      }
+    },
+    "assignedEmployees": [12]
+  },
+  {
+    "id": 13,
+    "companyId": 6,
+    "name": "Masaje Terapéutico",
+    "description": "Masaje corporal relajante para aliviar el estrés y mejorar la circulación.",
+    "price": "90",
+    "durationMinutes": 90,
+    "category": "Estética",
+    "availability": {
+      "days": ["Monday", "Wednesday"],
+      "hours": {
+        "start": "10:00",
+        "end": "17:00"
+      }
+    },
+    "assignedEmployees": [13]
+  },
+  {
+    "id": 14,
+    "companyId": 7,
+    "name": "Eliminación de Amenazas y matanza",
+    "description": "Servicio completo de gestión y eliminación de amenazas personales o corporativas.",
+    "price": "5000",
+    "durationMinutes": 120,
+    "category": "Soluciones Especiales",
+    "availability": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "hours": {
+        "start": "21:00",
+        "end": "03:00"
+      }
+    },
+    "assignedEmployees": [14, 16]
+  },
+  {
+    "id": 15,
+    "companyId": 7,
+    "name": "Recuperación de Información",
+    "description": "Obtención de datos críticos a través de operaciones de inteligencia avanzada.",
+    "price": "7000",
+    "durationMinutes": 180,
+    "category": "Soluciones Especiales",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "20:00",
+        "end": "02:00"
+      }
+    },
+    "assignedEmployees": [15]
+  },
+  {
+    "id": 16,
+    "companyId": 2,
+    "name": "Te rompemos todos los dientes",
+    "description": "Cogemos entre todos y te dejamos mellao de los bimbazos que empiezan a lloverte",
+    "price": "2",
+    "durationMinutes": 10,
+    "category": "Soluciones Especiales",
+    "availability": {
+      "days": ["Tuesday", "Thursday"],
+      "hours": {
+        "start": "20:00",
+        "end": "20:10"
+      }
+    },
+    "assignedEmployees": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   }
 ]

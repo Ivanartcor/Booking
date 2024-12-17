@@ -6,6 +6,7 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { ClientAppointmentsComponent } from './components/client-appointments/client-appointments.component';
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CompanyDetailsComponent } from './components/company-details/company-de
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ClientRoutingModule
   ],
   exports: [

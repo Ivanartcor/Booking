@@ -1,7 +1,27 @@
+<!-- Navbar -->
 <header>
     <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
     <nav>
-        <a routerLink="/company/company-dashboard" routerLinkActive="active">Mi Empresa</a>
-        <img src="/assets/images/foto-perfil.jpg" alt="User Profile" class="profile-pic">
+      <a routerLink="/employee/dashboard">Inicio</a>
+      <a routerLink="/employee/appointments">Mis Citas</a>
+  
+      <!-- Desplegable para el perfil -->
+      <div class="nav-item dropdown" [class.show]="isDropdownOpen">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" (click)="toggleDropdown()">
+          <img
+          [src]="currentUser?.profilePicture || '/assets/images/foto-perfil.jpg'"
+          alt="Foto de Perfil"
+          class="profile-pic"
+        />
+        </a>
+  
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/employee/employee-profile">Mis Datos</a></li>
+          <li><a class="dropdown-item" routerLink="/employee/schedule">Mi Horario</a></li>
+          <li><a class="dropdown-item" routerLink="/employee/tasks">Tareas Asignadas</a></li>
+          <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar sesión</a></li>
+        </ul>
+      </div>
     </nav>
-</header>
+  </header>
+  

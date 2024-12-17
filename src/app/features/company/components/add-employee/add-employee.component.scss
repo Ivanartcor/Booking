@@ -1,4 +1,4 @@
-/* Fondo semitransparente detrás del modal */
+/* Fondo semitransparente */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -21,9 +21,9 @@
     max-width: 90%;
     max-height: 90vh;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     z-index: 1001;
-    overflow-y: auto; /* Permite desplazamiento */
+    overflow-y: auto;
     scroll-behavior: smooth;
   
     .close-btn {
@@ -37,7 +37,7 @@
       cursor: pointer;
   
       &:hover {
-        color: #005f6b;
+        color: #c00;
       }
     }
   
@@ -66,7 +66,6 @@
         }
   
         input,
-        textarea,
         select {
           width: 100%;
           padding: 0.75rem 1rem;
@@ -80,11 +79,6 @@
             border-color: #005f6b;
             box-shadow: 0 0 5px rgba(0, 95, 107, 0.5);
           }
-        }
-  
-        textarea {
-          height: 100px;
-          resize: none;
         }
       }
   
@@ -107,45 +101,34 @@
         }
       }
   
-      .action-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
+      .error-messages {
+        color: #c00;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
   
-        .btn {
-          padding: 0.75rem 1.5rem;
-          font-size: 1rem;
-          font-weight: bold;
-          border-radius: 5px;
-          cursor: pointer;
-          border: none;
-          transition: background-color 0.3s ease, transform 0.2s ease;
+        ul {
+          padding-left: 1.5rem;
+        }
+      }
   
-          &.btn-success {
-            background-color: #28a745;
-            color: #fff;
+      .btn-success {
+        background-color: #28a745;
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
   
-            &:hover {
-              background-color: #218838;
-              transform: scale(1.05);
-            }
-          }
-  
-          &.btn-danger {
-            background-color: #dc3545;
-            color: #fff;
-  
-            &:hover {
-              background-color: #c82333;
-              transform: scale(1.05);
-            }
-          }
+        &:hover {
+          background-color: #218838;
         }
       }
     }
   }
   
-  /* Asegura que el modal se centre correctamente incluso en pantallas más pequeñas */
+  /* Ajustes para pantallas pequeñas */
   @media (max-height: 600px) {
     .modal-content {
       top: 5%;
@@ -167,7 +150,6 @@
         }
   
         input,
-        textarea,
         select {
           font-size: 0.9rem;
         }

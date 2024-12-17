@@ -1,44 +1,36 @@
-import { Component, HostListener } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service'; // Asegúrate de tener este servicio para manejar la autenticación
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-company-header',
   templateUrl: './company-header.component.html',
   styleUrls: ['./company-header.component.scss']
 })
-export class CompanyHeaderComponent {
-  isDropdownOpen = false;  // Controla si el dropdown está abierto o cerrado
-  showAppointmentsModal = false;  // Controla si el modal de citas se debe mostrar
+export class CompanyHeaderComponent implements OnInit{
+  isDropdownOpen = false;
+  currentUser: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  // Método para alternar el estado del dropdown
-  toggleDropdown() {
+  ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
+  }
+
+  toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  // Método para abrir el modal de citas
-  openAppointmentsModal() {
-    this.showAppointmentsModal = true;
+  logout(): void {
+    console.log('Cerrando sesión...');
+    this.authService.logout();
   }
 
-  // Método para cerrar el modal de citas
-  closeAppointmentsModal() {
-    this.showAppointmentsModal = false;
-  }
-
-  // Detectar clics fuera del dropdown para cerrarlo
   @HostListener('document:click', ['$event'])
-  clickOutside(event: MouseEvent) {
+  clickOutside(event: MouseEvent): void {
     const dropdown = document.querySelector('.nav-item.dropdown');
     if (dropdown && !dropdown.contains(event.target as Node)) {
-      this.isDropdownOpen = false; // Cierra el dropdown si se hace clic fuera de él
+      this.isDropdownOpen = false;
     }
-  }
-
-  // Método para cerrar sesión
-  logout() {
-    console.log('Cerrando sesión...');
-    this.authService.logout(); // Llama al servicio de autenticación para cerrar sesión
   }
 }

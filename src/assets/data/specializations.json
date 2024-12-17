@@ -1,0 +1,9 @@
+[
+    { "id": 1, "name": "Administración" },
+    { "id": 2, "name": "Salud" },
+    { "id": 3, "name": "Estética" },
+    { "id": 4, "name": "Limpieza" },
+    { "id": 5, "name": "Atención al Cliente" },
+    { "id": 6, "name": "Paga Fantas" }
+  ]
+  

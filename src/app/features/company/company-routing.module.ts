@@ -4,6 +4,7 @@ import { CompanyLayoutComponent } from 'src/app/layouts/company-layout/company-l
 import { CompanyDashboardComponent } from './components/company-dashboard/company-dashboard.component';
 import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
+import { CompanyEmployeesComponent } from './components/company-employees/company-employees.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'company-dashboard', component: CompanyDashboardComponent },
       { path: 'company-profile', component: CompanyProfileComponent },
+      { path: 'company-employees', component: CompanyEmployeesComponent },
       { path: 'services/:id', component: ServiceDetailsComponent },
       { path: '', redirectTo: 'company-dashboard', pathMatch: 'full' },
     ],

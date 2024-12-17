@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -7,13 +7,17 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './client-header.component.html',
   styleUrls: ['./client-header.component.scss']
 })
-export class ClientHeaderComponent {
+export class ClientHeaderComponent implements OnInit{
   // Propiedad que controla si el dropdown está abierto o cerrado
   isDropdownOpen = false;
-  
+  currentUser: any;
   showAppointmentsModal = false;
 
   constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
+  }
 
   // Método para alternar el estado del dropdown
   toggleDropdown() {

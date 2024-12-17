@@ -78,10 +78,22 @@ a:hover {
   padding: 10px 20px; /* Espaciado dentro de cada opción */
   text-decoration: none;
   transition: background-color 0.3s ease;
+
+  
 }
 
 .dropdown-item:hover {
   background-color: #f3f3f3;
+  
+}
+
+.dropdown-item.text-danger {
+  color: rgb(185, 0, 0);
+  font-weight: bold;
+
+  &:hover {
+    background: rgba(255, 0, 0, 0.1);
+  }
 }
 
 /* Divider */

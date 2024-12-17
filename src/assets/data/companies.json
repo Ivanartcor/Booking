@@ -1,55 +1,123 @@
 [
-    {
-      "id": 1,
-      "name": "Peluquería Lola",
-      "shortDescription": "Especialistas en cuidado capilar con productos orgánicos y técnicas avanzadas.",
-      "description": "En un rincón especializado lleno de amabilidad y estilo, Peluquería Lola destaca por su atención personalizada. Ofrecemos servicios de calidad para el cuidado del cabello, con productos 100% orgánicos y profesionales altamente capacitados. Disfruta de cortes modernos, peinados para ocasiones especiales, tintes personalizados y tratamientos capilares avanzados. Además, garantizamos un ambiente cómodo y relajante. ¡Reserva tu cita ahora y vive una experiencia única en el cuidado de tu cabello!",
-      "image": "https://images.pexels.com/photos/7755449/pexels-photo-7755449.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "city": "Madrid",
-      "address": "Avenida Estilo 45",
-      "category": "Estética",
-      "createdAt": "2023-11-15T09:00:00",
-      "services": [1, 2],
-      "employees": [1, 2]
+  {
+    "id": 1,
+    "name": "Peluquería Lola",
+    "shortDescription": "Especialistas en cuidado capilar con productos orgánicos y técnicas avanzadas.",
+    "description": "En un rincón especializado lleno de amabilidad y estilo, Peluquería Lola destaca por su atención personalizada. Ofrecemos servicios de calidad para el cuidado del cabello, con productos 100% orgánicos y profesionales altamente capacitados. Disfruta de cortes modernos, peinados para ocasiones especiales, tintes personalizados y tratamientos capilares avanzados. Además, garantizamos un ambiente cómodo y relajante. ¡Reserva tu cita ahora y vive una experiencia única en el cuidado de tu cabello!",
+    "image": {
+      "src": "https://images.pexels.com/photos/7755449/pexels-photo-7755449.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "title": "Peluquería Lola - Estilo y cuidado capilar con productos orgánicos",
+      "alt": "Interior de Peluquería Lola con servicio de cuidado capilar en un ambiente cómodo y relajante."
     },
-    {
-      "id": 2,
-      "name": "Vitaldent",
-      "shortDescription": "Servicios dentales avanzados con profesionales altamente capacitados.",
-      "description": "Tu sonrisa es nuestra prioridad. Con tecnología avanzada y un equipo experto, Vitaldent ofrece servicios de alta calidad en odontología. Desde limpiezas dentales de rutina hasta tratamientos complejos como implantes y ortodoncia, estamos comprometidos con tu bienestar dental. Nuestros servicios incluyen diagnósticos digitales de última generación, planes de tratamiento personalizados y un ambiente acogedor diseñado para minimizar cualquier ansiedad relacionada con el dentista. ¡Reserva tu cita hoy y da el primer paso hacia una sonrisa saludable y brillante!",
-      "image": "https://images.pexels.com/photos/4269942/pexels-photo-4269942.jpeg",
-      "city": "Barcelona",
-      "address": "Calle Principal 123",
-      "category": "Salud",
-      "createdAt": "2023-12-01T10:00:00",
-      "services": [3, 4],
-      "employees": [3]
+    "city": "Madrid",
+    "address": "Avenida Estilo 45",
+    "category": "Estética",
+    "createdAt": "2023-11-15T09:00:00",
+    "services": [1, 2],
+    "employees": [1, 2]
+  },
+  {
+    "id": 2,
+    "name": "Vitaldent",
+    "shortDescription": "Servicios dentales avanzados con profesionales altamente capacitados.",
+    "description": "Tu sonrisa es nuestra prioridad. Con tecnología avanzada y un equipo experto, Vitaldent ofrece servicios de alta calidad en odontología. Desde limpiezas dentales de rutina hasta tratamientos complejos como implantes y ortodoncia, estamos comprometidos con tu bienestar dental. Nuestros servicios incluyen diagnósticos digitales de última generación, planes de tratamiento personalizados y un ambiente acogedor diseñado para minimizar cualquier ansiedad relacionada con el dentista. ¡Reserva tu cita hoy y da el primer paso hacia una sonrisa saludable y brillante!",
+    "image": {
+      "src": "https://images.pexels.com/photos/4269942/pexels-photo-4269942.jpeg",
+      "title": "Vitaldent - Sonrisas saludables con tecnología avanzada",
+      "alt": "Consultorio dental de Vitaldent con equipo de profesionales realizando limpieza dental."
     },
-    {
-      "id": 3,
-      "name": "Spa Relax",
-      "shortDescription": "Tratamientos de relajación y bienestar en un ambiente acogedor.",
-      "description": "El lugar ideal para desconectar, disfrutar de tratamientos faciales y corporales en un ambiente relajante. Ofrecemos masajes terapéuticos, tratamientos antiedad, y experiencias personalizadas para rejuvenecer cuerpo y mente. Nuestro equipo está altamente cualificado y listo para ofrecer una experiencia de bienestar única.",
-      "image": "https://www.wonderbox.es/wondermedias/sys_master/productmedias/h8d/hc8/952708-560x373.jpg",
-      "city": "Valencia",
-      "address": "Calle Relax 78",
-      "category": "Estética",
-      "createdAt": "2023-10-20T11:00:00",
-      "services": [5, 6],
-      "employees": [4, 5]
+    "city": "Barcelona",
+    "address": "Calle Principal 123",
+    "category": "Salud",
+    "createdAt": "2023-12-01T10:00:00",
+    "services": [3, 4, 9, 2, 16],
+    "employees": [3,8,9]
+  },
+  {
+    "id": 3,
+    "name": "Spa Relax",
+    "shortDescription": "Tratamientos de relajación y bienestar en un ambiente acogedor.",
+    "description": "El lugar ideal para desconectar, disfrutar de tratamientos faciales y corporales en un ambiente relajante. Ofrecemos masajes terapéuticos, tratamientos antiedad, y experiencias personalizadas para rejuvenecer cuerpo y mente. Nuestro equipo está altamente cualificado y listo para ofrecer una experiencia de bienestar única.",
+    "image": {
+      "src": "https://www.wonderbox.es/wondermedias/sys_master/productmedias/h8d/hc8/952708-560x373.jpg",
+      "title": "Spa Relax - Tratamientos de bienestar y relajación",
+      "alt": "Ambiente relajante de Spa Relax con zona de bienestar y masajes terapéuticos."
     },
-    {
-      "id": 4,
-      "name": "Limpiezas Express",
-      "shortDescription": "Servicios de limpieza rápidos y efectivos para hogares y oficinas.",
-      "description": "Ofrecemos servicios de limpieza de alta calidad, rápidos y efectivos para hogares, oficinas y locales comerciales. Nuestra prioridad es brindar un ambiente limpio y saludable mediante técnicas modernas y productos ecológicos. Contamos con un equipo especializado y flexible para adaptarnos a tus necesidades.",
-      "image": "https://inafe.es/wp-content/uploads/%C2%BFBuscas-una-aseguranza-para-negocio-de-limpieza-en-2023.webp",
-      "city": "Madrid",
-      "address": "Avenida Limpieza 10",
-      "category": "Limpieza",
-      "createdAt": "2023-09-10T08:00:00",
-      "services": [7, 8],
-      "employees": [6, 7]
-    }
-  ]
+    "city": "Valencia",
+    "address": "Calle Relax 78",
+    "category": "Estética",
+    "createdAt": "2023-10-20T11:00:00",
+    "services": [5, 6],
+    "employees": [4, 5]
+  },
+  {
+    "id": 4,
+    "name": "Limpiezas Express",
+    "shortDescription": "Servicios de limpieza rápidos y efectivos para hogares y oficinas.",
+    "description": "Ofrecemos servicios de limpieza de alta calidad, rápidos y efectivos para hogares, oficinas y locales comerciales. Nuestra prioridad es brindar un ambiente limpio y saludable mediante técnicas modernas y productos ecológicos. Contamos con un equipo especializado y flexible para adaptarnos a tus necesidades.",
+    "image": {
+      "src": "https://inafe.es/wp-content/uploads/%C2%BFBuscas-una-aseguranza-para-negocio-de-limpieza-en-2023.webp",
+      "title": "Limpiezas Express - Servicios de limpieza rápidos y ecológicos",
+      "alt": "Personal de Limpiezas Express realizando limpieza rápida en oficina con productos ecológicos."
+    },
+    "city": "Madrid",
+    "address": "Avenida Limpieza 10",
+    "category": "Limpieza",
+    "createdAt": "2023-09-10T08:00:00",
+    "services": [7, 8],
+    "employees": [6, 7]
+  },
+  {
+    "id": 5,
+    "name": "Clínica Vista Clara",
+    "shortDescription": "Especialistas en oftalmología y corrección visual.",
+    "description": "Clínica Vista Clara ofrece tratamientos avanzados para la salud visual. Contamos con un equipo médico altamente cualificado y la última tecnología en cirugía ocular, diagnósticos y lentes correctoras.",
+    "image": {
+      "src": "https://images.pexels.com/photos/3758828/pexels-photo-3758828.jpeg",
+      "title": "Clínica Vista Clara - Especialistas en salud ocular",
+      "alt": "Interior moderno de la clínica con equipos de diagnóstico ocular avanzados."
+    },
+    "city": "Sevilla",
+    "address": "Avenida Luz 50",
+    "category": "Salud",
+    "createdAt": "2024-01-15T10:00:00",
+    "services": [10, 11],
+    "employees": [10, 11]
+  },
+  {
+    "id": 6,
+    "name": "Estética Bella Vida",
+    "shortDescription": "Centro de belleza y bienestar.",
+    "description": "En Estética Bella Vida, ofrecemos tratamientos de cuidado personal, desde faciales rejuvenecedores hasta masajes relajantes. Nuestro personal está altamente cualificado para proporcionar la mejor experiencia.",
+    "image": {
+      "src": "https://img.freepik.com/foto-gratuito/primo-piano-di-una-scimmia-di-babbuino-sbadigliando-con-uno-sfondo-sfocato_181624-23721.jpg",
+      "title": "Estética Bella Vida - Bienestar y belleza",
+      "alt": "Spa moderno con sala de tratamientos faciales y masajes relajantes."
+    },
+    "city": "Granada",
+    "address": "Calle Belleza 12",
+    "category": "Estética",
+    "createdAt": "2024-02-05T11:00:00",
+    "services": [12, 13],
+    "employees": [12, 13]
+  },
+  {
+    "id": 7,
+    "name": "Blackthorn Agency",
+    "shortDescription": "Soluciones discretas para problemas complejos.",
+    "description": "Blackthorn Agency es una firma clandestina especializada en operaciones encubiertas, inteligencia privada y soluciones definitivas. Con un equipo altamente cualificado, nuestros métodos son precisos, eficientes y absolutamente confidenciales. Contacta solo si estás listo para resolver cualquier situación de manera definitiva.",
+    "image": {
+      "src": "https://images.pexels.com/photos/1059663/pexels-photo-1059663.jpeg",
+      "title": "Blackthorn Agency - Operaciones encubiertas y soluciones definitivas",
+      "alt": "Oficina oscura con un ambiente misterioso, usada para operaciones encubiertas."
+    },
+    "city": "Londres",
+    "address": "Calle Sombra 13",
+    "category": "Soluciones Especiales",
+    "createdAt": "2024-03-15T22:00:00",
+    "services": [14, 15],
+    "employees": [14, 15, 16]
+  }  
+]
+
   

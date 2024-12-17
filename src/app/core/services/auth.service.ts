@@ -45,9 +45,22 @@ export class AuthService {
 
   // Devuelve al usuario autenticado
   getCurrentUser(): any {
-    return this.currentUser;
+    return this.currentUser
+      ? { ...this.currentUser, profilePicture: this.currentUser.profilePicture || '/assets/images/foto-perfil.jpg' }
+      : null;
+  }
+  
+
+  updateCurrentUser(updatedUser: any): void {
+    this.currentUser = updatedUser; // Actualiza el usuario actual en el servicio
   }
 
+  updateProfilePicture(url: string): void {
+    if (this.currentUser) {
+      this.currentUser.profilePicture = url;
+    }
+  }
+  
   // Cierra la sesión
   logout(): void {
     this.currentUser = null;

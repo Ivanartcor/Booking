@@ -1,24 +1,23 @@
 <header>
-    <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
-    <nav>
-      <a (click)="openAppointmentsModal()">Mi empresa</a>
-      <!-- Desplegable para el perfil -->
-      <div class="nav-item dropdown" [class.show]="isDropdownOpen">
-        <a class="nav-link dropdown-toggle" role="button" (click)="toggleDropdown()">
-          <img src="/assets/images/foto-perfil.jpg" alt="User Profile" class="profile-pic">
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Mi citas</a></li>
-          <li><a class="dropdown-item" href="#">Mis datos</a></li>
-          <li><a class="dropdown-item" href="#" (click)="logout()" style="color: rgb(185, 0, 0);">Cerrar sesión</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  
-  <!-- Modal de citas -->
-  <app-client-appointments
-    *ngIf="showAppointmentsModal"
-    (close)="closeAppointmentsModal()"
-  ></app-client-appointments>
-  
+  <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
+  <nav>
+    <a routerLink="/company/company-dashboard">Inicio</a>
+
+    <div class="nav-item dropdown" [class.show]="isDropdownOpen">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" (click)="toggleDropdown()">
+        <img
+        [src]="currentUser?.profilePicture || '/assets/images/foto-perfil.jpg'"
+        alt="Foto de Perfil"
+        class="profile-pic"
+      />
+      </a>
+
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" routerLink="/company/company-employees">Mis Empleados</a></li>
+        <li><a class="dropdown-item" routerLink="/company/company-profile">Mis Datos</a></li>
+        <li><a class="dropdown-item" routerLink="/company/company-appointments">Citas Recibidas</a></li>
+        <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>

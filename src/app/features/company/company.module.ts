@@ -9,6 +9,8 @@ import { ServiceCardComponent } from './components/service-card/service-card.com
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { AddServiceComponent } from './components/add-service/add-service.component';
 import { FormsModule } from '@angular/forms';
+import { CompanyEmployeesComponent } from './components/company-employees/company-employees.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     CompanyProfileComponent,
     ServiceCardComponent,
     ServiceDetailsComponent,
-    AddServiceComponent
+    AddServiceComponent,
+    CompanyEmployeesComponent,
+    AddEmployeeComponent
   ],
   imports: [
     CommonModule,

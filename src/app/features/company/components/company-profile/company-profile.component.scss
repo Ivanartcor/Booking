@@ -104,3 +104,51 @@
     }
   }
   
+
+
+
+
+  //Isaac
+  /* Estilos personalizados */
+.container {
+  max-width: 1200px;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.card-body {
+  background-color: #f8f9fa;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.badge {
+  font-size: 1rem;
+}
+
+.list-group-item {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: #333;
+}

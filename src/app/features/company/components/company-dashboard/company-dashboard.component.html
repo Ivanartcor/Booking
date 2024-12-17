@@ -53,12 +53,14 @@
 
 
   <!-- Botón Añadir Servicio -->
-  <div class="row g-3 mt-3">
-    <div class="col-12 text-center">
-      <button class="btn btn-primary btn-lg">Añadir Servicio</button>
-    </div>
+<div class="row g-3 mt-3">
+  <div class="col-12 text-center">
+    <button class="btn btn-primary btn-lg" (click)="openAddServiceModal()">
+      Añadir Servicio
+    </button>
   </div>
 </div>
+
 
 <!-- Modal de Añadir Servicio -->
 <app-add-service *ngIf="showAddServiceModal" [companyId]="companyId" (close)="closeAddServiceModal()"
