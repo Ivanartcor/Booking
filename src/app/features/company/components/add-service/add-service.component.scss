@@ -145,6 +145,16 @@
     }
   }
   
+  //Creo este estilo para quitar el color verde el succes de bootstrap
+  .custom-btn-success {
+    background-color: #005f6b;
+    color: #fff;
+  }
+  
+  .custom-btn-success:hover {
+    background-color: #067c8b;
+  }
+  
   /* Asegura que el modal se centre correctamente incluso en pantallas más pequeñas */
   @media (max-height: 600px) {
     .modal-content {

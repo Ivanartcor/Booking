@@ -86,7 +86,7 @@
 
   /* Botones */
   .btn-custom {
-    background-color: #007b8f;
+    background-color: #005f6b;
     /* Azul oscuro */
     color: #ffffff;
     font-size: 1rem;
@@ -94,20 +94,20 @@
     border-radius: 4px;
 
     &:hover {
-      background-color: #005f6b;
-      /* Azul más oscuro */
+      background-color: #067c8b;
+      /* Azul más claro */
     }
   }
 
   .btn-primary {
-    background-color: #007b8f;
+    background-color: #005f6b;
     /* Azul oscuro */
     color: #ffffff;
     border: none;
 
     &:hover {
-      background-color: #005f6b;
-      /* Hover azul más oscuro */
+      background-color: #067c8b;
+      /* Hover azul más claro */
     }
   }
 
