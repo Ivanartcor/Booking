@@ -12,7 +12,7 @@ export class CompanyProfileComponent implements OnInit {
   constructor(private companyService: CompanyService) {}
 
   ngOnInit(): void {
-    const companyId = 1;  // Puedes cambiar el ID dinámicamente según la empresa que deseas mostrar
+    const companyId = 2;  //Cambiar el ID dinámicamente según la empresa que mostrar
     this.companyService.getCompanyById(companyId).subscribe((data) => {
       this.company = data;
     });
