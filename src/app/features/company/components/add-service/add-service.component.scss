@@ -37,14 +37,14 @@
       cursor: pointer;
   
       &:hover {
-        color: #005f6b;
+        color: #437A90;
       }
     }
   
     .modal-title {
       margin-bottom: 1.5rem;
       font-size: 2rem;
-      color: #005f6b;
+      color: #437A90;
       text-align: center;
       font-weight: bold;
     }
@@ -77,7 +77,7 @@
           transition: border-color 0.3s ease;
   
           &:focus {
-            border-color: #005f6b;
+            border-color: #437A90;
             box-shadow: 0 0 5px rgba(0, 95, 107, 0.5);
           }
         }
@@ -122,7 +122,7 @@
           transition: background-color 0.3s ease, transform 0.2s ease;
   
           &.btn-success {
-            background-color:  #005f6b;
+            background-color:  #437A90;
             color: #fff;
   
             &:hover {
@@ -147,12 +147,12 @@
   
   //Creo este estilo para quitar el color verde el succes de bootstrap
   .custom-btn-success {
-    background-color: #005f6b;
+    background-color: #437A90;
     color: #fff;
   }
   
   .custom-btn-success:hover {
-    background-color: #067c8b;
+    background-color: #005f6b;
   }
   
   /* Asegura que el modal se centre correctamente incluso en pantallas más pequeñas */

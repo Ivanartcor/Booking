@@ -35,14 +35,14 @@
     cursor: pointer;
 
     &:hover {
-      color: #005f6b;
+      color: #437A90;
     }
   }
 
   .modal-title {
     margin-bottom: 1rem;
     font-size: 1.8rem;
-    color: #005f6b;
+    color: #437A90;
     text-align: center;
   }
 
@@ -55,7 +55,7 @@
     .section-title {
       font-size: 1.2rem;
       font-weight: bold;
-      color: #005f6b;
+      color: #437A90;
       margin-top: 1.5rem;
       margin-bottom: 0.5rem;
     }
@@ -73,11 +73,12 @@
         transition: background-color 0.3s ease, transform 0.2s ease;
 
         &.btn-warning {
-          background: #ffc107;
+          background: #437A90;
           color: #fff;
+          border-color: #437A90;
 
           &:hover {
-            background: #e0a800;
+            background: #005f6b;
             transform: scale(1.05);
           }
         }

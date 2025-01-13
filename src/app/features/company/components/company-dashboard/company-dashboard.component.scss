@@ -1,6 +1,8 @@
 .container {
+  background-color: #ffffff !important;
+
   h3{
-    color: #005f6b;
+    color: #437A90;
   }
 
   .row.g-3 {
@@ -56,7 +58,7 @@
   }
 
   .text-secondary {
-    color: #666666 !important;
+    color: #437A90 !important;
     /* Texto secundario */
   }
 
@@ -72,7 +74,7 @@
     /* Espaciado interno */
     background-color: #ffffff;
     /* Fondo blanco */
-    color: #007b8f;
+    color: #437A90;
     /* Color verde corporativo */
   }
 
@@ -86,7 +88,7 @@
 
   /* Botones */
   .btn-custom {
-    background-color: #005f6b;
+    background-color: #437A90;
     /* Azul oscuro */
     color: #ffffff;
     font-size: 1rem;
@@ -94,20 +96,20 @@
     border-radius: 4px;
 
     &:hover {
-      background-color: #067c8b;
-      /* Azul más claro */
+      background-color: #005f6b;
+      /* Azul más oscuro */
     }
   }
 
   .btn-primary {
-    background-color: #005f6b;
+    background-color: #437A90;
     /* Azul oscuro */
     color: #ffffff;
     border: none;
 
     &:hover {
-      background-color: #067c8b;
-      /* Hover azul más claro */
+      background-color: #005f6b;
+      /* Hover azul más oscuro */
     }
   }
 
