@@ -60,6 +60,7 @@
 
     &:hover {
       background: #005f6b;
+      transform: scale(1.05);
     }
   }
 }
@@ -100,6 +101,7 @@
 
     &:hover {
       color: #005f6b;
+      transform: scale(1.05);
     }
   }
 
@@ -189,8 +191,10 @@
   padding: 0.75rem 2rem;
   font-size: 1rem;
   text-align: center;
+  transition: transform 0.3s ease;
 
   &:hover {
     background: #005f6b;
+    transform: scale(1.05);
   }
 }

@@ -11,6 +11,11 @@ header {
   width: 50px; /* Tamaño reducido del logo */
   height: auto; /* Mantener proporciones */
   cursor: pointer;
+  transition: transform 0.3s ease; /* Efecto de transición */
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
 }
 
 nav {
