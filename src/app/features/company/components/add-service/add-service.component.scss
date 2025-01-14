@@ -149,10 +149,12 @@
   .custom-btn-success {
     background-color: #437A90;
     color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .custom-btn-success:hover {
     background-color: #005f6b;
+    transform: scale(1.05);
   }
   
   /* Asegura que el modal se centre correctamente incluso en pantallas más pequeñas */

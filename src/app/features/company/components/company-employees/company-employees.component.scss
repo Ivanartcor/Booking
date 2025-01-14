@@ -49,15 +49,18 @@
   
         &:hover {
           background-color: #c82333;
+          transform: scale(1.05);
         }
       }
   
       &.btn-success {
         background-color: #437a90;
         color: #fff;
+        
   
         &:hover {
           background-color: #005f6b;
+          transform: scale(1.05);
         }
       }
     }

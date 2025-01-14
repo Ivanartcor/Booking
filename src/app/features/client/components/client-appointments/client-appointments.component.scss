@@ -32,9 +32,12 @@
       font-size: 1.5rem;
       color: #333;
       cursor: pointer;
+      transition: transform 0.3s ease;
+      
   
       &:hover {
         color: #437a90;
+        transform: scale(1.05);
       }
     }
   
@@ -95,9 +98,11 @@
           border-radius: 5px;
           font-weight: bold;
           cursor: pointer;
+          transition: transform 0.3s ease;
   
           &:hover {
             background-color: #365f72;
+            transform: scale(1.05);
           }
         }
       }
