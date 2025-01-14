@@ -78,5 +78,6 @@ export class ClientAppointmentsComponent {
         );
       }
     });
+    alert(`Cita con ID: ${appointmentId} ha sido cancelada.`);
   }
 }
