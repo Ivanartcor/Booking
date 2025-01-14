@@ -11,6 +11,7 @@ import { AddServiceComponent } from './components/add-service/add-service.compon
 import { FormsModule } from '@angular/forms';
 import { CompanyEmployeesComponent } from './components/company-employees/company-employees.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { EditServiceComponent } from './components/edit-service/edit-service.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
     ServiceDetailsComponent,
     AddServiceComponent,
     CompanyEmployeesComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    EditServiceComponent
   ],
   imports: [
     CommonModule,

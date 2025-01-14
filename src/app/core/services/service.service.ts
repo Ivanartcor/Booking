@@ -65,4 +65,15 @@ export class ServiceService {
     }
     return of(false);
   }
+
+ updateService(updatedService: any): Observable<any> {
+  const index = this.services.findIndex((s) => s.id === updatedService.id);
+  if (index !== -1) {
+    this.services[index] = updatedService;
+    console.log('Servicio actualizado:', updatedService);
+    return of(updatedService); // Simula una respuesta del servidor
+  }
+  return of(null);
+}
+
 }

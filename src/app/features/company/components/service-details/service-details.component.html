@@ -30,3 +30,12 @@
     </div>
   </div>
 </div>
+
+<!-- Modal de edición de servicio -->
+<app-edit-service 
+  *ngIf="showEditModal" 
+  [serviceId]="serviceId ?? 0" 
+  [companyId]="companyId" 
+  (close)="closeEditModal()" 
+  (serviceUpdated)="onServiceUpdated($event)">
+</app-edit-service>

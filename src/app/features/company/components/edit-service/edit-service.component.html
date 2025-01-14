@@ -1,0 +1,120 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+
+<div class="modal-content">
+  <button class="close-btn" (click)="closeModal()">×</button>
+  <h2 class="modal-title">Editar Servicio</h2>
+
+  <form (ngSubmit)="updateService()">
+    <div class="form-group">
+      <label for="name">Nombre del Servicio</label>
+      <input 
+        type="text" 
+        id="name" 
+        [(ngModel)]="service.name" 
+        name="name" 
+        required 
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea 
+        id="description" 
+        [(ngModel)]="service.description" 
+        name="description" 
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Precio (€)</label>
+      <input 
+        type="number" 
+        id="price" 
+        [(ngModel)]="service.price" 
+        name="price" 
+        required 
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="duration">Duración (minutos)</label>
+      <input 
+        type="number" 
+        id="duration" 
+        [(ngModel)]="service.durationMinutes" 
+        name="duration" 
+        required 
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categoría</label>
+      <select 
+        id="category" 
+        [(ngModel)]="service.category" 
+        name="category" 
+        required
+      >
+        <option *ngFor="let category of categories" [value]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="assignedEmployees">Empleados Asignados</label>
+      <div class="checkbox-group">
+        <label *ngFor="let employee of employees">
+          <input 
+            type="checkbox" 
+            [value]="employee.id" 
+            (change)="toggleEmployeeSelection(employee.id, $event)" 
+            [checked]="service.assignedEmployees.includes(employee.id)" 
+          />
+          {{ employee.name }} - {{ employee.position }}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Días Disponibles</label>
+      <div class="checkbox-group">
+        <label *ngFor="let day of availableDays">
+          <input 
+            type="checkbox" 
+            [value]="day" 
+            (change)="toggleDaySelection(day, $event)" 
+            [checked]="service.availability.days.includes(day)" 
+          /> 
+          {{ day }}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Horario de Disponibilidad</label>
+      <input 
+        type="time" 
+        [(ngModel)]="service.availability.hours.start" 
+        name="startHour" 
+        required 
+      />
+      a
+      <input 
+        type="time" 
+        [(ngModel)]="service.availability.hours.end" 
+        name="endHour" 
+        required 
+      />
+    </div>
+
+    <div class="error-messages" *ngIf="errors.length > 0">
+      <ul>
+        <li *ngFor="let error of errors">{{ error }}</li>
+      </ul>
+    </div>
+
+    <button type="submit" class="btn custom-btn-success">Guardar Cambios</button>
+  </form>
+</div>

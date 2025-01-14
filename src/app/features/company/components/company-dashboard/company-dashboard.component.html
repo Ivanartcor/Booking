@@ -48,9 +48,12 @@
 
 
   <!-- Modal de detalles del servicio -->
-  <app-service-details *ngIf="showServiceDetailsModal" [serviceId]="selectedServiceId"
-    (close)="closeServiceDetailsModal()"></app-service-details>
-
+  <app-service-details 
+  *ngIf="showServiceDetailsModal" 
+  [serviceId]="selectedServiceId" 
+  [companyId]="companyId" 
+  (close)="closeServiceDetailsModal()">
+</app-service-details>
 
   <!-- Botón Añadir Servicio -->
 <div class="row g-3 mt-3">

@@ -9,10 +9,12 @@ import { EmployeeService } from 'src/app/core/services/employee.service';
 })
 export class ServiceDetailsComponent implements OnInit {
   @Input() serviceId: number | null = null;
+  @Input() companyId!: number; // ID de la empresa
   @Output() close = new EventEmitter<void>();
 
   service: any;
   assignedEmployees: any[] = [];
+  showEditModal = false;
 
   constructor(
     private serviceService: ServiceService,
@@ -45,11 +47,25 @@ export class ServiceDetailsComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.close.emit(); // Emite el evento de cierre
+    this.close.emit();
   }
 
   editService(): void {
-    console.log('Editando servicio...');
+    if (this.serviceId !== null) {
+      this.showEditModal = true;
+    } else {
+      console.error('El ID del servicio no es válido.');
+    }
+  }
+
+  closeEditModal(): void {
+    this.showEditModal = false; // Cierra el modal de edición
+    this.loadServiceDetails(); // Recarga los detalles actualizados
+  }
+
+  onServiceUpdated(updatedService: any): void {
+    this.service = updatedService; // Actualiza los datos del servicio
+    this.closeEditModal(); // Cierra el modal de edición
   }
 
   deleteService(): void {
@@ -57,7 +73,7 @@ export class ServiceDetailsComponent implements OnInit {
       this.serviceService.deleteService(this.serviceId).subscribe((success) => {
         if (success) {
           alert('Servicio eliminado con éxito.');
-          this.closeModal(); // Cierra el modal tras eliminar
+          this.closeModal();
         } else {
           alert('Error al eliminar el servicio.');
         }
