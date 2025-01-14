@@ -98,6 +98,7 @@
     &:hover {
       background-color: #005f6b;
       /* Azul más oscuro */
+      transform: scale(1.05);
     }
   }
 
@@ -106,10 +107,12 @@
     /* Azul oscuro */
     color: #ffffff;
     border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 
     &:hover {
       background-color: #005f6b;
       /* Hover azul más oscuro */
+      transform: scale(1.05);
     }
   }
 
