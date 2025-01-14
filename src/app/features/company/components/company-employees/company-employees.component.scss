@@ -49,6 +49,7 @@
   
         &:hover {
           background-color: #c82333;
+          transform: scale(1.05);
         }
       }
   
@@ -59,7 +60,7 @@
   
         &:hover {
           background-color: #005f6b;
-          transform: scale(1.15);
+          transform: scale(1.05);
         }
       }
     }
