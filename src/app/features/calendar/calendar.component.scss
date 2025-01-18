@@ -2,137 +2,149 @@
 
 /* Contenedor para el calendario */
 .full-calendar-container {
-    max-width: 600px;  /* Tamaño ajustado */
-    margin: 0 auto;  /* Centrado */
-    padding: 10px;  /* Espaciado */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
   }
   
   /* Estilo del calendario */
-  full-calendar {
+  ::ng-deep full-calendar {
     width: 100%;
-    font-size: 0.95rem;  /* Fuente ligeramente mayor para mayor claridad */
-    background-color: #fff !important;  /* Fondo blanco */
+    font-size: 0.95rem;
+    background-color: #f9f9f9 !important;  /* Fondo suave y claro */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil */
-    padding: 10px !important;  /* Espaciado interno */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 10px;
   }
   
   /* Cabecera del calendario */
-  .full-calendar-container .fc-header-toolbar {
-    background-color: #007b8f !important; /* Fondo azul corporativo */
+  ::ng-deep .fc-header-toolbar {
+    background-color: #007b8f !important; /* Fondo azul para la cabecera */
     border-radius: 8px;
     padding: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: none;
   }
   
   /* Título del calendario */
-  .full-calendar-container .fc-toolbar-title {
-    color: #fff !important; /* Blanco para el título */
+  ::ng-deep .fc-toolbar-title {
+    color: #fff !important;
     font-size: 1.1rem;
     font-weight: bold;
   }
   
   /* Botones de navegación */
-  .full-calendar-container .fc-button {
-    background-color: #007b8f !important; /* Color corporativo para los botones */
+  ::ng-deep .fc-button {
+    background-color: #007b8f !important; /* Fondo azul */
     border: none;
-    color: #fff !important;  /* Color de texto blanco */
+    color: #fff !important;
     padding: 6px 10px;
     font-size: 0.9rem;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  
+    
     &:hover {
-      background-color: #005f6b !important; /* Color corporativo más oscuro para el hover */
+      background-color: #005f6b !important; /* Cambio de color al pasar el mouse */
     }
-  
+    
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #ff9800 !important; /* Resaltado al enfocarse (para accesibilidad) */
+      box-shadow: 0 0 0 2px #ff9800; /* Sombra de enfoque para accesibilidad */
     }
   }
   
   /* Vista de días */
-  .full-calendar-container .fc-daygrid-day-number {
-    font-size: 1rem !important;  /* Tamaño adecuado para los días */
-    font-weight: bold;
-    color: #007b8f !important;  /* Aplicamos el color corporativo */
-    text-align: center;  /* Centrado de los números */
+  ::ng-deep .fc-daygrid-day-number {
+    font-size: 1rem !important; /* Aumentar el tamaño del número del día */
+    font-weight: bold !important;
+    color: #007b8f !important;  /* Color corporativo */
   }
   
   /* Estilo de los eventos */
-  .full-calendar-container .fc-event {
-    background-color: #007b8f !important;  /* Fondo azul para los eventos */
+  ::ng-deep .fc-event {
+    background-color: #007b8f !important;  /* Fondo azul */
     color: #fff !important;  /* Texto blanco */
     border-radius: 4px;
     padding: 5px;
     font-size: 0.9rem;
     transition: transform 0.3s ease;
-  
+    
     &:hover {
-      transform: scale(1.05);  /* Efecto de aumento sutil en el hover */
+      transform: scale(1.1);  /* Efecto de aumento en el hover */
     }
   }
   
-  /* Los eventos deben ser fáciles de seleccionar */
-  .full-calendar-container .fc-daygrid-event {
+  /* Eventos al pasar el cursor */
+  ::ng-deep .fc-daygrid-event {
     cursor: pointer;
   }
   
-  /* Estilo de la fecha de día cuando se pasa el cursor */
-  .full-calendar-container .fc-daygrid-day-number:hover {
+  ::ng-deep .fc-daygrid-day-number:hover {
     background-color: #007b8f !important;
     color: #fff !important;
-    border-radius: 50%;  /* Círculo con el número del día */
+    border-radius: 50% !important;
   }
   
-  /* Ajustes de estilo en los días */
-  .full-calendar-container .fc-daygrid-event-harness {
+  /* Agregar un diseño de cuadro para los eventos */
+  ::ng-deep .fc-daygrid-event-harness {
     padding: 2px;
     margin-top: 3px;
   }
   
   /* Estilo de las fechas y días de la semana */
-  .full-calendar-container .fc-col-header-cell {
+  ::ng-deep .fc-col-header-cell {
     background-color: #f0f0f0 !important;  /* Fondo gris suave */
     color: #333 !important;
-    font-weight: bold;
-    padding: 10px 15px;
-    text-align: center; /* Centrado de los días */
+    font-weight: bold !important;
+    padding: 10px 15px !important;
   }
   
-  /* Accesibilidad y legibilidad de las fechas y días */
-  .full-calendar-container .fc-daygrid-day {
-    min-height: 80px;  /* Asegura que cada día tenga suficiente espacio */
+  /* Estilos de accesibilidad: asegúrate de que el calendario sea legible */
+  ::ng-deep .fc-daygrid-day {
+    min-height: 80px !important;  /* Asegura que cada día tenga espacio */
   }
   
-  .full-calendar-container .fc-daygrid-day-top {
-    font-size: 0.9rem;  /* Tamaño adecuado para los días */
+  /* Asegurarnos de que los días del mes se vean correctamente con el color corporativo */
+  ::ng-deep .fc-daygrid-day.fc-day-today {
+    background-color: #e0f7fa !important;  /* Resaltar el día actual con un fondo azul claro */
+    color: #007b8f !important;
+  }
+  
+  ::ng-deep .fc-daygrid-day.fc-other-month {
+    color: #ccc !important;  /* Los días fuera del mes actual en color gris */
+  }
+  
+  /* Estilo de los días seleccionados */
+  ::ng-deep .fc-daygrid-day.fc-day-selected {
+    background-color: #007b8f !important; /* Fondo azul para los días seleccionados */
+    color: #fff !important; /* Color blanco para el texto */
+  }
+  
+  /* Estilos de los días de la semana */
+  ::ng-deep .fc-daygrid-day-top {
+    font-size: 0.9rem !important;  /* Tamaño adecuado */
     color: #333 !important;
-    text-align: center;
   }
   
   /* Responsividad: ajustes para móviles */
   @media (max-width: 768px) {
-    .full-calendar-container {
-      max-width: 100%;  /* El calendario ocupará todo el ancho en pantallas pequeñas */
+    ::ng-deep .full-calendar-container {
+      max-width: 100%;  /* En pantallas pequeñas el calendario ocupará todo el ancho */
     }
   
-    .full-calendar-container .fc-header-toolbar {
+    ::ng-deep .fc-header-toolbar {
       flex-direction: column;
       align-items: stretch;
     }
   
-    .full-calendar-container .fc-button {
-      padding: 8px 15px;  /* Botones más grandes en pantallas pequeñas */
+    ::ng-deep .fc-button {
+      padding: 8px 15px !important;  /* Botones más grandes en pantallas pequeñas */
     }
   
-    .full-calendar-container .fc-daygrid-day-number {
-      font-size: 0.85rem;
+    ::ng-deep .fc-daygrid-day-number {
+      font-size: 0.85rem !important;
     }
   }
   
