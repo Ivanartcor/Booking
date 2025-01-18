@@ -1,62 +1,37 @@
-.services-section {
-  display: inline-block;
-  padding: 2px;
-  border-radius: 8px;
-  /* Eliminada la sombra */
-  box-shadow: none;
-
-  .services-header {
-    background-color: #005f6b;
-    padding: 5px; /* Elimina espacio interno */
-    margin: 0; /* Elimina espacio externo */
-    display: inline-block; /* Hace que el fondo se ajuste al contenido */
-    border-radius: 4px; /* Mantiene bordes redondeados */
-
-    h5 {
-      margin: 0;
-      font-size: 1.2rem; /* Tamaño del texto del título */
-      line-height: 1; 
-    }
-  }
-
-  .services-list {
-    margin-top: 5px;
-    list-style: none;
-    text-align: left;
-
-    li {
-      color: #005f6b;
-      font-size: 1rem;
-      padding: 3px;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 20px; /* Incrementado el margen lateral entre el servicio y los inputs */
-      justify-content: space-between;
-      
-      .service-name {
-        flex-grow: 1;
-      }
-
-      .service-input {
-        width: 120px;
-        padding: 4px;
-        border: 1px solid #ccc;
-        border-radius: 12px;
-        font-size: 0.9rem;
-
-        &:focus {
-          outline: none;
-          border-color: #007b8f;
-        }
-      }
-    }
-  }
-}
 .container {
+  .row.align-items-stretch {
+    display: flex;
+    align-items: stretch; /* Asegura que los elementos dentro de la fila se estiren para coincidir en altura */
+
+    .header-image {
+      padding: 0;
+      position: relative;
+
+      img {
+        object-fit: cover; /* Asegura que la imagen cubra completamente el espacio de la columna */
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .col-md-4 {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      app-calendar {
+        width: 100%;
+        max-width: 400px; /* Limita el ancho máximo del calendario */
+      }
+    }
+  }
+
   .services-section {
+    display: inline-block;
     padding: 2px;
     border-radius: 8px;
+    box-shadow: none;
 
     .services-header {
       background-color: #005f6b;
@@ -64,6 +39,7 @@
       margin: 0;
       display: inline-block;
       border-radius: 4px;
+
       h5 {
         margin: 0;
         font-size: 1.2rem;
@@ -106,13 +82,13 @@
   .time-dropdown-section {
     display: flex;
     align-items: center;
-    gap: 10px; // Espaciado entre elementos
+    gap: 10px;
 
     .time-label {
       font-weight: bold;
       font-size: 1rem;
       color: #333;
-      margin: 0; // Elimina espacio adicional
+      margin: 0;
     }
 
     .time-input {
@@ -132,6 +108,6 @@
   }
 
   .row.align-items-center {
-    align-items: center; // Asegura que todos los elementos estén alineados verticalmente
+    align-items: center;
   }
 }
