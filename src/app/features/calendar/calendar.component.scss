@@ -1,0 +1,138 @@
+/* src/app/calendar/calendar.component.scss */
+
+/* Contenedor para el calendario */
+.full-calendar-container {
+    max-width: 600px;  /* Tamaño ajustado */
+    margin: 0 auto;  /* Centrado */
+    padding: 10px;  /* Espaciado */
+  }
+  
+  /* Estilo del calendario */
+  full-calendar {
+    width: 100%;
+    font-size: 0.95rem;  /* Fuente ligeramente mayor para mayor claridad */
+    background-color: #fff !important;  /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    padding: 10px !important;  /* Espaciado interno */
+  }
+  
+  /* Cabecera del calendario */
+  .full-calendar-container .fc-header-toolbar {
+    background-color: #007b8f !important; /* Fondo azul corporativo */
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+  }
+  
+  /* Título del calendario */
+  .full-calendar-container .fc-toolbar-title {
+    color: #fff !important; /* Blanco para el título */
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  /* Botones de navegación */
+  .full-calendar-container .fc-button {
+    background-color: #007b8f !important; /* Color corporativo para los botones */
+    border: none;
+    color: #fff !important;  /* Color de texto blanco */
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #005f6b !important; /* Color corporativo más oscuro para el hover */
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #ff9800 !important; /* Resaltado al enfocarse (para accesibilidad) */
+    }
+  }
+  
+  /* Vista de días */
+  .full-calendar-container .fc-daygrid-day-number {
+    font-size: 1rem !important;  /* Tamaño adecuado para los días */
+    font-weight: bold;
+    color: #007b8f !important;  /* Aplicamos el color corporativo */
+    text-align: center;  /* Centrado de los números */
+  }
+  
+  /* Estilo de los eventos */
+  .full-calendar-container .fc-event {
+    background-color: #007b8f !important;  /* Fondo azul para los eventos */
+    color: #fff !important;  /* Texto blanco */
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.05);  /* Efecto de aumento sutil en el hover */
+    }
+  }
+  
+  /* Los eventos deben ser fáciles de seleccionar */
+  .full-calendar-container .fc-daygrid-event {
+    cursor: pointer;
+  }
+  
+  /* Estilo de la fecha de día cuando se pasa el cursor */
+  .full-calendar-container .fc-daygrid-day-number:hover {
+    background-color: #007b8f !important;
+    color: #fff !important;
+    border-radius: 50%;  /* Círculo con el número del día */
+  }
+  
+  /* Ajustes de estilo en los días */
+  .full-calendar-container .fc-daygrid-event-harness {
+    padding: 2px;
+    margin-top: 3px;
+  }
+  
+  /* Estilo de las fechas y días de la semana */
+  .full-calendar-container .fc-col-header-cell {
+    background-color: #f0f0f0 !important;  /* Fondo gris suave */
+    color: #333 !important;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-align: center; /* Centrado de los días */
+  }
+  
+  /* Accesibilidad y legibilidad de las fechas y días */
+  .full-calendar-container .fc-daygrid-day {
+    min-height: 80px;  /* Asegura que cada día tenga suficiente espacio */
+  }
+  
+  .full-calendar-container .fc-daygrid-day-top {
+    font-size: 0.9rem;  /* Tamaño adecuado para los días */
+    color: #333 !important;
+    text-align: center;
+  }
+  
+  /* Responsividad: ajustes para móviles */
+  @media (max-width: 768px) {
+    .full-calendar-container {
+      max-width: 100%;  /* El calendario ocupará todo el ancho en pantallas pequeñas */
+    }
+  
+    .full-calendar-container .fc-header-toolbar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .full-calendar-container .fc-button {
+      padding: 8px 15px;  /* Botones más grandes en pantallas pequeñas */
+    }
+  
+    .full-calendar-container .fc-daygrid-day-number {
+      font-size: 0.85rem;
+    }
+  }
+  
