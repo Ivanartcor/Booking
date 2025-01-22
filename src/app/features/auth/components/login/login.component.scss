@@ -17,6 +17,7 @@
 
     /* Caja de login con tamaño fijo */
     .login-box {
+      font-size: 11px;
       background-color: #fff;
       padding: 30px;
       border-radius: 12px;
@@ -42,12 +43,20 @@
     .small-text {
       font-size: 11px;
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 10%;
+    }
+    .small-text a {
+      color: #437A90;
+      text-decoration: none;
+    }
+
+    .small-text a:hover {
+      text-decoration: underline;
     }
 
     .small-text2 {
       font-size: 11px;
-      margin: 40%;
+      margin: 35%;
       white-space: nowrap;
       /* Evita el salto de línea */
     }
