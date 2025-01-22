@@ -19,13 +19,12 @@ export class CalendarComponent implements OnInit {
       { title: 'Evento 1', date: '2025-01-20' },  // Evento de ejemplo
       { title: 'Evento 2', date: '2025-01-25' }
     ],
-    // Aquí agregamos el evento dateClick de manera correcta
-    dateClick: (info: { dateStr: string }) => {  // Asegúrate de que info tenga el tipo correcto
-      alert('Fecha seleccionada: ' + info.dateStr);
-    },
-    // Esto hace que se muestren solo los números de los días
+    // Mostrar solo el número del día
     dayCellContent: function(info) {
       return info.date.getDate().toString();  // Solo el número del día
+    },
+    dateClick: (info: { dateStr: string }) => {
+      alert('Fecha seleccionada: ' + info.dateStr);
     }
   };
 
