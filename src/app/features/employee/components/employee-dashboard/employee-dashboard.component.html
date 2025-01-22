@@ -12,44 +12,32 @@
     </div>
   </div>
 
-  <div class="row mt-4 align-items-center">
-    <!-- Mi Jornada -->
-    <div class="col-md-8 d-flex align-items-center">
-      <div class="services-section">
-        <div class="services-header">
-          <h5 class="text-white fw-bold">Mi Jornada:</h5>
-        </div>
-        <ul class="list-unstyled services-list mt-3">
-          <li>
-            <span class="service-name">Consulta médica general</span>
-            <input type="text" class="service-input" placeholder="-" />
-            <input type="text" class="service-input" placeholder="-" />
-          </li>
-          <li>
-            <span class="service-name">Atención de urgencias</span>
-            <input type="text" class="service-input" placeholder="-" />
-            <input type="text" class="service-input" placeholder="-" />
-          </li>
-          <li>
-            <span class="service-name">Exámenes diagnósticos</span>
-            <input type="text" class="service-input" placeholder="-" />
-            <input type="text" class="service-input" placeholder="-" />
-          </li>
-          <li>
-            <span class="service-name">Programas de bienestar</span>
-            <input type="text" class="service-input" placeholder="-" />
-            <input type="text" class="service-input" placeholder="-" />
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Input de hora y desplegable -->
-    <div class="col-md-4 d-flex align-items-center">
-      <div class="time-dropdown-section">
-        <label for="current-time" class="time-label">Hora actual:</label>
-        <input type="time" id="current-time" class="time-input" />
-      </div>
-    </div>
+  <!-- Indicador de carga -->
+  <div *ngIf="isLoading">
+    <p>Cargando servicios...</p>
   </div>
+  
+  <!-- Mensaje de error o lista de servicios -->
+  <div *ngIf="!isLoading && errorMessage; else serviceList">
+    <p class="error">{{ errorMessage }}</p>
+  </div>
+  
+  <!-- Lista de servicios -->
+  <ng-template #serviceList>
+    <div *ngIf="services.length > 0; else noServices">
+      <h2>Lista de Servicios</h2>
+      <ul>
+        <li *ngFor="let service of services">
+          <h3>{{ service.name }}</h3>
+          <p>{{ service.description }}</p>
+          <p><strong>Compañía:</strong> {{ service.companyId }}</p>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+  
+  <!-- Mensaje cuando no hay servicios -->
+  <ng-template #noServices>
+    <p>No hay servicios disponibles.</p>
+  </ng-template>
 </div>

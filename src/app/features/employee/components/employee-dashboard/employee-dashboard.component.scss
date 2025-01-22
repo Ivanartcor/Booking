@@ -1,14 +1,13 @@
 .container {
   .row.align-items-stretch {
     display: flex;
-    align-items: stretch; /* Asegura que los elementos dentro de la fila se estiren para coincidir en altura */
+    align-items: stretch;
 
     .header-image {
       padding: 0;
-      position: relative;
 
       img {
-        object-fit: cover; /* Asegura que la imagen cubra completamente el espacio de la columna */
+        object-fit: cover;
         width: 100%;
         height: 100%;
       }
@@ -22,92 +21,39 @@
 
       app-calendar {
         width: 100%;
-        max-width: 400px; /* Limita el ancho máximo del calendario */
+        max-width: 400px;
       }
     }
   }
 
-  .services-section {
-    display: inline-block;
-    padding: 2px;
-    border-radius: 8px;
-    box-shadow: none;
+  .error {
+    color: red;
+    font-weight: bold;
+  }
 
-    .services-header {
-      background-color: #005f6b;
-      padding: 5px;
-      margin: 0;
-      display: inline-block;
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      padding: 1rem;
       border-radius: 4px;
 
-      h5 {
+      h3 {
         margin: 0;
         font-size: 1.2rem;
-        line-height: 1;
-      }
-    }
-
-    .services-list {
-      margin-top: 5px;
-      list-style: none;
-      text-align: left;
-
-      li {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: #005f6b;
-        font-size: 1rem;
-        margin-bottom: 15px;
-
-        .service-name {
-          flex-grow: 1;
-        }
-
-        .service-input {
-          width: 120px;
-          padding: 4px;
-          border: 1px solid #ccc;
-          border-radius: 12px;
-          font-size: 0.9rem;
-          &:focus {
-            outline: none;
-            border-color: #007b8f;
-          }
-        }
       }
     }
   }
 
-  .time-dropdown-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    .time-label {
-      font-weight: bold;
-      font-size: 1rem;
-      color: #333;
-      margin: 0;
-    }
-
-    .time-input {
-      width: 120px;
-      padding: 4px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
-
-    .time-select {
-      padding: 4px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
+  h2 {
+    color: #333;
+    margin-bottom: 1rem;
   }
 
-  .row.align-items-center {
-    align-items: center;
+  p {
+    margin: 0 0 10px;
   }
 }
