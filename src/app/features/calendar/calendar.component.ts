@@ -22,6 +22,10 @@ export class CalendarComponent implements OnInit {
     // Aquí agregamos el evento dateClick de manera correcta
     dateClick: (info: { dateStr: string }) => {  // Asegúrate de que info tenga el tipo correcto
       alert('Fecha seleccionada: ' + info.dateStr);
+    },
+    // Esto hace que se muestren solo los números de los días
+    dayCellContent: function(info) {
+      return info.date.getDate().toString();  // Solo el número del día
     }
   };
 

@@ -1,133 +1,136 @@
-/* src/app/calendar/calendar.component.scss */
-
 /* Contenedor para el calendario */
 .full-calendar-container {
-    max-width: 500px; /* Hacer el calendario más pequeño */
-    margin: 0 auto;
-    padding: 10px;
+  width: 100%; /* Hace que el contenedor ocupe el 100% del ancho disponible */
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Estilo del calendario */
+::ng-deep full-calendar {
+  width: 100%;
+  background-color: #fff;  /* Fondo blanco para un estilo limpio */
+  border-radius: 6px; /* Bordes más suaves */
+  box-shadow: none; /* Eliminar sombra para un estilo más plano */
+  padding: 8px;
+}
+
+/* Cabecera del calendario */
+::ng-deep .fc-header-toolbar {
+  background-color: #007b8f; /* Fondo sutil y limpio */
+  border-radius: 6px;
+  padding: 4px 6px; /* Espaciado reducido */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Título del calendario */
+::ng-deep .fc-toolbar-title {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: normal; /* Menos énfasis en el título */
+  text-decoration: none; /* Eliminar subrayado */
+}
+
+/* Botones de navegación */
+::ng-deep .fc-button {
+  background-color: transparent; /* Fondo transparente */
+  border: 1px solid #007b8f; /* Borde sutil */
+  color: #007b8f;
+  padding: 4px 8px; /* Botones más pequeños */
+  font-size: 0.85rem; /* Fuente más pequeña */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+::ng-deep .fc-button:hover {
+  background-color: #007b8f;
+  color: #fff;
+}
+
+::ng-deep .fc-button:focus {
+  outline: none;
+}
+
+/* Vista de días - Mostrar solo el número de día */
+::ng-deep .fc-daygrid-day-number {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #007b8f;
+  text-decoration: none; /* Eliminar subrayado */
+  padding: 6px;
+  text-align: center;
+}
+
+/* Estilo de los eventos */
+::ng-deep .fc-event {
+  background-color: #007b8f;
+  color: #fff;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+::ng-deep .fc-event:hover {
+  transform: scale(1.05); /* Aumento sutil al pasar el mouse */
+}
+
+/* Estilo de las fechas y días de la semana */
+::ng-deep .fc-col-header-cell {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: normal;
+  padding: 6px 10px;
+}
+
+/* Estilo para el día actual */
+::ng-deep .fc-daygrid-day.fc-day-today {
+  background-color: #e0f7fa;  /* Resaltar el día actual */
+  color: #007b8f;
+}
+
+/* Estilo para los días fuera del mes actual */
+::ng-deep .fc-daygrid-day.fc-other-month {
+  color: #ccc;
+}
+
+/* Estilo de los días seleccionados */
+::ng-deep .fc-daygrid-day.fc-day-selected {
+  background-color: #007b8f;
+  color: #fff;
+}
+
+/* Estilos de los días de la semana */
+::ng-deep .fc-daygrid-day-top {
+  font-size: 0.85rem;
+  color: #333;
+  text-decoration: none; /* Eliminar subrayado */
+}
+
+/* Responsividad: ajustes para móviles */
+@media (max-width: 768px) {
+  ::ng-deep .full-calendar-container {
+    padding: 5px;  /* Menos padding en pantallas pequeñas */
   }
-  
-  /* Estilo del calendario */
-  ::ng-deep full-calendar {
-    width: 100%;
-    background-color: #fff;  /* Fondo blanco para un estilo limpio */
-    border-radius: 6px; /* Bordes más suaves */
-    box-shadow: none; /* Eliminar sombra para un estilo más plano */
-    padding: 8px;
-  }
-  
-  /* Cabecera del calendario */
+
   ::ng-deep .fc-header-toolbar {
-    background-color: #007b8f; /* Fondo sutil y limpio */
-    border-radius: 6px;
-    padding: 4px 6px; /* Espaciado reducido */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  /* Título del calendario */
-  ::ng-deep .fc-toolbar-title {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: normal; /* Menos énfasis en el título */
-  }
-  
-  /* Botones de navegación */
+
   ::ng-deep .fc-button {
-    background-color: transparent; /* Fondo transparente */
-    border: 1px solid #007b8f; /* Borde sutil */
-    color: #007b8f;
-    padding: 4px 8px; /* Botones más pequeños */
-    font-size: 0.85rem; /* Fuente más pequeña */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 6px 10px; /* Botones más pequeños en pantallas pequeñas */
   }
-  
-  ::ng-deep .fc-button:hover {
-    background-color: #007b8f;
-    color: #fff;
-  }
-  
-  ::ng-deep .fc-button:focus {
-    outline: none;
-  }
-  
-  /* Vista de días */
+
   ::ng-deep .fc-daygrid-day-number {
-    font-size: 0.9rem;
-    font-weight: normal;
-    color: #007b8f;
-  }
-  
-  /* Estilo de los eventos */
-  ::ng-deep .fc-event {
-    background-color: #007b8f;
-    color: #fff;
-    border-radius: 4px;
-    padding: 4px 6px;
     font-size: 0.85rem;
-    transition: transform 0.3s ease;
   }
-  
-  ::ng-deep .fc-event:hover {
-    transform: scale(1.05); /* Aumento sutil al pasar el mouse */
+
+  /* Asegurarse de que el calendario sea completamente adaptable */
+  ::ng-deep full-calendar {
+    height: auto;
   }
-  
-  /* Eventos al pasar el cursor */
-  ::ng-deep .fc-daygrid-event {
-    cursor: pointer;
-  }
-  
-  /* Estilo de las fechas y días de la semana */
-  ::ng-deep .fc-col-header-cell {
-    background-color: #f0f0f0;
-    color: #333;
-    font-weight: normal;
-    padding: 6px 10px;
-  }
-  
-  /* Estilo para el día actual */
-  ::ng-deep .fc-daygrid-day.fc-day-today {
-    background-color: #e0f7fa;  /* Resaltar el día actual */
-    color: #007b8f;
-  }
-  
-  /* Estilo para los días fuera del mes actual */
-  ::ng-deep .fc-daygrid-day.fc-other-month {
-    color: #ccc;
-  }
-  
-  /* Estilo de los días seleccionados */
-  ::ng-deep .fc-daygrid-day.fc-day-selected {
-    background-color: #007b8f;
-    color: #fff;
-  }
-  
-  /* Estilos de los días de la semana */
-  ::ng-deep .fc-daygrid-day-top {
-    font-size: 0.85rem;
-    color: #333;
-  }
-  
-  /* Responsividad: ajustes para móviles */
-  @media (max-width: 768px) {
-    ::ng-deep .full-calendar-container {
-      max-width: 100%;
-    }
-  
-    ::ng-deep .fc-header-toolbar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    ::ng-deep .fc-button {
-      padding: 6px 10px; /* Botones más pequeños en pantallas pequeñas */
-    }
-  
-    ::ng-deep .fc-daygrid-day-number {
-      font-size: 0.85rem;
-    }
-  }
-  
+}

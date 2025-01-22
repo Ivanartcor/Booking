@@ -13,31 +13,57 @@
   </div>
 
   <!-- Indicador de carga -->
-  <div *ngIf="isLoading">
+  <div *ngIf="isLoading" class="loading-indicator">
     <p>Cargando servicios...</p>
   </div>
-  
+
   <!-- Mensaje de error o lista de servicios -->
   <div *ngIf="!isLoading && errorMessage; else serviceList">
     <p class="error">{{ errorMessage }}</p>
   </div>
-  
+
   <!-- Lista de servicios -->
   <ng-template #serviceList>
     <div *ngIf="services.length > 0; else noServices">
-      <h2>Lista de Servicios</h2>
+      <h2>Servicios</h2>
       <ul>
-        <li *ngFor="let service of services">
+        <li *ngFor="let service of services" (click)="openServiceModal(service)">
           <h3>{{ service.name }}</h3>
-          <p>{{ service.description }}</p>
-          <p><strong>Compañía:</strong> {{ service.companyId }}</p>
+          <p><strong>Descripción:</strong> {{ service.description }}</p>
+          <p><strong>Precio:</strong> {{ service.price  + '€' }} </p>
+          <p><strong>Días:</strong> {{ service.availability.days.join(', ') }} </p>
+          <p><strong>Horas:</strong> {{ service.availability.hours.start }} - {{ service.availability.hours.end }} </p>
         </li>
       </ul>
     </div>
   </ng-template>
-  
+
   <!-- Mensaje cuando no hay servicios -->
   <ng-template #noServices>
     <p>No hay servicios disponibles.</p>
   </ng-template>
+
+<!-- Modal de servicio -->
+<div class="modal" tabindex="-1" [class.show]="isModalOpen" (click)="closeModal($event)">
+  <div class="modal-dialog" (click)="stopPropagation($event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ selectedService?.name }}</h5>
+        <button type="button" class="close" (click)="closeModal($event)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Descripción:</strong> {{ selectedService?.description }}</p>
+        <p><strong>Precio:</strong> {{ selectedService?.price + '€' }}</p>
+        <p><strong>Días:</strong> {{ selectedService?.availability?.days.join(', ') }}</p>
+        <p><strong>Horas:</strong> {{ selectedService?.availability?.hours.start }} - {{ selectedService?.availability?.hours.end }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-edit" (click)="editService()">Editar</button>
+        <button type="button" class="btn btn-delete" (click)="deleteService()">Eliminar</button>
+      </div>
+    </div>
+  </div>
 </div>
+
