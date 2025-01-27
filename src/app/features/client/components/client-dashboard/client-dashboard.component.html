@@ -5,7 +5,9 @@
 
   <!-- Barra de Búsqueda -->
   <div class="search-bar">
+    <label for="search-input" class="visually-hidden">Buscar empresa:</label>
     <input
+      id="search-input"
       type="text"
       placeholder="Buscar empresa..."
       [(ngModel)]="searchQuery"
@@ -16,11 +18,13 @@
 
    <!-- Dropdown de ciudades cargadas dinámicamente -->
    <div class="user-dropdown">
-    <select (change)="selectCity($event)">
+    <label for="city-select" class="visually-hidden">Selecciona una ciudad:</label>
+    <select id="city-select" (change)="selectCity($event)">
       <option value="">Todas</option>
       <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
     </select>
   </div>
+  
 
 
 
@@ -49,7 +53,7 @@
     class="company-image">
 
 <div class="company-info">
- <h2>{{ company.name }}</h2>
+ <h1>{{ company.name }}</h1>
  <p>{{ company.shortDescription }}</p>
 </div>
   </section>

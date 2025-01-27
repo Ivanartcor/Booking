@@ -62,11 +62,11 @@ body {
 }
 
 /* Título "Bienvenido a Bookify" */
-.titulo {
+h1 {
+  font-weight: 400; /* Hace la letra más fina */
   font-size: 25px;
   color: #333;
-  margin-bottom: 0;
-  /* Eliminar margen */
+  margin-bottom: 0; /* Eliminar margen debajo */
 }
 
 /* Estilos para los campos del formulario */
@@ -115,7 +115,8 @@ body {
 /* Contenedor para el texto de la parte inferior */
 .footer-text {
   position: absolute;
-  bottom: 20px; /* Espaciado entre el borde inferior y el texto */
+  bottom: 20px;
+  /* Espaciado entre el borde inferior y el texto */
   width: 100%;
   text-align: center;
   font-size: 14px;
@@ -123,13 +124,17 @@ body {
 
 /* Estilo del enlace */
 .footer-text a {
-  color: #000; /* Color negro */
-  text-decoration: none; /* Eliminar subrayado */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  color: #000;
+  /* Color negro */
+  text-decoration: none;
+  /* Eliminar subrayado */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Sombra suave */
 }
 
 /* Efecto hover para el enlace */
 .footer-text a:hover {
-  text-decoration: underline; /* Subrayado al pasar el ratón */
+  text-decoration: underline;
+  /* Subrayado al pasar el ratón */
   cursor: pointer;
 }

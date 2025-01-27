@@ -45,6 +45,7 @@
       margin-top: 0;
       margin-bottom: 10%;
     }
+
     .small-text a {
       color: #437A90;
       text-decoration: none;
@@ -76,8 +77,10 @@
       height: auto;
     }
 
-    /* Título "Bienvenido a Bookify" */
-    .titulo {
+    /* Título "Accede a tu cuenta" */
+    h1 {
+      font-weight: 400;
+      /* Hace la letra más fina */
       font-size: 25px;
       color: #333;
       margin-bottom: 0;
