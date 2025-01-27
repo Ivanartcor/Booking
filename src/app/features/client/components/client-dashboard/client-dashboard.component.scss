@@ -13,6 +13,7 @@ body {
   color: $text-color;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -22,6 +23,7 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   gap: 2rem;
+  flex-wrap: wrap; /* Asegura que el contenido se acomode en pantallas más pequeñas */
 
   .menu-btn {
     background: none;
@@ -31,13 +33,14 @@ header {
   }
 }
 
-/* Barra de Búsqueda Centrada */
+/* Barra de Búsqueda */
 .search-bar {
-  flex: 1; /* Ocupa el espacio central */
+  flex: 1;
   text-align: center;
+  margin: 1rem 0;
 
   input[type='text'] {
-    width: 70%; /* Ancho central */
+    width: 80%;
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -58,6 +61,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin: 1rem 0; /* Añadido margen para los dropdowns */
 }
 
 select {
@@ -70,14 +74,14 @@ select {
 .menu-dropdown {
   display: none;
   position: absolute;
-  top: 4rem; /* Ajustar según la altura del header */
+  top: 4rem;
   left: 1rem;
   background-color: $card-background;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  width: 200px; /* Ajustar el ancho del menú */
+  width: 200px;
 }
 
 .menu-dropdown.show {
@@ -122,6 +126,7 @@ select {
   padding: 2rem 4rem;
 }
 
+/* Card de Empresas */
 .company-card {
   display: flex;
   background-color: #ffffff;
@@ -162,5 +167,63 @@ select {
       margin-top: 0.5rem;
       line-height: 1.5;
     }
+  }
+}
+
+/* Media Queries */
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar input[type='text'] {
+    width: 100%;
+  }
+
+  .company-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .company-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .company-info {
+    padding: 1rem;
+  }
+}
+
+/* Pantallas muy pequeñas (dispositivos móviles) */
+@media (max-width: 480px) {
+  .menu-btn {
+    font-size: 2rem;
+  }
+
+  .search-bar input[type='text'] {
+    width: 90%;
+  }
+
+  .menu-dropdown {
+    width: 100%;
+    top: 3rem;
+  }
+
+  .company-card {
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .company-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .company-info {
+    padding: 1rem;
   }
 }
