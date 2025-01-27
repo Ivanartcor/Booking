@@ -23,19 +23,17 @@ export class CalendarComponent implements OnInit {
       { title: 'Evento 1', date: '2025-01-20' },
       { title: 'Evento 2', date: '2025-01-25' },
     ],
+    // Usar el formato de fecha para mostrar mes con cero delante
     titleFormat: {
       year: 'numeric',
       month: '2-digit', // Forzar el mes a tener siempre dos dígitos
     },
     // Mostrar solo el número del día
     dayCellContent: (info) => info.date.getDate().toString(),
+    // Manejador para clic en una fecha
     dateClick: (info: { dateStr: string }) => {
       alert('Fecha seleccionada: ' + info.dateStr);
     },
-    contentHeight: 'auto', // Ajustar altura
-    aspectRatio: 1.5, // Relación de aspecto para un tamaño adecuado
-    // Evitar que se recorte el contenido
-    nowIndicator: true,
   };
 
   constructor() {}

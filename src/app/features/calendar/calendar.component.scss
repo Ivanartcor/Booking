@@ -9,7 +9,6 @@
   border-radius: 8px; /* Bordes suaves */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   overflow: hidden; /* Asegurar que no haya barras de desplazamiento */
-  height: 600px; /* Altura fija para que todo quepa */
 }
 
 /* Estilo del calendario */
@@ -20,8 +19,7 @@
   box-shadow: none;
   padding: 0;
   overflow: hidden; /* Evitar la barra deslizante */
-  height: 100%; /* Asegura que el calendario ocupe el 100% de su contenedor */
-  min-height: 500px; /* Evitar que el calendario sea demasiado pequeño */
+  height: auto; /* Asegura que el calendario se ajuste al contenido */
 }
 
 /* Cabecera del calendario */
@@ -85,13 +83,19 @@
 
 /* Nombres de los días (sin subrayado y en verde corporativo) */
 ::ng-deep .fc-col-header-cell {
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Fondo claro */
   color: #437a90; /* Verde corporativo */
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
   text-decoration: none; /* Quitar subrayado */
   padding: 10px 0;
+}
+
+/* Asegúrate de que las celdas no tengan subrayado */
+::ng-deep .fc-col-header-cell a {
+  text-decoration: none; /* Eliminar subrayado de los enlaces */
+  color: #437a90; /* Verde corporativo */
 }
 
 /* Estilo de los eventos */
