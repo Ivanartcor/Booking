@@ -157,10 +157,12 @@ select {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: justify; /* Justificado en los textos dentro de la info de la empresa */
 
     h2 {
       margin: 0;
       color: $primary-color;
+      text-align: left; /* Alineación de título a la izquierda */
     }
 
     p {
@@ -227,3 +229,4 @@ select {
     padding: 1rem;
   }
 }
+
