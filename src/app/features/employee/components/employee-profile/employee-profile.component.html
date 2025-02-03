@@ -1,1 +1,34 @@
-<p>employee-profile works!</p>
+<div *ngIf="employee" class="container py-5">
+    <div class="row">
+      <!-- Imagen del Empleado -->
+      <div class="col-md-4">
+        <div class="card">
+          <img [src]="employee.image?.src || 'assets/images/foto-perfil.jpg'" class="card-img-top" 
+               [alt]="employee.image?.alt || employee.name" 
+               [title]="employee.image?.title || employee.name">
+        </div>
+      </div>
+  
+      <!-- Información del Empleado -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title">{{ employee.name }}</h1>
+            <p><strong>Correo Electrónico:</strong> {{ employee.email }}</p>
+            <p><strong>Rol:</strong> {{ employee.role }}</p>
+            <p><strong>Posición:</strong> {{ employee.position }}</p>
+            <p><strong>Fecha de Contratación:</strong> {{ employee.hireDate | date:'longDate' }}</p>
+            <p><strong>ID de Empresa:</strong> {{ employee.companyId }}</p>
+            
+            <h3 class="mt-4">Especializaciones</h3>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let spec of employee.specialization" class="list-group-item">{{ spec }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
