@@ -1,6 +1,15 @@
+/* Asegurar que la página ocupe el 100% de la altura y el footer esté anclado abajo */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
 .app-footer {
   background-color: #ffffff; /* Blanco */
   padding: 0.5rem 1rem;
+  margin-top: auto; /* Empuja el footer hacia abajo */
 
   .footer-container {
     display: flex;
