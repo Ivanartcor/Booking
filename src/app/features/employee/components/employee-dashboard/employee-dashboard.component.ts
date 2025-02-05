@@ -60,19 +60,39 @@ export class EmployeeDashboardComponent implements OnInit {
     // Aquí puedes agregar la lógica para editar el servicio (abrir un formulario, etc.)
   }
 
+  setSelectedService(service: any): void {
+    this.selectedService = service;
+    this.deleteService();
+  }
+
   // Lógica para eliminar el servicio
   deleteService(): void {
-    if (this.selectedService && this.selectedService.id) {
-      this.serviceService.deleteService(this.selectedService.id).subscribe((success) => {
-        if (success) {
-          this.services = this.services.filter((service) => service.id !== this.selectedService.id);
-          this.closeModal(new Event('click')); // Cierra el modal después de eliminar el servicio
-          alert('Servicio eliminado');
-        } else {
-          alert('Error al eliminar el servicio');
-        }
-      });
+    if (!this.selectedService || !this.selectedService.id) {
+      console.warn('No se ha seleccionado un servicio válido.');
+      return;
     }
+  
+    if (!confirm(`¿Seguro que quieres eliminar "${this.selectedService.name}"?`)) {
+      return;
+    }
+  
+    this.serviceService.deleteService(this.selectedService.id).subscribe({
+      next: (success) => {
+        if (success) {
+          this.services = this.services.filter(service => service.id !== this.selectedService.id);
+          this.selectedService = null; // Resetear selección
+          alert('Servicio eliminado correctamente');
+        } else {
+          alert('No se pudo eliminar el servicio. Inténtalo de nuevo.');
+        }
+      },
+      error: (err) => {
+        console.error('Error al eliminar el servicio:', err);
+        alert('Error al eliminar el servicio. Por favor, inténtalo más tarde.');
+      }
+    });
   }
+  
+  
 }
 
