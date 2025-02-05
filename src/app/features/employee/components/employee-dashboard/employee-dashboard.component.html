@@ -25,12 +25,10 @@
   <!-- Lista de servicios -->
   <ng-template #serviceList>
     <div *ngIf="services.length > 0; else noServices">
-      <h1>Servicios</h1>
+      <h1>Jornada</h1>
       <ul>
         <li *ngFor="let service of services" (click)="openServiceModal(service)">
           <h2>{{ service.name }}</h2>
-          <p><strong>Descripción:</strong> {{ service.description }}</p>
-          <p><strong>Precio:</strong> {{ service.price + '€' }} </p>
           <p><strong>Días:</strong> {{ service.availability.days.join(', ') }} </p>
           <p><strong>Horas:</strong> {{ service.availability.hours.start }} - {{ service.availability.hours.end }} </p>
         </li>
@@ -61,8 +59,7 @@
             selectedService?.availability?.hours.end }}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-edit" (click)="editService()">Editar</button>
-          <button type="button" class="btn btn-delete" (click)="deleteService()">Eliminar</button>
+          <button type="button" class="btn btn-delete" (click)="deleteService()">Cancelar</button>
         </div>
       </div>
     </div>
