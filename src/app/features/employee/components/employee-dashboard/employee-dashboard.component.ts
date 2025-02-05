@@ -91,8 +91,7 @@ export class EmployeeDashboardComponent implements OnInit {
         alert('Error al eliminar el servicio. Por favor, inténtalo más tarde.');
       }
     });
-  }
-  
+  }  
   
 }
 
