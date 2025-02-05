@@ -72,7 +72,7 @@ export class EmployeeDashboardComponent implements OnInit {
       return;
     }
   
-    if (!confirm(`¿Seguro que quieres eliminar "${this.selectedService.name}"?`)) {
+    if (!confirm(`¿Seguro que quieres cancelar "${this.selectedService.name}"?`)) {
       return;
     }
   
@@ -81,14 +81,14 @@ export class EmployeeDashboardComponent implements OnInit {
         if (success) {
           this.services = this.services.filter(service => service.id !== this.selectedService.id);
           this.selectedService = null; // Resetear selección
-          alert('Servicio eliminado correctamente');
+          alert('Servicio cancelado correctamente');
         } else {
-          alert('No se pudo eliminar el servicio. Inténtalo de nuevo.');
+          alert('No se pudo cancelar el servicio. Inténtalo de nuevo.');
         }
       },
       error: (err) => {
-        console.error('Error al eliminar el servicio:', err);
-        alert('Error al eliminar el servicio. Por favor, inténtalo más tarde.');
+        console.error('Error al cancelar el servicio:', err);
+        alert('Error al cancelar el servicio. Por favor, inténtalo más tarde.');
       }
     });
   }  

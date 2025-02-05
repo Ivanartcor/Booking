@@ -23,7 +23,6 @@
     <p class="error-message">{{ errorMessage }}</p>
   </div>
 
-
   <!-- Lista de servicios -->
   <ng-template #serviceList>
     <div *ngIf="services.length > 0; else noServices" class="service-container">
@@ -44,7 +43,6 @@
       </div>
     </div>
   </ng-template>
-
 
   <!-- Mensaje cuando no hay servicios -->
   <ng-template #noServices>
