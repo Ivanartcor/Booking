@@ -1,21 +1,50 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
 }
 
-h3, h1 {
+.btn-volver {
+    background-color: #437a90;
+    /* Fondo azul */
+    color: white;
+    /* Texto blanco */
+    border: none;
+    /* Elimina el borde predeterminado */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el botón */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    transition: background-color 0.3s ease;
+    /* Transición suave */
+}
+
+.btn-volver:hover {
+    background-color: #005f6b;
+    /* Cambio de color cuando el mouse pasa */
+}
+
+
+h3,
+h1 {
     color: #437a90;
 }
 
 .container {
-    flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
+    flex: 1;
+    /* Hace que el contenido principal ocupe el espacio disponible */
 }
 
 app-footer {
     width: 100%;
-    background-color: #ffffff; /* Ajusta según tu diseño */
+    background-color: #ffffff;
+    /* Ajusta según tu diseño */
     padding: 20px 0;
     text-align: center;
     position: fixed;
@@ -25,7 +54,7 @@ app-footer {
 
 /* Asegurar que el fondo inicial sea blanco */
 .accordion-button {
-    background-color: white !important; 
+    background-color: white !important;
     color: black !important;
     border: none;
 }
@@ -37,15 +66,14 @@ app-footer {
 }
 
 /* Cuando se hace clic, cambia a azul */
-.accordion-button:focus, 
+.accordion-button:focus,
 .accordion-button:not(.collapsed):focus {
-    background-color: #437a90 !important; 
+    background-color: #437a90 !important;
     color: white !important;
 }
 
 /* Quitar el borde y sombra azul */
 .accordion-button:focus {
-    box-shadow: none !important; 
+    box-shadow: none !important;
     outline: none !important;
 }
-
