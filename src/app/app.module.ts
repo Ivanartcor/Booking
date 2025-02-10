@@ -19,6 +19,9 @@ import { AppointmentService } from './core/services/appointment.service';
 import { AuthService } from './core/services/auth.service';
 import { CompanyService } from './core/services/company.service';
 import { ServiceService } from './core/services/service.service';
+import { PoliticaPrivacidadComponent } from './features/politica-privacidad/politica-privacidad.component';
+import { FaqComponent } from './features/faq/faq.component';
+import { ContactoComponent } from './features/contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { ServiceService } from './core/services/service.service';
     EmployeeHeaderComponent,
     CompanyLayoutComponent,
     CompanyHeaderComponent,
+    PoliticaPrivacidadComponent,
+    FaqComponent,
+    ContactoComponent,
     //para pruebas de navegación
     
   ],
