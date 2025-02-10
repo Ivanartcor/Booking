@@ -6,6 +6,10 @@ html, body {
   margin: 0;
 }
 
+h4 {
+  color: #6f6f6d;
+}
+
 .app-footer {
   background-color: #ffffff; /* Blanco */
   padding: 0.5rem 1rem;
@@ -13,10 +17,11 @@ html, body {
 
   .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Mantiene los elementos a los lados */
     align-items: center;
     gap: 1rem; /* Espaciado entre secciones */
     font-size: 0.875rem; /* Tamaño de texto ajustado */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
 
     /* Idioma */
     .footer-language a {
@@ -25,32 +30,24 @@ html, body {
       font-weight: bold;
 
       &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    /* FAQ */
-    .footer-links a {
-      color: #437a90; /* Azul */
-      text-decoration: none;
-      font-weight: bold;
-
-      &:hover {
-        text-decoration: underline;
+        color: #005f6b;;
       }
     }
 
     /* Redes sociales */
     .footer-social {
+      
       display: flex;
       gap: 1rem;
+      justify-content: center; /* Asegura que los iconos estén centrados en su área */
+      margin-left: 13%;
 
       a {
         color: #437a90;
         font-size: 1.5rem;
 
         &:hover {
-          color: #365f72; /* Azul más oscuro */
+          color: #005f6b /* Azul más oscuro */
         }
       }
     }
@@ -61,6 +58,24 @@ html, body {
       height: 20px; /* Altura de la línea */
       background-color: #ccc; /* Gris claro */
     }
+
+    .footer-links .help-links {
+      display: flex;
+      gap: 20px; /* Espaciado entre los enlaces */
+      color: #437a90;
+    }
+    
+    .footer-links .help-links a {
+      text-decoration: none;
+      color: inherit; /* Mantener el color del texto heredado */
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .footer-links .help-links a:hover {
+      color: #005f6b;
+    }
+
   }
 
   @media (max-width: 768px) {
@@ -75,3 +90,4 @@ html, body {
     }
   }
 }
+
