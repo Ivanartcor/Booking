@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FaqComponent } from './features/faq/faq.component'; // Asegúrate de que la ruta sea correcta
+import { PoliticaPrivacidadComponent } from './features/politica-privacidad/politica-privacidad.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,14 @@ const routes: Routes = [
     loadChildren: () => import('./features/employee/employee.module').then(m => m.EmployeeModule),
     data: { role: 'employee' },
   },
+  { path: 'faq', component: FaqComponent }, // Ruta para el componente FAQ
+
+  { path: 'politicas', component: PoliticaPrivacidadComponent},
+  
+  // Ruta predeterminada
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  
+  // Ruta comodín para manejar cualquier ruta no definida
   { path: '**', redirectTo: 'auth/login' },
 ];
 
@@ -30,3 +39,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
