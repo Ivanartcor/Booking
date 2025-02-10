@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h3, h1 {
+    color: #437a90;
+}
+
+.container {
+    flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
+}
+
+app-footer {
+    width: 100%;
+    background-color: #ffffff; /* Ajusta según tu diseño */
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+/* Asegurar que el fondo inicial sea blanco */
+.accordion-button {
+    background-color: white !important; 
+    color: black !important;
+    border: none;
+}
+
+/* Evita el color azul al cargar */
+.accordion-button:not(.collapsed) {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Cuando se hace clic, cambia a azul */
+.accordion-button:focus, 
+.accordion-button:not(.collapsed):focus {
+    background-color: #437a90 !important; 
+    color: white !important;
+}
+
+/* Quitar el borde y sombra azul */
+.accordion-button:focus {
+    box-shadow: none !important; 
+    outline: none !important;
+}
+
