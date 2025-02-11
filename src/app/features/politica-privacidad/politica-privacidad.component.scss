@@ -54,5 +54,16 @@
         color: #005f6b;
       }
     }
+
+    app-footer {
+      width: 100%;
+      background-color: #ffffff;
+      /* Ajusta según tu diseño */
+      padding: 20px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+  }
   }
   
