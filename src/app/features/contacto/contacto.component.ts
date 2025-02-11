@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./contacto.component.scss']
 })
 export class ContactoComponent implements OnInit {
-  contactForm!: FormGroup;
+  contactForm!: FormGroup; 
 
 
   constructor(private fb: FormBuilder) {}

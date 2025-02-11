@@ -14,6 +14,7 @@ import { CompanyHeaderComponent } from './layouts/company-layout/company-header/
 import { ClientModule } from './features/client/client.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms'; 
 //Servicios
 import { AppointmentService } from './core/services/appointment.service';
 import { AuthService } from './core/services/auth.service';
@@ -22,6 +23,7 @@ import { ServiceService } from './core/services/service.service';
 import { PoliticaPrivacidadComponent } from './features/politica-privacidad/politica-privacidad.component';
 import { FaqComponent } from './features/faq/faq.component';
 import { ContactoComponent } from './features/contacto/contacto.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { ContactoComponent } from './features/contacto/contacto.component';
     ClientModule,
     HttpClientModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,
