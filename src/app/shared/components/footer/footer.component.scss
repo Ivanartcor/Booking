@@ -11,9 +11,17 @@ h4 {
 }
 
 .app-footer {
-  background-color: #ffffff; /* Blanco */
-  padding: 0.5rem 1rem;
-  margin-top: auto; /* Empuja el footer hacia abajo */
+  
+    width: 100%;
+    background-color: #ffffff;
+    /* Ajusta según tu diseño */
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  
+
 
   .footer-container {
     display: flex;
@@ -21,7 +29,9 @@ h4 {
     align-items: center;
     gap: 1rem; /* Espaciado entre secciones */
     font-size: 0.875rem; /* Tamaño de texto ajustado */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+     /* Asegura que el contenedor ocupe todo el ancho disponible */
+    margin-left: 2%;
+    margin-right: 2%;
 
     /* Idioma */
     .footer-language a {

@@ -3,7 +3,6 @@
     <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo" routerLink="/employee/dashboard">
     <nav>
       <a routerLink="/employee/dashboard">Inicio</a>
-      <a routerLink="/employee/appointments">Mis Citas</a>
   
       <!-- Desplegable para el perfil -->
       <div class="nav-item dropdown" [class.show]="isDropdownOpen">
@@ -17,7 +16,7 @@
   
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" routerLink="/employee/employee-profile">Mis Datos</a></li>
-          <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar sesión</a></li>
+          <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar Sesión</a></li>
         </ul>
       </div>
     </nav>

@@ -2,7 +2,7 @@
 <header>
   <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo" routerLink="/client/client-dashboard">
   <nav>
-    <a (click)="openAppointmentsModal()">Mis citas</a>
+    <a (click)="openAppointmentsModal()">Mis Citas</a>
     <!-- Desplegable para el perfil -->
     <div class="nav-item dropdown" [class.show]="isDropdownOpen">
       <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" (click)="toggleDropdown()">
@@ -13,9 +13,9 @@
         />
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" (click)="openAppointmentsModal()">Mis citas</a></li>
-        <li><a class="dropdown-item" routerLink="/client/client-profile">Mis datos</a></li>
-        <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar sesión</a></li>
+        <li><a class="dropdown-item" (click)="openAppointmentsModal()">Mis Citas</a></li>
+        <li><a class="dropdown-item" routerLink="/client/client-profile">Mis Datos</a></li>
+        <li><a class="dropdown-item text-danger" (click)="logout()">Cerrar Sesión</a></li>
       </ul>
     </div>
   </nav>
