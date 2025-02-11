@@ -67,5 +67,29 @@
       bottom: 0;
       left: 0;
   }
+
+  .btn-volver {
+    background-color: #437a90;
+    /* Fondo azul */
+    color: white;
+    /* Texto blanco */
+    border: none;
+    /* Elimina el borde predeterminado */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el botón */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    transition: background-color 0.3s ease;
+    /* Transición suave */
+}
+
+.btn-volver:hover {
+    background-color: #005f6b;
+    /* Cambio de color cuando el mouse pasa */
+}
   }
   
