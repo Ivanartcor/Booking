@@ -96,7 +96,7 @@ form {
     text-align: center;
     font-weight: bold;
     margin-top: 1rem;
-    
+
     &.success {
       color: green;
     }
@@ -104,5 +104,24 @@ form {
     &.error {
       color: $error-color;
     }
+  }
+
+}
+
+
+.btn-volver {
+  display: block;
+  margin: 1.5rem auto 0; // Espaciado superior y centrado horizontalmente
+  background-color: #437a90;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #005f6b;
   }
 }
