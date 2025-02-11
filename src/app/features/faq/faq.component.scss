@@ -10,7 +10,7 @@ body {
     background-color: #437a90;
     /* Fondo azul */
     color: white;
-    /* Texto blanco */
+    /* Texto blanco (no necesario para el ícono, pero lo mantienes en caso de usar texto en algún momento) */
     border: none;
     /* Elimina el borde predeterminado */
     padding: 10px 20px;
@@ -23,13 +23,17 @@ body {
     /* Bordes redondeados */
     transition: background-color 0.3s ease;
     /* Transición suave */
-}
-
-.btn-volver:hover {
+  }
+  
+  .btn-volver:hover {
     background-color: #005f6b;
     /* Cambio de color cuando el mouse pasa */
-}
-
+  }
+  
+  .btn-volver i {
+    font-size: 20px; /* Ajusta el tamaño del ícono */
+  }
+  
 
 h3,
 h1 {
