@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FaqComponent } from './features/faq/faq.component'; // Asegúrate de que la ruta sea correcta
 import { PoliticaPrivacidadComponent } from './features/politica-privacidad/politica-privacidad.component';
+import { ContactoComponent } from './features/contacto/contacto.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent }, // Ruta para el componente FAQ
 
   { path: 'politicas', component: PoliticaPrivacidadComponent},
+
+  { path: 'contacto', component: ContactoComponent }, 
   
   // Ruta predeterminada
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
