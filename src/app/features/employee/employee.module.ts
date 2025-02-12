@@ -6,7 +6,7 @@ import { EmployeeProfileComponent } from './components/employee-profile/employee
 
 // Importa CalendarModule para poder usar el calendario en EmployeeDashboardComponent
 import { CalendarModule } from '../../features/calendar/calendar.module';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,8 @@ import { CalendarModule } from '../../features/calendar/calendar.module';
     CommonModule,
     EmployeeRoutingModule,
     CalendarModule,  // Agrega CalendarModule aquí
+    FormsModule,
+    
   ]
 })
 export class EmployeeModule { }

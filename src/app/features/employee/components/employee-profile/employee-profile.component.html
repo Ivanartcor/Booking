@@ -1,34 +1,73 @@
 <div *ngIf="employee" class="container py-5">
-    <div class="row">
-      <!-- Imagen del Empleado -->
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img [src]="employee.image?.src || 'assets/images/foto-perfil.jpg'" class="card-img-top" 
-               [alt]="employee.image?.alt || employee.name" 
-               [title]="employee.image?.title || employee.name">
-        </div>
+  <div class="row">
+    <!-- Imagen del Empleado -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img [src]="employee.image?.src || 'assets/images/foto-perfil.jpg'" class="card-img-top"
+             [alt]="employee.image?.alt || employee.name"
+             [title]="employee.image?.title || employee.name">
       </div>
-  
-      <!-- Información del Empleado -->
-      <div class="col-md-8">
-        <div class="card h-100">
-          <div class="card-body">
-            <h1 class="card-title">{{ employee.name }}</h1>
-            <p><strong>Correo Electrónico:</strong> {{ employee.email }}</p>
-            <p><strong>Rol:</strong> {{ employee.role }}</p>
-            <p><strong>Posición:</strong> {{ employee.position }}</p>
-            <p><strong>Fecha de Contratación:</strong> {{ employee.hireDate | date:'longDate' }}</p>
-            <p><strong>ID de Empresa:</strong> {{ employee.companyId }}</p>
-            
-            <h3 class="mt-4">Especializaciones</h3>
-            <ul class="list-group list-group-flush">
-              <li *ngFor="let spec of employee.specialization" class="list-group-item">{{ spec }}</li>
-            </ul>
-          </div>
+    </div>
+
+    <!-- Información del Empleado -->
+    <div class="col-md-8">
+      <div class="card h-100">
+        <div class="card-body">
+          <h1 class="card-title">{{ employee.name }}</h1>
+          <p><strong>Correo Electrónico:</strong> {{ employee.email }}</p>
+          <p><strong>Rol:</strong> {{ employee.role }}</p>
+          <p><strong>Posición:</strong> {{ employee.position }}</p>
+          <p><strong>Fecha de Contratación:</strong> {{ employee.hireDate | date:'longDate' }}</p>
+          <p><strong>ID de Empresa:</strong> {{ employee.companyId }}</p>
+
+          <h3 class="mt-4">Especializaciones</h3>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let spec of employee.specialization" class="list-group-item">{{ spec }}</li>
+          </ul>
+
+          <!-- Botón para abrir el modal de edición -->
+          <button class="btn btn-primary mt-4" (click)="openEditModal()">Editar</button>
         </div>
       </div>
     </div>
   </div>
-  
-  
+</div>
+
+  <!-- Modal para editar el empleado -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editEmployeeModalLabel">Editar Empleado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario para editar los datos del empleado -->
+        <form (ngSubmit)="submitEditForm()">
+          <div class="mb-3">
+            <label for="employeeName" class="form-label">Nombre</label>
+            <input type="text" id="employeeName" class="form-control" [(ngModel)]="employee.name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="employeeEmail" class="form-label">Correo Electrónico</label>
+            <input type="email" id="employeeEmail" class="form-control" [(ngModel)]="employee.email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="employeeRole" class="form-label">Rol</label>
+            <input type="text" id="employeeRole" class="form-control" [(ngModel)]="employee.role" name="role">
+          </div>
+          <div class="mb-3">
+            <label for="employeePosition" class="form-label">Posición</label>
+            <input type="text" id="employeePosition" class="form-control" [(ngModel)]="employee.position" name="position">
+          </div>
+          <div class="mb-3">
+            <label for="employeeHireDate" class="form-label">Fecha de Contratación</label>
+            <input type="date" id="employeeHireDate" class="form-control" [(ngModel)]="employee.hireDate" name="hireDate">
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   

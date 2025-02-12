@@ -58,6 +58,41 @@ p {
   font-size: 1rem; // Aumentamos el tamaño del texto de la lista
 }
 
+/* Estilo para el botón de editar */
+.btn-primary {
+  background-color: $primary-color; /* Color de fondo principal */
+  border-color: $primary-color;
+  color: white; /* Color del texto */
+  font-weight: bold; /* Negrita */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Animaciones */
+}
+
+/* Estilo cuando el botón es hovered */
+.btn-primary:hover {
+  background-color: #005f6b; /* Color más oscuro al pasar el mouse */
+  transform: translateY(-2px); /* Efecto de desplazamiento hacia arriba */
+}
+
+/* Estilo cuando el botón está en un estado de enfoque (focus) */
+.btn-primary:focus {
+  outline: none; /* Elimina el borde del enfoque predeterminado */
+  box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5); /* Sombra azul suave */
+}
+
+/* Estilo para el botón de guardar cambios en el modal */
+.modal-footer .btn-primary {
+  background-color: #28a745; /* Fondo verde */
+  border-color: #28a745; /* Borde verde */
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #218838; /* Fondo verde oscuro */
+  border-color: #1e7e34; /* Borde verde oscuro */
+}
+
+
 @media (max-width: 768px) {
   .row {
     flex-direction: column;
