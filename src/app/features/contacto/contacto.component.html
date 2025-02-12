@@ -1,3 +1,7 @@
+ <!-- Botón "Volver" debajo del formulario -->
+ <button class="btn-volver" onclick="window.history.back()">
+  <i class="fas fa-arrow-left"></i>
+</button>
 <div class="form-container">
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -17,11 +21,6 @@
   
     <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
   </form>
-
-  <!-- Botón "Volver" debajo del formulario -->
-  <button class="btn-volver" onclick="window.history.back()">
-    <i class="fas fa-arrow-left"></i>
-  </button>
 </div>
 
 <app-footer></app-footer>
