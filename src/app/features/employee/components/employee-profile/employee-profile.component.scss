@@ -75,23 +75,6 @@ p {
   transform: translateY(-2px); /* Efecto de desplazamiento hacia arriba */
 }
 
-/* Estilo cuando el botón está en un estado de enfoque (focus) */
-.btn-primary:focus {
-  outline: none; /* Elimina el borde del enfoque predeterminado */
-  box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5); /* Sombra azul suave */
-}
-
-/* Estilo para el botón de guardar cambios en el modal */
-.modal-footer .btn-primary {
-  background-color: #28a745; /* Fondo verde */
-  border-color: #28a745; /* Borde verde */
-}
-
-.modal-footer .btn-primary:hover {
-  background-color: #218838; /* Fondo verde oscuro */
-  border-color: #1e7e34; /* Borde verde oscuro */
-}
-
 
 @media (max-width: 768px) {
   .row {

@@ -110,8 +110,20 @@
 
   //Isaac
   /* Estilos personalizados */
+/* Asegúrate de que el body tenga el alto total y permita el scroll */
+body {
+  height: 100vh; /* Altura completa de la ventana */
+  overflow-y: auto; /* Permite desplazamiento vertical */
+  margin: 0; /* Elimina márgenes por defecto */
+}
+
+/* Contenedor principal */
 .container {
   max-width: 1200px;
+  margin: 0 auto; /* Centra el contenido */
+  padding: 20px;
+  height: 100%; /* Asegura que ocupe el 100% del alto disponible */
+  overflow-y: auto; /* Activa scroll dentro del contenedor si el contenido es más alto */
 }
 
 .card {
@@ -125,8 +137,10 @@
   color: #333;
 }
 
+/* Contenedor de la información de la empresa */
 .card-body {
-  background-color: #f8f9fa;
+  overflow-y: auto; /* Permite desplazamiento en este bloque si es necesario */
+  max-height: 70vh; /* Limita la altura y permite el scroll si es necesario */
 }
 
 .text-muted {
@@ -150,4 +164,30 @@
 
 .bg-primary {
   background-color: #437a90 !important;
+}
+
+.btn-primary {
+  background-color: #437a90;  /* Color rojo para el fondo */
+  border-color: #437a90;      /* Borde rojo */
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #005f6b;  /* Color rojo oscuro al pasar el mouse */
+  border-color: #005f6b;      /* Borde rojo oscuro */
+}
+
+/* Cambiar el color del botón de guardar */
+.modal-footer .btn-primary {
+  background-color: #437a90;  /* Color rojo para el fondo */
+  border-color: #437a90;      /* Borde rojo */
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #005f6b;  /* Color rojo oscuro al pasar el mouse */
+  border-color: #005f6b;      /* Borde rojo oscuro */
+}
+
+/* Espaciado superior para el botón de editar */
+.card-body .btn-primary {
+  margin-top: 20px;  /* Aumenta la distancia entre el botón y la parte superior */
 }

@@ -1,30 +1,88 @@
+<!-- Información de la Empresa -->
 <div *ngIf="company" class="container py-5">
-    <div class="row">
-      <!-- Imagen de la Empresa -->
-      <div class="col-md-4">
-        <div class="card">
-          <img [src]="company.image.src" class="card-img-top" [alt]="company.image.alt" [title]="company.image.title">
-        </div>
+  <div class="row">
+    <!-- Imagen de la Empresa -->
+    <div class="col-md-4">
+      <div class="card">
+        <img [src]="company.image.src" class="card-img-top" [alt]="company.image.alt" [title]="company.image.title">
       </div>
-  
-      <!-- Información de la Empresa -->
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <h1 class="card-title">{{ company.name }}</h1>
-            <p class="text-muted"><i class="bi bi-geo-alt"></i> {{ company.cityName }}, {{ company.address }}</p>
-            <p class="badge bg-primary">{{ company.categoryName }}</p>
-            <p class="mt-3">{{ company.shortDescription }}</p>
-            <p>{{ company.description }}</p>
-            <p><strong>Fecha de creación:</strong> {{ company.createdAt | date }}</p>
-  
-            <h3 class="mt-4">Servicios</h3>
-            <ul class="list-group list-group-flush">
-              <li *ngFor="let service of company.services" class="list-group-item">{{ service }}</li>
-            </ul>
-          </div>
+    </div>
+
+    <!-- Información de la Empresa -->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">{{ company.name }}</h1>
+          <p class="text-muted"><i class="bi bi-geo-alt"></i> {{ company.cityName }}, {{ company.address }}</p>
+          <p class="badge bg-primary">{{ company.categoryName }}</p>
+          <p class="mt-3">{{ company.shortDescription }}</p>
+          <p>{{ company.description }}</p>
+          <p><strong>Fecha de creación:</strong> {{ company.createdAt | date }}</p>
+
+          <h3 class="mt-4">Servicios</h3>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let service of company.services" class="list-group-item">{{ service }}</li>
+          </ul>
+          
+          <!-- Botón para abrir el modal de edición -->
+          <button (click)="openEditModal()" class="btn btn-primary">Editar Empresa</button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<!-- Modal para Editar Empresa -->
+<div *ngIf="isModalOpen" class="modal" tabindex="-1" style="display: block;" (click)="onModalBackgroundClick($event)">
+  <div class="modal-dialog" (click)="stopPropagation($event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Empresa</h5>
+        <button type="button" class="btn-close" (click)="closeEditModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmitEdit()">
+          <!-- Nombre de la Empresa -->
+          <div class="mb-3">
+            <label for="companyName" class="form-label">Nombre</label>
+            <input type="text" id="companyName" class="form-control" [(ngModel)]="company.name" name="name" required>
+          </div>
+
+          <!-- Dirección de la Empresa -->
+          <div class="mb-3">
+            <label for="companyAddress" class="form-label">Dirección</label>
+            <input type="text" id="companyAddress" class="form-control" [(ngModel)]="company.address" name="address" required>
+          </div>
+
+          <!-- Ciudad -->
+          <div class="mb-3">
+            <label for="companyCity" class="form-label">Ciudad</label>
+            <select id="companyCity" class="form-control" [(ngModel)]="company.city" name="city" required>
+              <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+            </select>
+          </div>
+
+          <!-- Categoría -->
+          <div class="mb-3">
+            <label for="companyCategory" class="form-label">Categoría</label>
+            <select id="companyCategory" class="form-control" [(ngModel)]="company.category" name="category" required>
+              <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+            </select>
+          </div>
+
+          <!-- Servicios -->
+          <div class="mb-3">
+            <label for="companyServices" class="form-label">Servicios</label>
+            <input type="text" id="companyServices" class="form-control" [(ngModel)]="company.services" name="services" placeholder="Servicios (separados por comas)" required>
+          </div>
+
+          <!-- Botón para guardar -->
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

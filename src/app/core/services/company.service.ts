@@ -76,4 +76,8 @@ export class CompanyService {
     ];
     return categories.find(category => category.name === categoryId);
   }
+
+  editCompany(company: any): Observable<any> {
+    return this.http.put<any>(`${this.companiesUrl}/${company.id}`, company);
+  }
 }
