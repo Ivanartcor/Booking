@@ -7,6 +7,7 @@ import { EmployeeProfileComponent } from './components/employee-profile/employee
 // Importa CalendarModule para poder usar el calendario en EmployeeDashboardComponent
 import { CalendarModule } from '../../features/calendar/calendar.module';
 import { FormsModule } from '@angular/forms';
+import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     EmployeeRoutingModule,
     CalendarModule,  // Agrega CalendarModule aquí
     FormsModule,
+    SharedCookiesModule
     
   ]
 })

@@ -25,6 +25,7 @@ import { FaqComponent } from './features/faq/faq.component';
 import { ContactoComponent } from './features/contacto/contacto.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { ContactoComponent } from './features/contacto/contacto.component';
     PoliticaPrivacidadComponent,
     FaqComponent,
     ContactoComponent,
+ 
     //para pruebas de navegación
     
   ],

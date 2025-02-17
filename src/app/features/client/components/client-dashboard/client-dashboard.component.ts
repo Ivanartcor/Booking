@@ -18,6 +18,7 @@ export class ClientDashboardComponent implements OnInit {
   filteredCompanies: any[] = [];
   categories: any[] = [];
   cities: any[] = [];
+  cookiesAccepted: boolean = false;
 
   constructor(private router: Router, private companyService: CompanyService) {}
 
@@ -25,6 +26,10 @@ export class ClientDashboardComponent implements OnInit {
     this.loadCompanies();
     this.loadCategories();
     this.loadCities();
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    if (cookiesAccepted) {
+      this.cookiesAccepted = true;
+    }
   }
 
   loadCompanies(): void {
@@ -102,5 +107,11 @@ export class ClientDashboardComponent implements OnInit {
 
   goToCompanyDetails(id: number): void {
     this.router.navigate([`/client/company`, id]);
+  }
+  
+  acceptCookies(): void {
+    // Guarda la preferencia del usuario en el almacenamiento local
+    localStorage.setItem('cookiesAccepted', 'true');
+    this.cookiesAccepted = true;
   }
 }

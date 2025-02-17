@@ -1,0 +1,41 @@
+.cookie-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #437A90;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 8px 16px; /* Ajustamos el padding */
+  width: auto; /* El ancho es automático */
+  max-width: 200px; /* Límite de ancho máximo */
+  display: inline-block; /* Asegura que los botones no ocupen toda la línea */
+}
+
+button:hover {
+  background-color: #005f6b;
+}
+
+.cookie-modal .modal-content {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente si fuera necesario */
+}
