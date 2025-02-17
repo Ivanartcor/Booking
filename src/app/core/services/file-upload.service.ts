@@ -1,36 +1,33 @@
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class FileUploadService {
-  private uploadUrl = '/assets/images/'; // Ruta de almacenamiento
+  // URL base para la subida de archivos (ajústala según tu configuración)
+  private uploadUrl = 'http://localhost:3000/upload';
 
   constructor(private http: HttpClient) {}
 
   /**
-   * Sube un archivo al servidor
+   * Sube un archivo al backend.
+   * @param file Archivo a subir.
+   * @returns Un observable con la respuesta del servidor.
    */
-  uploadFile(file: File): Observable<string> {
-    const formData = new FormData();
-    formData.append('file', file, file.name);
+  uploadFile(file: File): Observable<HttpEvent<any>> {
+    // Creamos un objeto FormData para enviar el archivo
+    const formData: FormData = new FormData();
+    formData.append('file', file);
 
-    //Va a dar error porque angukar no deja escribir en la carpeta de la ruta, tiene queser en el backend
+    // Creamos una petición HTTP para monitorear el progreso
+    const req = new HttpRequest('POST', this.uploadUrl, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
 
-    return this.http.post<{ url: string }>(this.uploadUrl, formData).pipe(
-      map((response) => response.url),
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error al subir archivo:', error);
-        return throwError(() => new Error('Error al subir archivo.'));
-      })
-    );
-  }
-
-  uploadFileSimulado(file: File): Observable<string> {
-    const fileUrl = URL.createObjectURL(file); // Genera una URL temporal
-    return of(fileUrl); // Simula la subida devolviendo la URL temporal
+    // Retornamos el observable que permite seguir el progreso y obtener la respuesta
+    return this.http.request(req);
   }
 }
