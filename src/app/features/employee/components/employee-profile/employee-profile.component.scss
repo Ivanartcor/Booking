@@ -5,10 +5,10 @@ $border-radius: 8px;
 $shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
 .container {
-  max-width: 1200px; // Aumentamos el ancho máximo
-  margin: auto;
+  max-width: 1200px;
+  margin: 40px auto; // Más margen por arriba
   background: $secondary-color;
-  padding: 30px; // Aumentamos el padding
+  padding: 40px; // Más espacio interno
   border-radius: $border-radius;
   box-shadow: $shadow;
 }
@@ -18,20 +18,21 @@ $shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: $border-radius;
   box-shadow: $shadow;
   background: white;
-  height: 100%; // Aseguramos que las tarjetas tengan la misma altura
+  height: 100%;
 }
 
 .card-img-top {
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
   object-fit: cover;
-  height: 100%; // Aseguramos que la imagen ocupe todo el espacio disponible
-  max-height: 400px; // Aumentamos la altura máxima de la imagen
+  width: 100%;
+  height: auto;
+  max-height: 450px; // Más altura para la imagen
 }
 
 .card-body {
   color: $text-color;
-  padding: 2rem; // Aumentamos el padding interno
+  padding: 2.5rem; // Más padding interno
 }
 
 h1, h3 {
@@ -40,67 +41,70 @@ h1, h3 {
 }
 
 h1 {
-  font-size: 2.5rem; // Aumentamos el tamaño del título
+  font-size: 2.75rem; // Aumentamos el tamaño del título
+  margin-bottom: 20px;
 }
 
 h3 {
-  font-size: 1.75rem; // Aumentamos el tamaño del subtítulo
+  font-size: 1.8rem; // Subtítulos más grandes
+  margin-top: 25px;
 }
 
 p {
-  font-size: 1.1rem; // Aumentamos el tamaño del texto
-  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .list-group-item {
   background: transparent;
   border: none;
-  font-size: 1rem; // Aumentamos el tamaño del texto de la lista
+  font-size: 1.1rem;
 }
 
-/* Estilo para el botón de editar */
+/* Botón de editar */
 .btn-primary {
-  background-color: $primary-color; /* Color de fondo principal */
+  background-color: $primary-color;
   border-color: $primary-color;
-  color: white; /* Color del texto */
-  font-weight: bold; /* Negrita */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s, transform 0.3s; /* Animaciones */
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px; // Más grande
+  border-radius: 6px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Estilo cuando el botón es hovered */
 .btn-primary:hover {
-  background-color: #005f6b; /* Color más oscuro al pasar el mouse */
-  transform: translateY(-2px); /* Efecto de desplazamiento hacia arriba */
+  background-color: #365f72;
+  transform: translateY(-3px); // Efecto más marcado
 }
 
-
+/* Ajustes responsivos */
 @media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+
   .row {
     flex-direction: column;
-  }
-  .col-md-4, .col-md-8 {
-    width: 100%;
-  }
-
-  .card-img-top {
-    max-height: 300px; // Ajustamos la altura de la imagen en móviles
+    gap: 20px; // Más espacio entre elementos
   }
 
   .card-body {
-    padding: 1.5rem; // Reducimos el padding en móviles
+    padding: 2rem;
+  }
+
+  .card-img-top {
+    max-height: 300px;
   }
 
   h1 {
-    font-size: 2rem; // Reducimos el tamaño del título en móviles
+    font-size: 2.2rem;
   }
 
   h3 {
-    font-size: 1.5rem; // Reducimos el tamaño del subtítulo en móviles
+    font-size: 1.6rem;
   }
 
   p {
-    font-size: 1rem; // Reducimos el tamaño del texto en móviles
+    font-size: 1rem;
   }
 }
