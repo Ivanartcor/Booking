@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CompanyEmployeesComponent } from './components/company-employees/company-employees.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EditServiceComponent } from './components/edit-service/edit-service.component';
+import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.module';
 
 
 @NgModule({
@@ -23,12 +24,13 @@ import { EditServiceComponent } from './components/edit-service/edit-service.com
     AddServiceComponent,
     CompanyEmployeesComponent,
     AddEmployeeComponent,
-    EditServiceComponent
+    EditServiceComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    CompanyRoutingModule
+    CompanyRoutingModule,
+    SharedCookiesModule
   ]
 })
 export class CompanyModule { }

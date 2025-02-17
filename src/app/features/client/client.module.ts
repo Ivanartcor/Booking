@@ -7,6 +7,7 @@ import { ClientProfileComponent } from './components/client-profile/client-profi
 import { ClientAppointmentsComponent } from './components/client-appointments/client-appointments.component';
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { FormsModule } from '@angular/forms';
+import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.module';
 
 
 @NgModule({
@@ -14,15 +15,17 @@ import { FormsModule } from '@angular/forms';
     ClientDashboardComponent,
     ClientProfileComponent,
     ClientAppointmentsComponent,
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    SharedCookiesModule
   ],
   exports: [
-    ClientAppointmentsComponent, // Exportación
+    ClientAppointmentsComponent, 
   ],
 })
 export class ClientModule { }

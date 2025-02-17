@@ -1,30 +1,25 @@
 <header>
   <button class="menu-btn" (click)="toggleDropdown($event)">☰</button>
 
-  
+  <app-cookie-modal></app-cookie-modal>
 
   <!-- Barra de Búsqueda -->
   <div class="search-bar">
     <label for="search-input" class="visually-hidden">Buscar empresa:</label>
-    <input
-      id="search-input"
-      type="text"
-      placeholder="Buscar empresa..."
-      [(ngModel)]="searchQuery"
-      (input)="applyFilters()"
-    />
+    <input id="search-input" type="text" placeholder="Buscar empresa..." [(ngModel)]="searchQuery"
+      (input)="applyFilters()" />
   </div>
 
 
-   <!-- Dropdown de ciudades cargadas dinámicamente -->
-   <div class="user-dropdown">
+  <!-- Dropdown de ciudades cargadas dinámicamente -->
+  <div class="user-dropdown">
     <label for="city-select" class="visually-hidden">Selecciona una ciudad:</label>
     <select id="city-select" (change)="selectCity($event)">
       <option value="">Todas</option>
       <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
     </select>
   </div>
-  
+
 
 
 
@@ -38,7 +33,7 @@
       <li *ngFor="let category of categories">
         <a href="#" (click)="selectCategory($event, category.name)">{{ category.name }}</a>
       </li>
-      
+
     </ul>
   </div>
 </header>
@@ -47,15 +42,12 @@
   <!-- Empresas cargadas dinámicamente según los datos -->
   <section class="company-card" *ngFor="let company of filteredCompanies" (click)="goToCompanyDetails(company.id)">
     <!-- Imagen con los atributos alt, title y créditos de licencia -->
-    <img [src]="company.image?.src" 
-    [alt]="company.image?.alt || company.name" 
-    [title]="company.image?.title || company.name" 
-    class="company-image">
+    <img [src]="company.image?.src" [alt]="company.image?.alt || company.name"
+      [title]="company.image?.title || company.name" class="company-image">
 
-<div class="company-info">
- <h1>{{ company.name }}</h1>
- <p>{{ company.shortDescription }}</p>
-</div>
+    <div class="company-info">
+      <h1>{{ company.name }}</h1>
+      <p>{{ company.shortDescription }}</p>
+    </div>
   </section>
 </main>
-
