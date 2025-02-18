@@ -1,40 +1,50 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register - Bookify</title>
-  <!-- Importación de la fuente Roboto desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <div class="login-container">
-    <main class="login-box">
-      <p class="small-text">¿Ya estás registrado? <a href="auth/login">Iniciar sesión</a></p>
-      <div class="logo-container">
-        <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
-      </div>
-      <h1>Bienvenido a Bookify</h1>
-      <p class="small-text">Cree nueva cuenta</p>
-      <form>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" required aria-label="Nombre">
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="Email" required aria-label="Email">
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Contraseña" required aria-label="Contraseña">
-        </div>
-        <button type="submit" class="btn-register">Registrate</button>
-      </form>
-    </main>
-    <div class="footer-text">
-      <a href="auth/register">www.bookify.com</a>
+<div class="login-container">
+  <main class="login-box">
+    <p class="small-text">¿Ya tienes cuenta? <a routerLink="/auth/login">Iniciar sesión</a></p>
+    <div class="logo-container">
+      <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
     </div>
-  </div>
-</body>
+    <h1>Bienvenido a Bookify</h1>
+    <p class="small-text">Cree nueva cuenta</p>
 
-</html>
+    <!-- Mensajes de éxito y error -->
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+    <form (ngSubmit)="register()">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Nombre" required aria-label="Nombre" [(ngModel)]="name"
+          name="name" />
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Email" required aria-label="Email" [(ngModel)]="email"
+          name="email" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Contraseña" required aria-label="Contraseña"
+          [(ngModel)]="password" name="password" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Confirmar contraseña" required
+          aria-label="Confirmar contraseña" [(ngModel)]="confirmPassword" name="confirmPassword" />
+      </div>
+
+      <!-- Selección de Rol -->
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="role" name="role">
+          <option value="client">Cliente</option>
+          <option value="company">Empresa</option>
+        </select>
+      </div>
+
+      <!-- Botón de registro con animación de carga -->
+      <button type="submit" class="btn-register" aria-label="Registrarse" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Registrarse</span>
+        <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i> Registrando...</span>
+      </button>
+    </form>
+  </main>
+  <div class="footer-text">
+    <a href="/">www.bookify.com</a>
+  </div>
+</div>

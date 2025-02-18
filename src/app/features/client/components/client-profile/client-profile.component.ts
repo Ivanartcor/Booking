@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { FileUploadService } from 'src/app/core/services/file-upload.service';
 
 @Component({
   selector: 'app-client-profile',
@@ -12,67 +11,74 @@ export class ClientProfileComponent implements OnInit {
   editUser: any = {};
   showEditModal = false;
   uploadError: string | null = null;
+  isUpdating: boolean = false;
+  successMessage: string = '';
 
-  constructor(
-    private authService: AuthService,
-    private fileUploadService: FileUploadService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.currentUser = this.authService.getCurrentUser();
+    this.loadUserProfile();
   }
 
+  /** 🔹 Cargar perfil del usuario autenticado */
+  loadUserProfile(): void {
+    this.authService.user$.subscribe(user => {
+      if (user) {
+        this.currentUser = user;
+        this.editUser = { ...user }; // Copia para edición sin afectar los datos originales
+      }
+    });
+  }
+
+  /** 🔹 Abrir modal de edición */
   editProfile(): void {
-    this.editUser = { ...this.currentUser };
     this.showEditModal = true;
-  }
-
-  saveProfile(): void {
-    this.currentUser = { ...this.editUser };
-    this.authService.updateCurrentUser(this.currentUser);
-    this.closeEditModal();
-    alert('Perfil actualizado con éxito.');
-  }
-
-  closeEditModal(): void {
-    this.showEditModal = false;
+    this.successMessage = '';
     this.uploadError = null;
   }
 
+  /** 🔹 Guardar cambios en el perfil */
+  saveProfile(): void {
+    this.isUpdating = true;
+
+    this.authService.updateUser(this.editUser).subscribe({
+      next: () => {
+        this.successMessage = 'Perfil actualizado con éxito.';
+        this.isUpdating = false;
+        this.showEditModal = false;
+      },
+      error: () => {
+        this.uploadError = 'Error al actualizar el perfil.';
+        this.isUpdating = false;
+      }
+    });
+  }
+
+  /** 🔹 Cerrar modal */
+  closeEditModal(): void {
+    this.showEditModal = false;
+    this.uploadError = null;
+    this.successMessage = '';
+  }
+
+  /** 🔹 Subir imagen de perfil */
   onFileSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput?.files?.[0]) {
       const file = fileInput.files[0];
-      
-      this.fileUploadService.uploadFile(file).subscribe({
-        next: (url) => {
-          this.editUser.profilePicture = url;
-          this.authService.updateProfilePicture(url); 
-          alert('Foto de perfil actualizada con éxito.');
-        },
-        error: () => {
-          this.uploadError = 'Error al subir el archivo.';
-        }
-      });
-    }
-  }
 
-  onFileSelectedTemporal(event: Event): void {
-    const fileInput = event.target as HTMLInputElement;
-    if (fileInput?.files?.[0]) {
-      const file = fileInput.files[0];
-  
-      // Genera una URL temporal para la vista previa
-      this.fileUploadService.uploadFileSimulado(file).subscribe({
-        next: (url) => {
-          this.editUser.profilePicture = url; // Actualiza la vista previa
-          alert('Imagen seleccionada correctamente.');
+      this.authService.uploadProfilePicture(file).subscribe({
+        next: (res) => {
+          if (res && res.filePath) {
+            this.editUser.profile_picture = res.filePath; // Actualiza la vista previa
+            this.successMessage = 'Foto de perfil actualizada con éxito.';
+          }
         },
         error: () => {
-          this.uploadError = 'Error al cargar la imagen.';
+          this.uploadError = 'Error al subir la imagen.';
         }
       });
     }
   }
-  
 }
+

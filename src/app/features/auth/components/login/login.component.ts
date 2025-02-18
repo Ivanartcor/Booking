@@ -11,18 +11,22 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
+  isLoading: boolean = false; // Variable para mostrar el spinner de carga
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-
     if (!this.email || !this.password) {
       this.errorMessage = 'Por favor, complete todos los campos.';
       return;
     }
-    
+
+    this.isLoading = true; // Inicia la carga
+
     this.authService.login(this.email, this.password).subscribe({
       next: (success) => {
+        this.isLoading = false; // Finaliza la carga
+
         if (!success) {
           this.errorMessage = 'Usuario o contraseña incorrectos. Inténtelo de nuevo.';
         } else {
@@ -30,9 +34,11 @@ export class LoginComponent {
         }
       },
       error: (err) => {
+        this.isLoading = false; // Finaliza la carga
         console.error('Error durante la autenticación:', err);
         this.errorMessage = 'Ocurrió un error. Inténtelo más tarde.';
       },
     });
   }
 }
+

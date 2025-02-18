@@ -4,11 +4,10 @@
       <img src="/assets/logo/Icon_LogoBookify.png" alt="Bookify Logo" class="logo">
     </div>
     <h1>Accede a tu cuenta</h1>
-    Inicie sesión para continuar o
-    <p class="small-text"><a href="auth/register">Regístrese aquí</a></p>
-    
-     <!-- Mostrar mensaje de error si existe -->
-     <div *ngIf="errorMessage" class="error-message">
+    <p class="small-text">Inicie sesión para continuar o <a routerLink="/auth/register">Regístrese aquí</a></p>
+
+    <!-- Mostrar mensaje de error si existe -->
+    <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
 
@@ -21,13 +20,17 @@
         <input type="password" class="form-control" placeholder="Contraseña" required aria-label="Contraseña"
           [(ngModel)]="password" name="password" />
       </div>
-      <button type="submit" class="btn-register" aria-label="Acceder">Acceder</button>
+
+      <!-- Spinner de carga mientras se procesa el login -->
+      <button type="submit" class="btn-register" aria-label="Acceder" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Acceder</span>
+        <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i> Cargando...</span>
+      </button>
     </form>
 
-    <p class="small-text2"><a href="auth/forgot-password">Olvidé mi contraseña</a></p>
-
+    <p class="small-text2"><a routerLink="/auth/forgot-password">Olvidé mi contraseña</a></p>
   </main>
   <div class="footer-text">
-    <a routerLink="/auth/register">www.bookify.com</a>
+    <a routerLink="/">www.bookify.com</a>
   </div>
 </div>

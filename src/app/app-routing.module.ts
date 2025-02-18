@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FaqComponent } from './features/faq/faq.component'; // Asegúrate de que la ruta sea correcta
 import { PoliticaPrivacidadComponent } from './features/politica-privacidad/politica-privacidad.component';
 import { ContactoComponent } from './features/contacto/contacto.component';
+import { AuthGuard } from './core/auth.guard';
+
 
 const routes: Routes = [
   {
@@ -12,27 +14,28 @@ const routes: Routes = [
   {
     path: 'client',
     loadChildren: () => import('./features/client/client.module').then(m => m.ClientModule),
-    data: { role: 'client' },
+    canActivate: [AuthGuard], // 🔹 Protegemos con AuthGuard
+    data: { role: 'client' },  // 🔹 Solo accesible para clientes
   },
   {
     path: 'company',
     loadChildren: () => import('./features/company/company.module').then(m => m.CompanyModule),
-    data: { role: 'company' },
+    canActivate: [AuthGuard], // 🔹 Protegemos con AuthGuard
+    data: { role: 'company' }, // 🔹 Solo accesible para empresas
   },
   {
     path: 'employee',
     loadChildren: () => import('./features/employee/employee.module').then(m => m.EmployeeModule),
-    data: { role: 'employee' },
+    canActivate: [AuthGuard], // 🔹 Protegemos con AuthGuard
+    data: { role: 'employee' }, // 🔹 Solo accesible para empleados
   },
-  { path: 'faq', component: FaqComponent }, // Ruta para el componente FAQ
-
-  { path: 'politicas', component: PoliticaPrivacidadComponent},
-
+  { path: 'faq', component: FaqComponent }, 
+  { path: 'politicas', component: PoliticaPrivacidadComponent },
   { path: 'contacto', component: ContactoComponent }, 
   
-  // Ruta predeterminada
+  // Ruta predeterminada (redirige al login si no hay autenticación)
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
-  
+
   // Ruta comodín para manejar cualquier ruta no definida
   { path: '**', redirectTo: 'auth/login' },
 ];
@@ -42,4 +45,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
