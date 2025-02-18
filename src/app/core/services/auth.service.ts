@@ -37,17 +37,20 @@ export class AuthService {
   }
 
   // Obtiene los datos del usuario autenticado
-  fetchUserProfile(): void {
+  fetchUserProfile(skipRedirect: boolean = false): void {
     const token = localStorage.getItem('token');
     if (!token) return;
-
+  
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-
+  
     this.http.get<any>(`${this.usersUrl}/me`, { headers }).pipe(
       tap(user => {
         this.userSubject.next(user);
         localStorage.setItem('user', JSON.stringify(user)); // Guardar usuario en LocalStorage
-        this.redirectBasedOnRole(user.role); // Redirigir según el rol
+  
+        if (!skipRedirect) { 
+          this.redirectBasedOnRole(user.role); // Solo redirige si skipRedirect es falso
+        }
       }),
       catchError(error => {
         console.error('Error obteniendo perfil:', error);
@@ -56,19 +59,20 @@ export class AuthService {
       })
     ).subscribe();
   }
+  
 
 
   /** Actualiza los datos del usuario actual */
   updateUser(updateData: Partial<any>): Observable<any> {
     const token = localStorage.getItem('token');
     if (!token) return of(null);
-
+  
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-
+  
     return this.http.put(`${this.usersUrl}/me`, updateData, { headers }).pipe(
       tap(() => {
         console.log('Perfil actualizado');
-        this.refreshUserProfile(); // Refresca los datos después de actualizar
+        this.fetchUserProfile(true); // Recargar datos sin redireccionar
       }),
       catchError(error => {
         console.error('Error actualizando usuario:', error);
@@ -76,6 +80,7 @@ export class AuthService {
       })
     );
   }
+  
 
   /**  Actualiza los datos de cualquier usuario */
   updateUserById(userId: number, updateData: Partial<any>): Observable<any> {
@@ -108,13 +113,14 @@ export class AuthService {
       tap((res) => console.log('Imagen subida:', res)),
       map((res) => res.filePath), // Extrae la ruta del archivo
       switchMap((filePath) => this.updateProfilePicture(filePath)), // Espera a que se actualice en la API
-      tap(() => this.fetchUserProfile()), // Recarga el perfil después de actualizar
+      tap(() => this.fetchUserProfile(true)), // Recarga el perfil pero SIN redirigir
       catchError((error) => {
         console.error('Error subiendo imagen:', error);
         return of(null);
       })
     );
   }
+  
 
 
    /** 🔹 Actualiza la URL de la imagen de perfil en el usuario */
@@ -131,7 +137,7 @@ export class AuthService {
 
    /** 🔹 Recarga los datos del usuario después de cambios */
    private refreshUserProfile(): void {
-    this.fetchUserProfile();
+    this.fetchUserProfile(true);
   }
 
 
