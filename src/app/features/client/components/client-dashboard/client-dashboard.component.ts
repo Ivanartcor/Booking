@@ -108,10 +108,4 @@ export class ClientDashboardComponent implements OnInit {
   goToCompanyDetails(id: number): void {
     this.router.navigate([`/client/company`, id]);
   }
-  
-  acceptCookies(): void {
-    // Guarda la preferencia del usuario en el almacenamiento local
-    localStorage.setItem('cookiesAccepted', 'true');
-    this.cookiesAccepted = true;
-  }
 }

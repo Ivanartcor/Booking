@@ -21,8 +21,6 @@
   </div>
 
 
-
-
   <!-- Dropdown para categorías cargadas dinámicamente -->
   <div class="menu-dropdown" [class.show]="isDropdownOpen" (click)="stopPropagation($event)">
     <div class="dropdown-header">Categorías</div>
@@ -33,7 +31,6 @@
       <li *ngFor="let category of categories">
         <a href="#" (click)="selectCategory($event, category.name)">{{ category.name }}</a>
       </li>
-
     </ul>
   </div>
 </header>
