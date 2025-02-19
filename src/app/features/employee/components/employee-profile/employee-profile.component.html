@@ -1,68 +1,78 @@
-<div *ngIf="employee" class="container py-5">
-  <div class="row">
-    <!-- Imagen del Empleado -->
-    <div class="col-md-4">
-      <div class="card h-100">
-        <img [src]="employee.image?.src || 'assets/images/foto-perfil.jpg'" class="card-img-top"
-             [alt]="employee.image?.alt || employee.name"
-             [title]="employee.image?.title || employee.name">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Contenedor Principal -->
+<div class="profile-container">
+  <h2>Mis Datos</h2>
+
+  <!-- Imagen de Perfil -->
+  <div class="profile-picture">
+    <label for="profilePictureInput">
+      <img [src]="currentUser?.profile_picture || '/assets/images/foto-perfil.jpg'" alt="Foto de perfil">
+      <div class="camera-icon">
+        <i class="fas fa-camera"></i>
       </div>
+      <input type="file" id="profilePictureInput" accept="image/*" (change)="onFileSelected($event)" hidden>
+    </label>
+  </div>
+
+  <!-- Información de Perfil -->
+  <div class="profile-info">
+    <div class="info-item">
+      <label>Nombre:</label>
+      <span>{{ currentUser?.name }}</span>
     </div>
 
-    <!-- Información del Empleado -->
-    <div class="col-md-8">
-      <div class="card h-100">
-        <div class="card-body">
-          <h1 class="card-title">{{ employee.name }}</h1>
-          <p><strong>Correo Electrónico:</strong> {{ employee.email }}</p>
-          <p><strong>Posición:</strong> {{ employee.position }}</p>
-          <p><strong>Fecha de Contratación:</strong> {{ employee.hireDate | date:'longDate' }}</p>
-          <p><strong>ID de Empresa:</strong> {{ employee.companyId }}</p>
+    <div class="info-item">
+      <label>Email:</label>
+      <span>{{ currentUser?.email }}</span>
+    </div>
 
-          <h3 class="mt-4">Especializaciones</h3>
-          <ul class="list-group list-group-flush">
-            <li *ngFor="let spec of employee.specialization" class="list-group-item">{{ spec }}</li>
-          </ul>
+    <div class="info-item">
+      <label>Teléfono:</label>
+      <span>{{ currentUser?.phone || 'No disponible' }}</span>
+    </div>
 
-          <!-- Botón para abrir el modal de edición -->
-          <button class="btn btn-primary mt-4" (click)="openEditModal()">Editar</button>
-        </div>
-      </div>
+    <div class="info-item">
+      <label>Fecha de Registro:</label>
+      <span>{{ currentUser?.registered_at | date: 'longDate' }}</span>
     </div>
   </div>
+
+  <button class="btn btn-primary" (click)="editProfile()">Editar Perfil</button>
+
+  <!-- Mensajes de éxito o error -->
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="uploadError" class="error-message">{{ uploadError }}</div>
 </div>
 
-  <!-- Modal para editar el empleado -->
-<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editEmployeeModalLabel">Editar Empleado</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Formulario para editar los datos del empleado -->
-        <form (ngSubmit)="submitEditForm()">
-          <div class="mb-3">
-            <label for="employeeName" class="form-label">Nombre</label>
-            <input type="text" id="employeeName" class="form-control" [(ngModel)]="employee.name" name="name">
-          </div>
-          <div class="mb-3">
-            <label for="employeeEmail" class="form-label">Correo Electrónico</label>
-            <input type="email" id="employeeEmail" class="form-control" [(ngModel)]="employee.email" name="email">
-          </div>
-          <div class="mb-3">
-            <label for="employeePosition" class="form-label">Posición</label>
-            <input type="text" id="employeePosition" class="form-control" [(ngModel)]="employee.position" name="position">
-          </div>
-          <div class="mb-3">
-            <label for="employeeHireDate" class="form-label">Fecha de Contratación</label>
-            <input type="date" id="employeeHireDate" class="form-control" [(ngModel)]="employee.hireDate" name="hireDate">
-          </div>
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        </form>
-      </div>
+<!-- Modal de Edición -->
+<div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()"></div>
+
+<div class="modal-content" *ngIf="showEditModal">
+  <button class="close-btn" (click)="closeEditModal()">×</button>
+  <h2 class="modal-title">Editar Perfil</h2>
+
+  <!-- Formulario de Edición -->
+  <form (ngSubmit)="saveProfile()">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" [(ngModel)]="editUser.name" name="name" required>
     </div>
-  </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="editUser.email" name="email" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Teléfono</label>
+      <input type="text" id="phone" [(ngModel)]="editUser.phone" name="phone">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="isUpdating">
+      <span *ngIf="!isUpdating">Guardar Cambios</span>
+      <span *ngIf="isUpdating"><i class="fa fa-spinner fa-spin"></i> Guardando...</span>
+    </button>
+    <button type="button" class="btn btn-cancel" (click)="closeEditModal()">Cancelar</button>
+  </form>
 </div>
-  
