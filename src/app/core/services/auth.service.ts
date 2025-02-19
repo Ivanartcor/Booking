@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
+import { AddressService } from './address.service'; 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +18,7 @@ export class AuthService {
   private userSubject = new BehaviorSubject<any>(null); // Estado del usuario autenticado
   public user$ = this.userSubject.asObservable(); // Observable para escuchar cambios
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private addressService: AddressService) {
     this.loadUserFromLocalStorage(); // Cargar usuario al iniciar el servicio
   }
 
@@ -210,72 +212,27 @@ export class AuthService {
       this.userSubject.next(JSON.parse(user));
     }
   }
+
+ /** 🔹 Obtener la dirección del usuario autenticado */
+ getUserAddress(): Observable<any> {
+  const user = this.getCurrentUser();
+  if (!user || !user.id) return of(null);
+  return this.addressService.getAddressById(user.id);
 }
 
+/** 🔹 Actualizar la dirección del usuario autenticado */
+updateUserAddress(addressData: any): Observable<any> {
+  const user = this.getCurrentUser();
+  if (!user || !user.id) return of(null);
 
-/*
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthService {
-  private usersUrl = 'assets/data/users.json'; // Ruta al JSON
-  private currentUser: any = null;
-
-  constructor(private http: HttpClient, private router: Router) {}
-
-  // Simula el login con un email
-  login(email: string, password: string): Observable<boolean> {
-    return this.http.get<any[]>(this.usersUrl).pipe(
-      map((users) => {
-        const user = users.find((u) => u.email === email && u.password === password);
-        if (user) {
-          this.currentUser = user; // Almacena al usuario actual
-          this.redirectBasedOnRole(user.role); // Redirige según el rol
-          return true;
-        }
-        return false;
-      }),
-      catchError((error) => {
-        console.error('Error al cargar los usuarios:', error);
-        return of(false); // Maneja errores retornando false
-      })
-    );
-  }
-
-  // Redirige al layout correspondiente según el rol del usuario
-  private redirectBasedOnRole(role: string): void {
-    const route = {
-      client: '/client',
-      company: '/company',
-      employee: '/employee',
-    }[role] || '/auth/login';
-
-    this.router.navigate([route]);
-  }
-
-  // Devuelve al usuario autenticado
-  getCurrentUser(): any {
-    return this.currentUser
-      ? { ...this.currentUser, profilePicture: this.currentUser.profilePicture || '/assets/images/foto-perfil.jpg' }
-      : null;
-  }
-  
-
-  updateCurrentUser(updatedUser: any): void {
-    this.currentUser = updatedUser; // Actualiza el usuario actual en el servicio
-  }
-
-  updateProfilePicture(url: string): void {
-    if (this.currentUser) {
-      this.currentUser.profilePicture = url;
-    }
-  }
-  
-  // Cierra la sesión
-  logout(): void {
-    this.currentUser = null;
-    this.router.navigate(['/auth/login']);
-  }
+  return this.addressService.updateAddress(user.id, addressData).pipe(
+    tap(() => console.log('Dirección del usuario actualizada')),
+    catchError(error => {
+      console.error('Error actualizando dirección del usuario:', error);
+      return of(null);
+    })
+  );
 }
 
-*/
+}
+
