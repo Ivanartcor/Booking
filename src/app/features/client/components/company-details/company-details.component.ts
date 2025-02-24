@@ -20,9 +20,10 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const companyId = +this.route.snapshot.paramMap.get('id')!;
-    this.loadCompanyDetails(companyId);
+    //this.loadCompanyDetails(companyId);
   }
 
+  
   loadCompanyDetails(companyId: number): void {
     this.companyService.getCompanyById(companyId).subscribe((company) => {
       this.company = company;
@@ -32,11 +33,14 @@ export class CompanyDetailsComponent implements OnInit {
     });
   }
 
+
+  
   loadServices(serviceIds: number[]): void {
     this.serviceService.getServicesByIds(serviceIds).subscribe((services) => {
       this.services = services;
     });
   }
+    
 
   reserveService(serviceId: number): void {
     const service = this.services.find((s) => s.id === serviceId);

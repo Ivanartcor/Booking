@@ -1,79 +1,80 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService {
-  private servicesUrl = 'assets/data/services.json';
-  private services: any[] = [];
+  private apiUrl = 'http://localhost:3000/services'; // URL base de la API de servicios
 
-  constructor(private http: HttpClient) {
-    this.loadServices();
-  }
+  constructor(private http: HttpClient) {}
 
-  private loadServices(): void {
-    this.http.get<any[]>(this.servicesUrl).subscribe((services) => {
-      this.services = services;
-    });
-  }
-
+  /** 🔹 Obtener todos los servicios */
   getServices(): Observable<any[]> {
-    return this.http.get<any[]>(this.servicesUrl).pipe(
-      map((services) => {
-        this.services = services;
-        return services;
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      tap(() => console.log('Servicios obtenidos')),
+      catchError(error => {
+        console.error('Error obteniendo servicios:', error);
+        return of([]);
       })
     );
   }
 
-  getServicesByCompany(companyId: number): Observable<any[]> {
-    return this.http.get<any[]>(this.servicesUrl).pipe(
-      map((services) => services.filter((s) => s.companyId === companyId))
-    );
-  }
-
-  getServicesByIds(serviceIds: number[]): Observable<any[]> {
-    return this.http.get<any[]>(this.servicesUrl).pipe(
-      map((services) => services.filter((s) => serviceIds.includes(s.id)))
-    );
-  }
-
+  /** 🔹 Obtener un servicio por ID */
   getServiceById(serviceId: number): Observable<any> {
-    return this.http.get<any[]>(this.servicesUrl).pipe(
-      map((services) => services.find((s) => s.id === serviceId))
+    return this.http.get<any>(`${this.apiUrl}/${serviceId}`).pipe(
+      tap(() => console.log(`Servicio obtenido ID: ${serviceId}`)),
+      catchError(error => {
+        console.error(`Error obteniendo servicio ID: ${serviceId}`, error);
+        return of(null);
+      })
     );
   }
 
-
-  createService(newService: any): Observable<any> {
-    newService.id = this.services.length + 1; // Genera un ID único temporalmente
-    this.services.push(newService); // Agrega al array de servicios
-    console.log('Servicio creado:', newService);
-    return of(newService); // Simula una respuesta del servidor
-  }
-  
-
-
-  deleteService(serviceId: number): Observable<boolean> {
-    const serviceIndex = this.services.findIndex((s) => s.id === serviceId);
-    if (serviceIndex !== -1) {
-      this.services.splice(serviceIndex, 1);
-      console.log(`Servicio con ID ${serviceId} eliminado.`);
-      return of(true);
-    }
-    return of(false);
-  }
-
- updateService(updatedService: any): Observable<any> {
-  const index = this.services.findIndex((s) => s.id === updatedService.id);
-  if (index !== -1) {
-    this.services[index] = updatedService;
-    console.log('Servicio actualizado:', updatedService);
-    return of(updatedService); // Simula una respuesta del servidor
-  }
-  return of(null);
+  /** 🔹 Obtener servicios de una empresa por `companyId` */
+getServicesByCompany(companyId: number): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/company/${companyId}`).pipe(
+    tap(() => console.log(`Servicios obtenidos para la empresa ID: ${companyId}`)),
+    catchError(error => {
+      console.error(`Error obteniendo servicios de la empresa ID: ${companyId}`, error);
+      return of([]);
+    })
+  );
 }
 
+
+  /** 🔹 Crear un nuevo servicio */
+  createService(serviceData: any): Observable<any> {
+    return this.http.post(this.apiUrl, serviceData).pipe(
+      tap(() => console.log('Servicio creado con éxito')),
+      catchError(error => {
+        console.error('Error creando servicio:', error);
+        return of(null);
+      })
+    );
+  }
+
+  /** 🔹 Actualizar un servicio existente */
+  updateService(id: number, updateData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, updateData).pipe(
+      tap(() => console.log(`Servicio actualizado ID: ${id}`)),
+      catchError(error => {
+        console.error(`Error actualizando servicio ID: ${id}`, error);
+        return of(null);
+      })
+    );
+  }
+
+  /** 🔹 Eliminar un servicio */
+  deleteService(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      tap(() => console.log(`Servicio eliminado ID: ${id}`)),
+      catchError(error => {
+        console.error(`Error eliminando servicio ID: ${id}`, error);
+        return of();
+      })
+    );
+  }
 }

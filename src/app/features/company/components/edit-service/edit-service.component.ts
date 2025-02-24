@@ -119,7 +119,7 @@ export class EditServiceComponent implements OnInit {
     if (!this.validateForm()) {
       return;
     }
-
+/*
     this.serviceService.updateService(this.service).subscribe(
       (updatedService) => {
         this.serviceUpdated.emit(updatedService);
@@ -128,6 +128,7 @@ export class EditServiceComponent implements OnInit {
       },
       () => this.errors.push('Error al actualizar el servicio.')
     );
+    */
   }
 
   closeModal(): void {

@@ -78,6 +78,7 @@ export class EmployeeDashboardComponent implements OnInit {
   
     this.serviceService.deleteService(this.selectedService.id).subscribe({
       next: (success) => {
+        /*
         if (success) {
           this.services = this.services.filter(service => service.id !== this.selectedService.id);
           this.selectedService = null; // Resetear selección
@@ -85,6 +86,7 @@ export class EmployeeDashboardComponent implements OnInit {
         } else {
           alert('No se pudo cancelar el servicio. Inténtalo de nuevo.');
         }
+          */
       },
       error: (err) => {
         console.error('Error al cancelar el servicio:', err);

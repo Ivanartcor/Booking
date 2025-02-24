@@ -71,12 +71,14 @@ export class ServiceDetailsComponent implements OnInit {
   deleteService(): void {
     if (this.serviceId) {
       this.serviceService.deleteService(this.serviceId).subscribe((success) => {
+        /*
         if (success) {
           alert('Servicio eliminado con éxito.');
           this.closeModal();
         } else {
           alert('Error al eliminar el servicio.');
         }
+          */
       });
     }
   }
