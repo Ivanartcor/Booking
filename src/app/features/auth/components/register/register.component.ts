@@ -21,7 +21,6 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   sendWelcomeEmail() {
-    console.log('sendWelcomeEmail() fue llamada'); // Agrega esta línea
     const serviceId = 'service_dybp3av';
     const templateId = 'template_5l9pb7l';
     const publicKey = 'nM6UIy6BmBA_c7Nht';
