@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-register',
@@ -50,5 +51,23 @@ export class RegisterComponent {
         this.errorMessage = 'Ocurrió un error. Inténtelo más tarde.';
       },
     });
+  }
+
+  sendWelcomeEmail() {
+    const serviceId = 'service_dybp3av'; // Reemplaza con tu service ID
+    const templateId = 'template_5l9pb7l'; // Reemplaza con tu template ID
+    const publicKey = 'nM6UIy6BmBA_c7Nht'; // Reemplaza con tu public key
+
+    const templateParams = {
+      user_name: this.name,
+      user_email: this.email,
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Correo enviado con éxito!', response);
+      }, (error) => {
+        console.error('Error al enviar el correo:', error);
+      });
   }
 }
