@@ -21,6 +21,7 @@ export class CompanyProfileComponent implements OnInit {
     });
 
     // Cargar categorías y ciudades para los selectores
+    /*
     this.companyService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
@@ -28,6 +29,7 @@ export class CompanyProfileComponent implements OnInit {
     this.companyService.getCities().subscribe((cities) => {
       this.cities = cities;
     });
+    */
   }
 
   // Abre el modal

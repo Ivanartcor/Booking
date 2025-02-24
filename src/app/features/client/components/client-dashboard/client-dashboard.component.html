@@ -5,46 +5,37 @@
 
   <!-- Barra de Búsqueda -->
   <div class="search-bar">
-    <label for="search-input" class="visually-hidden">Buscar empresa:</label>
-    <input id="search-input" type="text" placeholder="Buscar empresa..." [(ngModel)]="searchQuery"
-      (input)="applyFilters()" />
+    <input type="text" placeholder="Buscar empresa..." [(ngModel)]="searchQuery" (input)="applyFilters()" />
   </div>
 
-
-  <!-- Dropdown de ciudades cargadas dinámicamente -->
+  <!-- Dropdown de ciudades -->
   <div class="user-dropdown">
-    <label for="city-select" class="visually-hidden">Selecciona una ciudad:</label>
-    <select id="city-select" (change)="selectCity($event)">
-      <option value="">Todas</option>
-      <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+    <select (change)="selectCity($event)">
+      <option value="">Todas las ciudades</option>
+      <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
     </select>
   </div>
 
-
-  <!-- Dropdown para categorías cargadas dinámicamente -->
+  <!-- Dropdown de categorías -->
   <div class="menu-dropdown" [class.show]="isDropdownOpen" (click)="stopPropagation($event)">
     <div class="dropdown-header">Categorías</div>
     <ul>
       <li>
-        <a href="#" (click)="selectCategory($event, '')">Todos</a>
+        <a href="#" (click)="selectCategory($event, null)">Todos</a>
       </li>
       <li *ngFor="let category of categories">
-        <a href="#" (click)="selectCategory($event, category.name)">{{ category.name }}</a>
+        <a href="#" (click)="selectCategory($event, category.id)">{{ category.name }}</a>
       </li>
     </ul>
   </div>
 </header>
 
 <main class="main-container">
-  <!-- Empresas cargadas dinámicamente según los datos -->
   <section class="company-card" *ngFor="let company of filteredCompanies" (click)="goToCompanyDetails(company.id)">
-    <!-- Imagen con los atributos alt, title y créditos de licencia -->
-    <img [src]="company.image?.src" [alt]="company.image?.alt || company.name"
-      [title]="company.image?.title || company.name" class="company-image">
-
+    <img [src]="company.logo || 'assets/default-logo.png'" [alt]="company.name" class="company-image">
     <div class="company-info">
       <h1>{{ company.name }}</h1>
-      <p>{{ company.shortDescription }}</p>
+      <p>{{ company.short_description }}</p>
     </div>
   </section>
 </main>
