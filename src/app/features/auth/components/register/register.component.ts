@@ -20,6 +20,25 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  sendWelcomeEmail() {
+    console.log('sendWelcomeEmail() fue llamada'); // Agrega esta línea
+    const serviceId = 'service_dybp3av';
+    const templateId = 'template_5l9pb7l';
+    const publicKey = 'nM6UIy6BmBA_c7Nht';
+
+    const templateParams = {
+      user_name: this.name,
+      user_email: this.email,
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Correo enviado con éxito!', response);
+      }, (error) => {
+        console.error('Error al enviar el correo:', error);
+      });
+  }
+
   register() {
     if (!this.name || !this.email || !this.password || !this.confirmPassword) {
       this.errorMessage = 'Por favor, complete todos los campos.';
@@ -40,6 +59,7 @@ export class RegisterComponent {
         if (success) {
           this.successMessage = 'Registro exitoso. Redirigiendo...';
           this.errorMessage = '';
+          this.sendWelcomeEmail(); // Llama a la función aquí
           setTimeout(() => this.router.navigate(['/auth/login']), 2000); // Redirigir tras 2 segundos
         } else {
           this.errorMessage = 'Error en el registro. Inténtelo de nuevo.';
@@ -53,21 +73,5 @@ export class RegisterComponent {
     });
   }
 
-  sendWelcomeEmail() {
-    const serviceId = 'service_dybp3av'; // Reemplaza con tu service ID
-    const templateId = 'template_5l9pb7l'; // Reemplaza con tu template ID
-    const publicKey = 'nM6UIy6BmBA_c7Nht'; // Reemplaza con tu public key
-
-    const templateParams = {
-      user_name: this.name,
-      user_email: this.email,
-    };
-
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('Correo enviado con éxito!', response);
-      }, (error) => {
-        console.error('Error al enviar el correo:', error);
-      });
-  }
+  
 }
