@@ -11,6 +11,7 @@ export class ClientAppointmentsComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
 
   appointments: any[] = [];
+  userId: number | null = null;
 
   constructor(
     private appointmentService: AppointmentService,
@@ -20,23 +21,27 @@ export class ClientAppointmentsComponent implements OnInit {
   ngOnInit(): void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser && currentUser.id) {
-      this.loadAppointments(currentUser.id);
+      this.userId = currentUser.id;
+      this.loadAppointments();
     }
   }
 
   /** 🔹 Cargar citas del cliente */
-  loadAppointments(clientId: number): void {
-    this.appointmentService.getAppointmentsByClient(clientId).subscribe((appointments) => {
+  loadAppointments(): void {
+    if (!this.userId) return;
+
+    this.appointmentService.getAppointmentsByClient(this.userId).subscribe((appointments) => {
       this.appointments = appointments.map((appointment) => ({
         ...appointment,
         companyName: appointment.company?.name || 'Desconocida',
         serviceName: appointment.service?.name || 'Desconocido',
         price: appointment.service?.price || 0,
-        date: new Date(appointment.appointment_date).toLocaleDateString(),
-        time: new Date(appointment.appointment_date).toLocaleTimeString([], {
+        date: new Date(appointment.appointmentDate).toLocaleDateString(),
+        time: new Date(appointment.appointmentDate).toLocaleTimeString([], {
           hour: '2-digit',
           minute: '2-digit',
         }),
+        status: appointment.status || 'pending', // Estado de la cita
       }));
     });
   }
@@ -45,18 +50,20 @@ export class ClientAppointmentsComponent implements OnInit {
   closeModal(): void {
     this.close.emit();
   }
-  
-  /** 🔹 Cancelar cita */
+
+  /** 🔹 Cancelar cita con confirmación */
   cancelAppointment(appointmentId: number): void {
-    this.appointmentService.cancelAppointment(appointmentId).subscribe((success: boolean) => {
-      if (success) {
-        this.appointments = this.appointments.filter(
-          (appointment) => appointment.id !== appointmentId
-        );
-        alert(`Cita con ID: ${appointmentId} ha sido cancelada.`);
-      } else {
-        alert(`Error al cancelar la cita con ID: ${appointmentId}.`);
-      }
-    });
+    const confirmCancel = confirm(`¿Estás seguro de que quieres cancelar la cita ID ${appointmentId}?`);
+    
+    if (confirmCancel) {
+      this.appointmentService.cancelAppointment(appointmentId).subscribe((success: boolean) => {
+        if (success) {
+          this.appointments = this.appointments.filter((appointment) => appointment.id !== appointmentId);
+          alert(`Cita con ID: ${appointmentId} ha sido cancelada con éxito.`);
+        } else {
+          alert(`Error al cancelar la cita con ID: ${appointmentId}.`);
+        }
+      });
+    }
   }
 }

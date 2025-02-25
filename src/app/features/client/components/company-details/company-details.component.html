@@ -6,7 +6,10 @@
   <ul>
     <li *ngFor="let service of services">
       {{ service.name }} - {{ service.price | currency: 'EUR' }}
-      <button *ngIf="!service.reserved" (click)="reserveService(service.id)" class="reserve-btn">
+      <button 
+        *ngIf="!service.reserved" 
+        (click)="reserveService(service.id)" 
+        class="reserve-btn">
         Reservar
       </button>
       <span *ngIf="service.reserved" class="reserved-msg">Reservado</span>

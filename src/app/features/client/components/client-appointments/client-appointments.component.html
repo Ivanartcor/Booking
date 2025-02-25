@@ -6,13 +6,14 @@
   <div class="appointments-list" *ngIf="appointments.length; else noAppointments">
     <div class="appointment-card" *ngFor="let appointment of appointments">
       <div class="appointment-info">
-        <p class="appointment-company">{{ appointment.companyName }}</p>
-        <p class="appointment-service">{{ appointment.serviceName }}</p>
-        <p class="appointment-price">{{ appointment.price | currency: 'EUR' }}</p>
+        <p class="appointment-company"><strong>Empresa:</strong> {{ appointment.companyName }}</p>
+        <p class="appointment-service"><strong>Servicio:</strong> {{ appointment.serviceName }}</p>
+        <p class="appointment-price"><strong>Precio:</strong> {{ appointment.price | currency: 'EUR' }}</p>
+        <p class="appointment-status"><strong>Estado:</strong> {{ appointment.status | uppercase }}</p>
       </div>
       <div class="appointment-date">
-        <p>{{ appointment.date }}</p>
-        <p>{{ appointment.time }}</p>
+        <p><strong>Fecha:</strong> {{ appointment.date }}</p>
+        <p><strong>Hora:</strong> {{ appointment.time }}</p>
       </div>
       <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancelar</button>
     </div>

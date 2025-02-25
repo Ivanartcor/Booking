@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/core/services/service.service';
-import { EmployeeService } from 'src/app/core/services/employee.service';
+//import { EmployeeService } from 'src/app/core/services/employee.service';
 
 @Component({
   selector: 'app-service-details',
@@ -18,15 +18,15 @@ export class ServiceDetailsComponent implements OnInit {
 
   constructor(
     private serviceService: ServiceService,
-    private employeeService: EmployeeService
+    //private employeeService: EmployeeService
   ) {}
 
   ngOnInit(): void {
     if (this.serviceId) {
-      this.loadServiceDetails();
+      //this.loadServiceDetails();
     }
   }
-
+/*
   loadServiceDetails(): void {
     if (this.serviceId) {
       this.serviceService.getServiceById(this.serviceId).subscribe((service) => {
@@ -44,8 +44,7 @@ export class ServiceDetailsComponent implements OnInit {
           this.assignedEmployees = employees;
         });
     }
-  }
-
+  }*/
   closeModal(): void {
     this.close.emit();
   }
@@ -60,7 +59,7 @@ export class ServiceDetailsComponent implements OnInit {
 
   closeEditModal(): void {
     this.showEditModal = false; // Cierra el modal de edición
-    this.loadServiceDetails(); // Recarga los detalles actualizados
+    //this.loadServiceDetails(); // Recarga los detalles actualizados
   }
 
   onServiceUpdated(updatedService: any): void {
