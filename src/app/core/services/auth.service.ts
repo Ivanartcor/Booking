@@ -12,6 +12,9 @@ import { AddressService } from './address.service';
   providedIn: 'root',
 })
 export class AuthService {
+  deleteEmployee(employeeId: number) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://localhost:3000/auth'; // URL base de autenticación
   private usersUrl = 'http://localhost:3000/users'; // URL base de usuarios
   private uploadUrl = 'http://localhost:3000/upload'; // URL para subida de archivos
