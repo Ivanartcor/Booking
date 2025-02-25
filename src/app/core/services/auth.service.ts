@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
-import { AddressService } from './address.service'; 
+import { AddressService } from './address.service';
 
 @Injectable({
   providedIn: 'root',
@@ -42,15 +42,15 @@ export class AuthService {
   fetchUserProfile(skipRedirect: boolean = false): void {
     const token = localStorage.getItem('token');
     if (!token) return;
-  
+
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-  
+
     this.http.get<any>(`${this.usersUrl}/me`, { headers }).pipe(
       tap(user => {
         this.userSubject.next(user);
         localStorage.setItem('user', JSON.stringify(user)); // Guardar usuario en LocalStorage
-  
-        if (!skipRedirect) { 
+
+        if (!skipRedirect) {
           this.redirectBasedOnRole(user.role); // Solo redirige si skipRedirect es falso
         }
       }),
@@ -61,16 +61,16 @@ export class AuthService {
       })
     ).subscribe();
   }
-  
+
 
 
   /** Actualiza los datos del usuario actual */
   updateUser(updateData: Partial<any>): Observable<any> {
     const token = localStorage.getItem('token');
     if (!token) return of(null);
-  
+
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-  
+
     return this.http.put(`${this.usersUrl}/me`, updateData, { headers }).pipe(
       tap(() => {
         console.log('Perfil actualizado');
@@ -82,7 +82,7 @@ export class AuthService {
       })
     );
   }
-  
+
 
   /**  Actualiza los datos de cualquier usuario */
   updateUserById(userId: number, updateData: Partial<any>): Observable<any> {
@@ -106,11 +106,11 @@ export class AuthService {
   }
 
 
-   /** 🔹 Subir imagen de perfil */
-   uploadProfilePicture(file: File): Observable<any> {
+  /** 🔹 Subir imagen de perfil */
+  uploadProfilePicture(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-  
+
     return this.http.post<{ filePath: string }>(`${this.uploadUrl}`, formData).pipe(
       tap((res) => console.log('Imagen subida:', res)),
       map((res) => res.filePath), // Extrae la ruta del archivo
@@ -122,11 +122,11 @@ export class AuthService {
       })
     );
   }
-  
 
 
-   /** 🔹 Actualiza la URL de la imagen de perfil en el usuario */
-   updateProfilePicture(imageUrl: string): Observable<any> {
+
+  /** 🔹 Actualiza la URL de la imagen de perfil en el usuario */
+  updateProfilePicture(imageUrl: string): Observable<any> {
     return this.updateUser({ profile_picture: imageUrl }).pipe(
       tap(() => console.log('Imagen de perfil actualizada')),
       catchError(error => {
@@ -137,8 +137,8 @@ export class AuthService {
   }
 
 
-   /** 🔹 Recarga los datos del usuario después de cambios */
-   private refreshUserProfile(): void {
+  /** 🔹 Recarga los datos del usuario después de cambios */
+  private refreshUserProfile(): void {
     this.fetchUserProfile(true);
   }
 
@@ -155,8 +155,8 @@ export class AuthService {
   }
 
 
-   /** Registro de usuario */
-   register(userData: any): Observable<boolean> {
+  /** Registro de usuario */
+  register(userData: any): Observable<boolean> {
     return this.http.post(`${this.apiUrl}/register`, userData).pipe(
       tap(() => console.log('Usuario registrado con éxito')),
       map(() => true),
@@ -167,14 +167,14 @@ export class AuthService {
     );
   }
 
-  
+
   // Devuelve el usuario actual almacenado en el servicio
   getCurrentUser(): any {
     return this.userSubject.value;
   }
 
 
-    // Verifica si el usuario está autenticado
+  // Verifica si el usuario está autenticado
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
   }
@@ -213,26 +213,75 @@ export class AuthService {
     }
   }
 
- /** 🔹 Obtener la dirección del usuario autenticado */
- getUserAddress(): Observable<any> {
-  const user = this.getCurrentUser();
-  if (!user || !user.id) return of(null);
-  return this.addressService.getAddressById(user.id);
-}
+  /** 🔹 Obtener la dirección del usuario autenticado */
+  getUserAddress(): Observable<any> {
+    const user = this.getCurrentUser();
+    if (!user || !user.id) return of(null);
+    return this.addressService.getAddressById(user.id);
+  }
 
-/** 🔹 Actualizar la dirección del usuario autenticado */
-updateUserAddress(addressData: any): Observable<any> {
-  const user = this.getCurrentUser();
-  if (!user || !user.id) return of(null);
+  /** 🔹 Actualizar la dirección del usuario autenticado */
+  updateUserAddress(addressData: any): Observable<any> {
+    const user = this.getCurrentUser();
+    if (!user || !user.id) return of(null);
 
-  return this.addressService.updateAddress(user.id, addressData).pipe(
-    tap(() => console.log('Dirección del usuario actualizada')),
-    catchError(error => {
-      console.error('Error actualizando dirección del usuario:', error);
-      return of(null);
-    })
-  );
-}
+    return this.addressService.updateAddress(user.id, addressData).pipe(
+      tap(() => console.log('Dirección del usuario actualizada')),
+      catchError(error => {
+        console.error('Error actualizando dirección del usuario:', error);
+        return of(null);
+      })
+    );
+  }
+
+  //metodos para usuarios tipo empleado
+
+  /** 🔹 Obtener todos los empleados */
+  getEmployees(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.usersUrl}?role=employee`).pipe(
+      tap(() => console.log('Empleados obtenidos')),
+      catchError(error => {
+        console.error('Error obteniendo empleados:', error);
+        return of([]);
+      })
+    );
+  }
+
+  /** 🔹 Obtener empleados de una empresa específica */
+  getEmployeesByCompany(companyId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.usersUrl}?companyId=${companyId}&role=employee`).pipe(
+      tap(() => console.log(`Empleados obtenidos para la empresa ID: ${companyId}`)),
+      catchError(error => {
+        console.error(`Error obteniendo empleados para la empresa ID: ${companyId}`, error);
+        return of([]);
+      })
+    );
+  }
+
+  /** 🔹 Obtener un empleado por su ID */
+  getEmployeeById(employeeId: number): Observable<any> {
+    return this.http.get<any>(`${this.usersUrl}/${employeeId}`).pipe(
+      tap(() => console.log(`Empleado obtenido con ID: ${employeeId}`)),
+      catchError(error => {
+        console.error(`Error obteniendo empleado ID: ${employeeId}`, error);
+        return of(null);
+      })
+    );
+  }
+
+  /**
+   * 🔹 Asignar un empleado a una empresa
+   * Basta con actualizar el campo `companyId`
+   */
+  assignEmployeeToCompany(employeeId: number, companyId: number | null): Observable<any> {
+    return this.updateUserById(employeeId, { companyId }).pipe(
+      tap(() => console.log(`Empleado ID ${employeeId} asignado a empresa ID ${companyId}`)),
+      catchError(error => {
+        console.error(`Error asignando empleado ${employeeId} a empresa ${companyId}:`, error);
+        return of(null);
+      })
+    );
+  }
 
 }
 
