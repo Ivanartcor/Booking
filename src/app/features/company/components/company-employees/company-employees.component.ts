@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from 'src/app/core/services/employee.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -10,13 +9,9 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class CompanyEmployeesComponent implements OnInit {
   employees: any[] = [];
   companyId!: number;
-
   showAddEmployeeModal = false;
 
-  constructor(
-    private employeeService: EmployeeService,
-    private authService: AuthService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     const currentUser = this.authService.getCurrentUser();
@@ -27,7 +22,7 @@ export class CompanyEmployeesComponent implements OnInit {
   }
 
   loadEmployees(): void {
-    this.employeeService.getEmployeesByCompany(this.companyId).subscribe((employees) => {
+    this.authService.getEmployeesByCompany(this.companyId).subscribe((employees) => {
       this.employees = employees;
     });
   }
@@ -41,18 +36,9 @@ export class CompanyEmployeesComponent implements OnInit {
   }
 
   onEmployeeAdded(newEmployee: any): void {
-    this.employees.push(newEmployee); // Actualiza la lista
-    this.closeAddEmployeeModal(); // Cierra el modal
-  }
-
-  deleteEmployee(employeeId: number): void {
-    this.employeeService.deleteEmployee(employeeId).subscribe((success) => {
-      if (success) {
-        this.employees = this.employees.filter(e => e.id !== employeeId);
-        alert('Empleado eliminado con éxito.');
-      } else {
-        alert('Error al eliminar el empleado.');
-      }
-    });
+    this.employees.push(newEmployee); 
+    this.closeAddEmployeeModal(); 
   }
 }
+
+
