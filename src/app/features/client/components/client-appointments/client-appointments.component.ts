@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/core/services/appointment.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -7,11 +7,10 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './client-appointments.component.html',
   styleUrls: ['./client-appointments.component.scss']
 })
-export class ClientAppointmentsComponent {
+export class ClientAppointmentsComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
 
   appointments: any[] = [];
-
 
   constructor(
     private appointmentService: AppointmentService,
@@ -25,12 +24,16 @@ export class ClientAppointmentsComponent {
     }
   }
 
+  /** 🔹 Cargar citas del cliente */
   loadAppointments(clientId: number): void {
     this.appointmentService.getAppointmentsByClient(clientId).subscribe((appointments) => {
       this.appointments = appointments.map((appointment) => ({
         ...appointment,
-        date: new Date(appointment.appointmentDate).toLocaleDateString(),
-        time: new Date(appointment.appointmentDate).toLocaleTimeString([], {
+        companyName: appointment.company?.name || 'Desconocida',
+        serviceName: appointment.service?.name || 'Desconocido',
+        price: appointment.service?.price || 0,
+        date: new Date(appointment.appointment_date).toLocaleDateString(),
+        time: new Date(appointment.appointment_date).toLocaleTimeString([], {
           hour: '2-digit',
           minute: '2-digit',
         }),
@@ -38,19 +41,22 @@ export class ClientAppointmentsComponent {
     });
   }
 
-
-  closeModal() {
-    this.close.emit(); // Emite un evento para notificar el cierre
+  /** 🔹 Cerrar modal */
+  closeModal(): void {
+    this.close.emit();
   }
   
+  /** 🔹 Cancelar cita */
   cancelAppointment(appointmentId: number): void {
-    this.appointmentService.cancelAppointment(appointmentId).subscribe((success) => {
+    this.appointmentService.cancelAppointment(appointmentId).subscribe((success: boolean) => {
       if (success) {
         this.appointments = this.appointments.filter(
           (appointment) => appointment.id !== appointmentId
         );
+        alert(`Cita con ID: ${appointmentId} ha sido cancelada.`);
+      } else {
+        alert(`Error al cancelar la cita con ID: ${appointmentId}.`);
       }
     });
-    alert(`Cita con ID: ${appointmentId} ha sido cancelada.`);
   }
 }

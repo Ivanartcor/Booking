@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -84,15 +84,17 @@ export class AppointmentService {
   }
 
   /** 🔹 Cancelar una cita */
-  cancelAppointment(appointmentId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${appointmentId}`).pipe(
-      tap(() => console.log(`Cita cancelada ID: ${appointmentId}`)),
-      catchError(error => {
-        console.error(`Error cancelando cita ID: ${appointmentId}`, error);
-        return of();
-      })
-    );
-  }
+cancelAppointment(appointmentId: number): Observable<boolean> {
+  return this.http.delete<void>(`${this.apiUrl}/${appointmentId}`).pipe(
+    tap(() => console.log(`Cita cancelada ID: ${appointmentId}`)),
+    map(() => true), // Devuelve `true` en caso de éxito
+    catchError(error => {
+      console.error(`Error cancelando cita ID: ${appointmentId}`, error);
+      return of(false); // Devuelve `false` en caso de error
+    })
+  );
+}
+
 
   /**
   * 🔹 Construye los parámetros de consulta para filtrar citas.

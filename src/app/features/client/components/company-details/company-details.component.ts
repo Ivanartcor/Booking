@@ -19,29 +19,28 @@ export class CompanyDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const companyId = +this.route.snapshot.paramMap.get('id')!;
-    //this.loadCompanyDetails(companyId);
+    const companyId = Number(this.route.snapshot.paramMap.get('id'));
+    if (companyId) {
+      this.loadCompanyDetails(companyId);
+    }
   }
 
-  
+  /** 🔹 Cargar detalles de la empresa */
   loadCompanyDetails(companyId: number): void {
     this.companyService.getCompanyById(companyId).subscribe((company) => {
       this.company = company;
-      if (this.company && this.company.services.length > 0) {
-        this.loadServices(this.company.services);
-      }
+      this.loadServices(company.id);
     });
   }
 
-
-  
-  loadServices(serviceIds: number[]): void {
-    this.serviceService.getServicesByIds(serviceIds).subscribe((services) => {
+  /** 🔹 Obtener servicios de la empresa */
+  loadServices(companyId: number): void {
+    this.serviceService.getServicesByCompany(companyId).subscribe((services) => {
       this.services = services;
     });
   }
-    
 
+  /** 🔹 Reservar servicio */
   reserveService(serviceId: number): void {
     const service = this.services.find((s) => s.id === serviceId);
     if (service) {
