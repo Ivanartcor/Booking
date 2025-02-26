@@ -17,11 +17,11 @@
   padding: 2rem;
   width: 700px;
   max-width: 90%;
-  max-height: 90vh; /* Limita la altura */
+  max-height: 90vh;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   z-index: 1001;
-  overflow-y: auto; /* Habilita desplazamiento vertical */
+  overflow-y: auto;
   scroll-behavior: smooth;
 
   .close-btn {
@@ -94,25 +94,5 @@
         }
       }
     }
-  }
-}
-
-/* Asegura que el modal se ajuste en pantallas pequeñas */
-@media (max-height: 600px) {
-  .modal-content {
-    top: 5%;
-    transform: translate(-50%, 0);
-    max-height: 85vh;
-  }
-}
-
-@media (max-width: 600px) {
-  .modal-content {
-    width: 95%;
-    padding: 1.5rem;
-  }
-
-  .modal-title {
-    font-size: 1.5rem;
   }
 }

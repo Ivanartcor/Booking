@@ -1,4 +1,4 @@
-/* Asegurar que la página ocupe el 100% de la altura y el footer esté anclado abajo */
+/* Asegurar que la página ocupe el 100% de la altura y el footer esté abajo */
 html, body {
   height: 100%;
   display: flex;
@@ -6,92 +6,90 @@ html, body {
   margin: 0;
 }
 
-h4 {
-  color: #6f6f6d;
+/* Contenedor principal para que el footer no se superponga */
+.container {
+  flex: 1; /* 📌 Hace que el contenido principal ocupe todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
 }
 
+/* Footer Fijo en la parte inferior sin superponer contenido */
 .app-footer {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  position: relative; /* 📌 Cambio de `fixed` a `relative` */
+  margin-top: auto; /* 📌 Empuja el footer a la parte inferior */
+}
+
+/* Contenedor del footer */
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Mantiene los elementos a los lados */
+  align-items: center;
+  gap: 1rem; /* Espaciado entre secciones */
+  font-size: 0.875rem; /* Tamaño de texto ajustado */
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+/* Idioma */
+.footer-language a {
+  color: #437a90;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
   
-    width: 100%;
-    background-color: #ffffff;
-    /* Ajusta según tu diseño */
-    padding: 20px 0;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  
+  &:hover {
+    color: #005f6b;
+  }
+}
 
+/* Redes sociales */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-left: 13%;
 
-  .footer-container {
-    display: flex;
-    justify-content: space-between; /* Mantiene los elementos a los lados */
-    align-items: center;
-    gap: 1rem; /* Espaciado entre secciones */
-    font-size: 0.875rem; /* Tamaño de texto ajustado */
-     /* Asegura que el contenedor ocupe todo el ancho disponible */
-    margin-left: 2%;
-    margin-right: 2%;
+  a {
+    color: #437a90;
+    font-size: 1.5rem;
 
-    /* Idioma */
-    .footer-language a {
-      color: #437a90; /* Azul */
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      
-      &:hover {
-        color: #005f6b;
-      }
-    }
-
-    /* Redes sociales */
-    .footer-social {
-      
-      display: flex;
-      gap: 1rem;
-      justify-content: center; /* Asegura que los iconos estén centrados en su área */
-      margin-left: 13%;
-
-      a {
-        color: #437a90;
-        font-size: 1.5rem;
-
-        &:hover {
-          color: #005f6b /* Azul más oscuro */
-        }
-      }
-    }
-
-    .footer-links .help-links {
-      display: flex;
-      gap: 20px; /* Espaciado entre los enlaces */
-      color: #437a90;
-    }
-    
-    .footer-links .help-links a {
-      text-decoration: none;
-      color: inherit; /* Mantener el color del texto heredado */
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .footer-links .help-links a:hover {
+    &:hover {
       color: #005f6b;
     }
-
-  }
-
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column; /* Diseño vertical en pantallas pequeñas */
-      align-items: center;
-      gap: 0.5rem; /* Menor espaciado */
-    }
-
-    .vertical-line {
-      display: none; /* Ocultar líneas verticales en dispositivos pequeños */
-    }
   }
 }
 
+/* Links de ayuda */
+.footer-links .help-links {
+  display: flex;
+  gap: 20px;
+  color: #437a90;
+}
+
+.footer-links .help-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.footer-links .help-links a:hover {
+  color: #005f6b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .vertical-line {
+    display: none; /* Ocultar líneas verticales en dispositivos pequeños */
+  }
+}

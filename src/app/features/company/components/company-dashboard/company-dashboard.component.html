@@ -1,19 +1,26 @@
 <div class="container bg-light py-4">
   <app-cookie-modal></app-cookie-modal>
-  <!-- Cabecera -->
+
+  <!-- 🔹 Mensajes de Error -->
+  <div class="alert alert-danger" *ngIf="errors.length > 0">
+    <ul>
+      <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
+  </div>
+
+  <!-- 🔹 Cabecera de Empresa -->
   <div class="row g-3 align-items-stretch">
-    <!-- Contenedor principal para Empresa y Estadísticas -->
     <div class="col-12 d-flex p-0 bg-white rounded shadow position-relative">
-      <!-- Imagen principal -->
+      <!-- 🔹 Imagen de Empresa -->
       <div class="w-60 position-relative" style="flex: 1.5;">
         <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa" class="img-fluid h-100 w-100 rounded-start"
           style="object-fit: cover;" />
-        <!-- Texto dentro de la imagen -->
         <div class="text-overlay position-absolute bottom-0 start-0 bg-white text-green p-2 rounded-end">
-          <h1 class="fs-3 fw-bold mb-0">MediCare</h1>
+          <h1 class="fs-3 fw-bold mb-0">{{ company?.name || 'Empresa' }}</h1>
         </div>
       </div>
-      <!-- Estadísticas -->
+
+      <!-- 🔹 Estadísticas -->
       <div class="w-40 bg-light d-flex flex-column align-items-center p-3 rounded-end shadow" style="flex: 1;">
         <h2 class="fs-5 fw-bold text-secondary mb-3">Estadísticas</h2>
         <div class="stats-box p-3 border rounded shadow-sm w-100">
@@ -27,19 +34,22 @@
           </div>
           <div class="stat-item mb-3">
             <h3 class="fs-6 fw-bold text-green">Servicios Prestados</h3>
-            <h4 class="fs-3 fw-bold text-green">890</h4>
+            <h4 class="fs-3 fw-bold text-green">{{ services.length }}</h4>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Servicios -->
+  <!-- 🔹 Lista de Servicios -->
   <div class="row g-3 mt-4">
     <div class="col-12 bg-white rounded shadow p-3">
       <h3 class="">Servicios</h3>
+
+      <!-- Mostrar mensaje si no hay servicios -->
+      <p *ngIf="services.length === 0" class="text-muted">No hay servicios disponibles.</p>
+
       <div class="row">
-        <!-- Usar el componente ServiceCard -->
         <div class="col-md-4 w-100" *ngFor="let service of services" (click)="openServiceDetails(service.id)">
           <app-service-card [service]="service"></app-service-card>
         </div>
@@ -47,17 +57,16 @@
     </div>
   </div>
 
-
-  <!-- Modal de detalles del servicio -->
+  <!-- 🔹 Modal de detalles del servicio -->
   <app-service-details 
-  *ngIf="showServiceDetailsModal" 
-  [serviceId]="selectedServiceId" 
-  [companyId]="companyId" 
-  (close)="closeServiceDetailsModal()">
-</app-service-details>
+    *ngIf="showServiceDetailsModal" 
+    [serviceId]="selectedServiceId" 
+    [companyId]="companyId" 
+    (close)="closeServiceDetailsModal()">
+  </app-service-details>
 
-  <!-- Botón Añadir Servicio -->
-<div class="row g-3 mt-3">
+  <!-- 🔹 Botón Añadir Servicio -->
+<div class="row g-3 mt-3 add-service-btn">
   <div class="col-12 text-center">
     <button class="btn btn-primary btn-lg" (click)="openAddServiceModal()">
       Añadir Servicio
@@ -66,6 +75,11 @@
 </div>
 
 
-<!-- Modal de Añadir Servicio -->
-<app-add-service *ngIf="showAddServiceModal" [companyId]="companyId" (close)="closeAddServiceModal()"
-  (serviceAdded)="onServiceAdded($event)"></app-add-service>
+  <!-- 🔹 Modal de Añadir Servicio -->
+  <app-add-service 
+    *ngIf="showAddServiceModal" 
+    [companyId]="companyId" 
+    (close)="closeAddServiceModal()"
+    (serviceAdded)="onServiceAdded($event)">
+  </app-add-service>
+</div>

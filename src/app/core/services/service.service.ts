@@ -9,6 +9,8 @@ import { catchError, tap } from 'rxjs/operators';
 export class ServiceService {
   private apiUrl = 'http://localhost:3000/services'; // URL base de la API de servicios
   private availabilityUrl = 'http://localhost:3000/service-availability'; // URL base de la API de disponibilidad
+  private serviceEmployeesUrl = 'http://localhost:3000/service-employees';
+
 
   constructor(private http: HttpClient) {}
 
@@ -145,4 +147,19 @@ export class ServiceService {
       })
     );
   }
+  /** 🔹 Obtener empleados asignados a un servicio */
+  getEmployeesByService(serviceId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.serviceEmployeesUrl}/service/${serviceId}`);
+  }
+
+  /** 🔹 Asignar un empleado a un servicio */
+  assignEmployeeToService(serviceId: number, employeeId: number): Observable<any> {
+    return this.http.post(`${this.serviceEmployeesUrl}`, { serviceId, employeeId });
+  }
+
+  /** 🔹 Eliminar la asignación de un empleado a un servicio */
+  removeEmployeeFromService(serviceId: number, employeeId: number): Observable<void> {
+    return this.http.delete<void>(`${this.serviceEmployeesUrl}/${serviceId}/${employeeId}`);
+  }
+
 }

@@ -6,18 +6,34 @@
 
   <div class="service-info">
     <p><strong>Descripción:</strong> {{ service.description }}</p>
+    <p><strong>Tipo:</strong> {{ service.type === 'in_person' ? 'Presencial' : service.type === 'online' ? 'Online' : 'A domicilio' }}</p>
     <p><strong>Precio:</strong> €{{ service.price }}</p>
-    <p><strong>Duración:</strong> {{ service.durationMinutes }} minutos</p>
-    <p><strong>Categoría:</strong> {{ service.category }}</p>
+    <p><strong>Duración:</strong> {{ service.duration_minutes }} minutos</p>
+    <p><strong>Estado:</strong> 
+      <span [ngClass]="{
+        'text-success': service.status === 'active',
+        'text-warning': service.status === 'inactive',
+        'text-danger': service.status === 'suspended'
+      }">
+        {{ service.status === 'active' ? 'Activo' : service.status === 'inactive' ? 'Inactivo' : 'Suspendido' }}
+      </span>
+    </p>
+    <p><strong>Fecha de Creación:</strong> {{ service.created_at | date:'dd/MM/yyyy' }}</p>
 
     <h3 class="section-title">Disponibilidad</h3>
-    <p><strong>Días:</strong> {{ service.availability.days.join(', ') }}</p>
-    <p><strong>Horario:</strong> {{ service.availability.hours.start }} - {{ service.availability.hours.end }}</p>
+    <ul *ngIf="availability.length > 0; else noAvailability">
+      <li *ngFor="let avail of availability">
+        <strong>{{ avail.day_of_week }}:</strong> {{ avail.start_time }} - {{ avail.end_time }}
+      </li>
+    </ul>
+    <ng-template #noAvailability>
+      <p>No hay horarios disponibles.</p>
+    </ng-template>
 
     <h3 class="section-title">Empleados Asignados</h3>
-    <ul *ngIf="assignedEmployees.length > 0; else noEmployees">
-      <li *ngFor="let employee of assignedEmployees">
-        {{ employee.name }} - {{ employee.position }}
+    <ul *ngIf="employees.length > 0; else noEmployees">
+      <li *ngFor="let employee of employees">
+        <strong>{{ employee.name }}</strong> - {{ employee.email }}
       </li>
     </ul>
     <ng-template #noEmployees>

@@ -7,7 +7,7 @@
   <form (ngSubmit)="updateService()">
     <!-- 🔹 Nombre del Servicio -->
     <div class="form-group">
-      <label for="name">Nombre del Servicio</label>
+      <label for="name">Nombre</label>
       <input type="text" id="name" [(ngModel)]="service.name" name="name" required />
     </div>
 
@@ -15,6 +15,16 @@
     <div class="form-group">
       <label for="description">Descripción</label>
       <textarea id="description" [(ngModel)]="service.description" name="description" required></textarea>
+    </div>
+
+    <!-- 🔹 Tipo de Servicio -->
+    <div class="form-group">
+      <label for="type">Tipo de Servicio</label>
+      <select id="type" [(ngModel)]="service.type" name="type" required>
+        <option value="in_person">Presencial</option>
+        <option value="online">Online</option>
+        <option value="at_home">A domicilio</option>
+      </select>
     </div>
 
     <!-- 🔹 Precio -->
@@ -26,7 +36,17 @@
     <!-- 🔹 Duración -->
     <div class="form-group">
       <label for="duration">Duración (minutos)</label>
-      <input type="number" id="duration" [(ngModel)]="service.durationMinutes" name="duration" required min="1" />
+      <input type="number" id="duration" [(ngModel)]="service.duration_minutes" name="duration" required min="1" />
+    </div>
+
+    <!-- 🔹 Estado -->
+    <div class="form-group">
+      <label for="status">Estado</label>
+      <select id="status" [(ngModel)]="service.status" name="status" required>
+        <option value="active">Activo</option>
+        <option value="inactive">Inactivo</option>
+        <option value="suspended">Suspendido</option>
+      </select>
     </div>
 
     <!-- 🔹 Categoría -->
@@ -44,9 +64,12 @@
       <label>Empleados Asignados</label>
       <div class="checkbox-group">
         <label *ngFor="let employee of employees">
-          <input type="checkbox" [value]="employee.id" (change)="toggleEmployeeSelection(employee.id, $event)"
-            [checked]="service.assignedEmployees.includes(employee.id)" />
-          {{ employee.name }} - {{ employee.position }}
+          <input 
+            type="checkbox" 
+            [value]="employee.id" 
+            (change)="toggleEmployeeSelection(employee.id, $event)"
+            [checked]="assignedEmployees.includes(employee.id)" />
+          {{ employee.name }}
         </label>
       </div>
     </div>
@@ -56,20 +79,37 @@
       <label>Días Disponibles</label>
       <div class="checkbox-group">
         <label *ngFor="let day of availableDays">
-          <input type="checkbox" [value]="day" (change)="toggleDaySelection(day, $event)"
-            [checked]="service.availability && service.availability.some(a => a.dayOfWeek === day)" />
+          <input 
+            type="checkbox" 
+            [value]="day" 
+            (change)="toggleDaySelection(day, $event)"
+             />
           {{ day }}
         </label>
       </div>
     </div>
 
-    <!-- 🔹 Horarios por Día -->
-    <div class="form-group" *ngFor="let avail of service.availability">
-      <label>Horario para {{ avail.dayOfWeek }}</label>
+    <!-- 🔹 Horarios de disponibilidad -->
+    <div *ngFor="let avail of service.availability; let i = index" class="form-group">
+      <label>Horario para {{ avail.day_of_week }}</label>
       <div class="time-group">
-        <input type="time" [(ngModel)]="avail.startTime" name="startHour-{{ avail.dayOfWeek }}" required />
+        <input 
+          type="time" 
+          [(ngModel)]="avail.start_time" 
+          name="start_time_{{i}}" 
+          (change)="updateAvailability(avail.day_of_week, 'start_time', $event)"
+          [ngModelOptions]="{standalone: true}" 
+          required
+        />
         a
-        <input type="time" [(ngModel)]="avail.endTime" name="endHour-{{ avail.dayOfWeek }}" required />
+        <input 
+          type="time" 
+          [(ngModel)]="avail.end_time" 
+          name="end_time_{{i}}" 
+          (change)="updateAvailability(avail.day_of_week, 'end_time', $event)"
+          [ngModelOptions]="{standalone: true}" 
+          required
+        />
       </div>
     </div>
 

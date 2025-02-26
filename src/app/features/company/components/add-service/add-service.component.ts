@@ -103,6 +103,7 @@ toggleDaySelection(day: string, event: Event): void {
     if (this.service.durationMinutes <= 0) this.errors.push('La duración debe ser mayor que 0.');
     if (!this.service.category) this.errors.push('Debe seleccionar una categoría.');
     if (!this.service.assignedEmployees.length) this.errors.push('Debe asignar al menos un empleado.');
+   /*
     if (!this.service.availability.length) this.errors.push('Debe seleccionar al menos un día disponible.');
 
     this.service.availability.forEach((avail) => {
@@ -110,7 +111,7 @@ toggleDaySelection(day: string, event: Event): void {
         this.errors.push(`El horario del día ${avail.dayOfWeek} es inválido.`);
       }
     });
-
+*/
     return this.errors.length === 0;
   }
 
