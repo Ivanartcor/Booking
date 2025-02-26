@@ -163,4 +163,19 @@ export class EditServiceComponent implements OnInit {
   closeModal(): void {
     this.close.emit();
   }
+
+  /** 🔹 Actualizar disponibilidad de un día */
+updateAvailability(day: string, field: 'start_time' | 'end_time', event: Event): void {
+  const value = (event.target as HTMLInputElement).value;
+  const availability = this.service.availability.find(a => a.day_of_week === day);
+
+  if (availability) {
+    availability[field] = value;
+    this.serviceService.updateAvailability(availability.id, availability).subscribe(
+      () => console.log(`Disponibilidad actualizada: ${day} - ${field}: ${value}`),
+      () => this.errors.push(`Error al actualizar disponibilidad del día ${day}.`)
+    );
+  }
+}
+
 }
