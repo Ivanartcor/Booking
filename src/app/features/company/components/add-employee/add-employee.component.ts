@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { EmployeeService } from 'src/app/core/services/employee.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -14,33 +14,21 @@ export class AddEmployeeComponent implements OnInit {
   newEmployee = {
     name: '',
     email: '',
-    position: '',
-    hireDate: '',
-    specialization: [] as number[],
+    phone: '',
+    profile_picture: '',
+    role: 'employee', // Fijo para empleados
     companyId: 0,
   };
 
   errors: string[] = [];
-  specializations: any[] = []; // Especializaciones cargadas dinámicamente
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private authService: AuthService) {}
 
   /**
-   * Inicializa el componente cargando especializaciones
+   * Inicializa el componente
    */
   ngOnInit(): void {
     this.newEmployee.companyId = this.companyId; // Asigna el ID de la empresa
-    this.loadSpecializations(); // Carga especializaciones dinámicamente
-  }
-
-  /**
-   * Carga especializaciones desde el servicio
-   */
-  loadSpecializations(): void {
-    this.employeeService.getSpecializations().subscribe(
-      (specs) => (this.specializations = specs),
-      () => this.errors.push('Error al cargar especializaciones.')
-    );
   }
 
   /**
@@ -48,15 +36,13 @@ export class AddEmployeeComponent implements OnInit {
    */
   validateForm(): boolean {
     this.errors = [];
-    const { name, email, position, hireDate, specialization } = this.newEmployee;
+    const { name, email, phone } = this.newEmployee;
 
     if (!name.trim()) this.errors.push('El nombre es obligatorio.');
     if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email))
       this.errors.push('El email es obligatorio y debe ser válido.');
-    if (!position.trim()) this.errors.push('El cargo es obligatorio.');
-    if (!hireDate) this.errors.push('La fecha de contratación es obligatoria.');
-    if (!specialization.length)
-      this.errors.push('Debe seleccionar al menos una especialización.');
+    if (phone && !/^\d{9,15}$/.test(phone))
+      this.errors.push('El teléfono debe ser válido (9-15 dígitos).');
 
     return this.errors.length === 0;
   }
@@ -67,13 +53,17 @@ export class AddEmployeeComponent implements OnInit {
   addEmployee(): void {
     if (!this.validateForm()) return; // Detener si hay errores
 
-    this.employeeService.createEmployee(this.newEmployee).subscribe(
-      (employee) => {
-        alert('Empleado agregado con éxito.');
-        this.employeeAdded.emit(employee); // Emite el evento de empleado añadido
-        this.closeModal(); // Cierra el modal
+    this.authService.register(this.newEmployee).subscribe(
+      (success) => {
+        if (success) {
+          alert('Empleado agregado con éxito.');
+          this.employeeAdded.emit(this.newEmployee); // Emite el evento de empleado añadido
+          this.closeModal(); // Cierra el modal
+        } else {
+          this.errors.push('Error al guardar el empleado.');
+        }
       },
-      () => this.errors.push('Error al guardar el empleado.')
+      () => this.errors.push('Error en la solicitud al servidor.')
     );
   }
 
@@ -82,22 +72,5 @@ export class AddEmployeeComponent implements OnInit {
    */
   closeModal(): void {
     this.close.emit();
-  }
-
-  /**
-   * Controla la selección de especialización
-   */
-  toggleSpecialization(specializationId: number, event: Event): void {
-    const isChecked = (event.target as HTMLInputElement).checked;
-
-    if (isChecked) {
-      if (!this.newEmployee.specialization.includes(specializationId)) {
-        this.newEmployee.specialization.push(specializationId);
-      }
-    } else {
-      this.newEmployee.specialization = this.newEmployee.specialization.filter(
-        (id) => id !== specializationId
-      );
-    }
   }
 }

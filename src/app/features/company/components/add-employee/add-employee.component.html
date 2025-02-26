@@ -16,30 +16,16 @@
     </div>
 
     <div class="form-group">
-      <label for="position">Cargo</label>
-      <input type="text" id="position" [(ngModel)]="newEmployee.position" name="position" required />
+      <label for="phone">Teléfono (opcional)</label>
+      <input type="text" id="phone" [(ngModel)]="newEmployee.phone" name="phone" />
     </div>
 
     <div class="form-group">
-      <label for="hireDate">Fecha de Contratación</label>
-      <input type="date" id="hireDate" [(ngModel)]="newEmployee.hireDate" name="hireDate" required />
+      <label for="profile_picture">Foto de Perfil (URL opcional)</label>
+      <input type="text" id="profile_picture" [(ngModel)]="newEmployee.profile_picture" name="profile_picture" />
     </div>
 
-    <div class="form-group">
-      <label>Especialización</label>
-      <div class="checkbox-group">
-        <label *ngFor="let spec of specializations">
-          <input
-            type="checkbox"
-            [value]="spec.id"
-            (change)="toggleSpecialization(spec.id, $event)"
-            [checked]="newEmployee.specialization.includes(spec.id)"
-          />
-          {{ spec.name }}
-        </label>
-      </div>
-    </div>
-
+    <!-- Mostrar mensajes de error -->
     <div class="error-messages" *ngIf="errors.length > 0">
       <ul>
         <li *ngFor="let error of errors">{{ error }}</li>
