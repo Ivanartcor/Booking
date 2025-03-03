@@ -251,15 +251,16 @@ export class AuthService {
   }
 
   /** 🔹 Obtener empleados de una empresa específica */
-  getEmployeesByCompany(companyId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.usersUrl}?companyId=${companyId}&role=employee`).pipe(
-      tap(() => console.log(`Empleados obtenidos para la empresa ID: ${companyId}`)),
-      catchError(error => {
-        console.error(`Error obteniendo empleados para la empresa ID: ${companyId}`, error);
-        return of([]);
-      })
-    );
-  }
+getEmployeesByCompany(companyId: number): Observable<any[]> {
+  return this.http.get<any[]>(`${this.usersUrl}/company/${companyId}/employees`).pipe( // ✅ CORREGIDO
+    tap(() => console.log(`Empleados obtenidos para la empresa ID: ${companyId}`)),
+    catchError(error => {
+      console.error(`Error obteniendo empleados para la empresa ID: ${companyId}`, error);
+      return of([]);
+    })
+  );
+}
+
 
   /** 🔹 Obtener un empleado por su ID */
   getEmployeeById(employeeId: number): Observable<any> {

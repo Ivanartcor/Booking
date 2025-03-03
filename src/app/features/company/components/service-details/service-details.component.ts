@@ -14,6 +14,7 @@ export class ServiceDetailsComponent implements OnInit {
   service: any;
   availability: any[] = [];
   employees: any[] = [];  // 🔹 Lista de empleados asignados al servicio
+  errors: string[] = []; // 🔹 Agregar la propiedad errors
   showEditModal = false;
 
   constructor(private serviceService: ServiceService) {}
@@ -45,13 +46,16 @@ export class ServiceDetailsComponent implements OnInit {
   }
 
   /** 🔹 Cargar empleados asignados al servicio */
-  loadEmployees(): void {
-    if (this.serviceId) {
-      this.serviceService.getEmployeesByService(this.serviceId).subscribe((employees) => {
-        this.employees = employees;
-      });
-    }
+ loadEmployees(): void {
+  if (this.serviceId) {
+    this.serviceService.getEmployeesByService(this.serviceId).subscribe((employees) => {
+      // Extraer la propiedad `employee` del objeto recibido
+      this.employees = employees.map(e => e.employee);
+    }, () => {
+      this.errors.push('Error al cargar los empleados asignados.');
+    });
   }
+}
 
   /** 🔹 Cerrar modal */
   closeModal(): void {

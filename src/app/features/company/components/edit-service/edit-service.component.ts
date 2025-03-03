@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ServiceService } from 'src/app/core/services/service.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { CategoryService } from 'src/app/core/services/category.service';
 
 @Component({
   selector: 'app-edit-service',
@@ -21,26 +20,21 @@ export class EditServiceComponent implements OnInit {
     price: 0,
     duration_minutes: 0,
     status: 'active',
-    category: '',
-    assignedEmployees: [] as number[],
-    availability: [] as any[],
   };
 
   employees: any[] = [];
   assignedEmployees: number[] = [];
-  categories: any[] = [];
   availableDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  availabilities: any[] = [];
   errors: string[] = [];
 
   constructor(
     private serviceService: ServiceService,
-    private authService: AuthService,
-    private categoryService: CategoryService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.loadServiceDetails();
-    this.loadCategories();
     this.loadEmployees();
   }
 
@@ -48,10 +42,13 @@ export class EditServiceComponent implements OnInit {
   loadServiceDetails(): void {
     this.serviceService.getServiceById(this.serviceId).subscribe(
       (service) => {
-        this.service = { 
-          ...service, 
-          availability: service.availability || [],
-          assignedEmployees: []
+        this.service = {
+          name: service.name,
+          description: service.description,
+          type: service.type,
+          price: service.price,
+          duration_minutes: service.duration_minutes,
+          status: service.status,
         };
         this.loadServiceAvailability();
         this.loadAssignedEmployees();
@@ -60,21 +57,13 @@ export class EditServiceComponent implements OnInit {
     );
   }
 
-  /** 🔹 Cargar categorías */
-  loadCategories(): void {
-    this.categoryService.getCategories().subscribe(
-      (categories) => (this.categories = categories),
-      () => this.errors.push('Error al cargar las categorías.')
-    );
-  }
-
   /** 🔹 Cargar empleados SOLO de la empresa actual */
   loadEmployees(): void {
     this.authService.getEmployeesByCompany(this.companyId).subscribe(
       (employees) => {
-        this.employees = employees;
+        this.employees = employees; 
       },
-      () => this.errors.push('Error al cargar los empleados.')
+      () => this.errors.push('Error al cargar los empleados de la empresa.')
     );
   }
 
@@ -82,7 +71,7 @@ export class EditServiceComponent implements OnInit {
   loadAssignedEmployees(): void {
     this.serviceService.getEmployeesByService(this.serviceId).subscribe(
       (employees) => {
-        this.assignedEmployees = employees.map(e => e.employee_id);
+        this.assignedEmployees = employees.map((e) => e.employee_id);
       },
       () => this.errors.push('Error al cargar los empleados asignados.')
     );
@@ -91,22 +80,24 @@ export class EditServiceComponent implements OnInit {
   /** 🔹 Cargar disponibilidad del servicio */
   loadServiceAvailability(): void {
     this.serviceService.getAvailabilitiesByService(this.serviceId).subscribe(
-      (availability) => {
-        this.service.availability = availability || [];
-      },
+      (availabilities) => (this.availabilities = availabilities || []),
       () => this.errors.push('Error al cargar la disponibilidad del servicio.')
     );
+  }
+
+  /** 🔹 Verificar si un día ya está marcado en la disponibilidad */
+  isDayAvailable(day: string): boolean {
+    return this.availabilities.some((a) => a.day_of_week === day);
   }
 
   /** 🔹 Seleccionar/Deseleccionar empleados */
   toggleEmployeeSelection(employeeId: number, event: Event): void {
     const isChecked = (event.target as HTMLInputElement).checked;
+
     if (isChecked) {
       this.assignedEmployees.push(employeeId);
-      this.serviceService.assignEmployeeToService(this.serviceId, employeeId).subscribe();
     } else {
       this.assignedEmployees = this.assignedEmployees.filter((id) => id !== employeeId);
-      this.serviceService.removeEmployeeFromService(this.serviceId, employeeId).subscribe();
     }
   }
 
@@ -115,19 +106,11 @@ export class EditServiceComponent implements OnInit {
     const isChecked = (event.target as HTMLInputElement).checked;
 
     if (isChecked) {
-      if (!this.service.availability.some(a => a.day_of_week === day)) {
-        const newAvailability = { service_id: this.serviceId, day_of_week: day, start_time: '08:00', end_time: '17:00' };
-        this.serviceService.createAvailability(newAvailability).subscribe((createdAvailability) => {
-          this.service.availability.push(createdAvailability);
-        });
+      if (!this.isDayAvailable(day)) {
+        this.availabilities.push({ service_id: this.serviceId, day_of_week: day, start_time: '08:00', end_time: '17:00' });
       }
     } else {
-      const availability = this.service.availability.find(a => a.day_of_week === day);
-      if (availability) {
-        this.serviceService.deleteAvailability(availability.id).subscribe(() => {
-          this.service.availability = this.service.availability.filter(a => a.day_of_week !== day);
-        });
-      }
+      this.availabilities = this.availabilities.filter((a) => a.day_of_week !== day);
     }
   }
 
@@ -139,7 +122,6 @@ export class EditServiceComponent implements OnInit {
     if (!this.service.description.trim()) this.errors.push('La descripción es obligatoria.');
     if (this.service.price <= 0) this.errors.push('El precio debe ser mayor que 0.');
     if (this.service.duration_minutes <= 0) this.errors.push('La duración debe ser mayor que 0.');
-    if (!this.service.category) this.errors.push('Debe seleccionar una categoría.');
     if (!this.assignedEmployees.length) this.errors.push('Debe asignar al menos un empleado.');
 
     return this.errors.length === 0;
@@ -151,6 +133,8 @@ export class EditServiceComponent implements OnInit {
 
     this.serviceService.updateService(this.serviceId, this.service).subscribe(
       (updatedService) => {
+        this.updateAssignedEmployees();
+        //this.updateAvailabilities();
         this.serviceUpdated.emit(updatedService);
         alert('Servicio actualizado con éxito.');
         this.closeModal();
@@ -159,23 +143,43 @@ export class EditServiceComponent implements OnInit {
     );
   }
 
+  /** 🔹 Actualizar empleados asignados */
+  updateAssignedEmployees(): void {
+    this.serviceService.getEmployeesByService(this.serviceId).subscribe((existingEmployees) => {
+      const existingIds = existingEmployees.map((e) => e.employee_id);
+
+      const employeesToAdd = this.assignedEmployees.filter((id) => !existingIds.includes(id));
+      employeesToAdd.forEach((employeeId) => {
+        this.serviceService.assignEmployeeToService(this.serviceId, employeeId).subscribe();
+      });
+
+      const employeesToRemove = existingIds.filter((id) => !this.assignedEmployees.includes(id));
+      employeesToRemove.forEach((employeeId) => {
+        this.serviceService.removeEmployeeFromService(this.serviceId, employeeId).subscribe();
+      });
+    });
+  }
+
+ 
+
   /** 🔹 Cerrar modal */
   closeModal(): void {
     this.close.emit();
   }
 
-  /** 🔹 Actualizar disponibilidad de un día */
+    /** 🔹 Actualizar disponibilidad de un día */
 updateAvailability(day: string, field: 'start_time' | 'end_time', event: Event): void {
   const value = (event.target as HTMLInputElement).value;
-  const availability = this.service.availability.find(a => a.day_of_week === day);
+  const availability = this.availabilities.find(a => a.day_of_week === day);
 
   if (availability) {
     availability[field] = value;
     this.serviceService.updateAvailability(availability.id, availability).subscribe(
-      () => console.log(`Disponibilidad actualizada: ${day} - ${field}: ${value}`),
-      () => this.errors.push(`Error al actualizar disponibilidad del día ${day}.`)
+      () => console.log("Disponibilidad actualizada: ${day} - ${field}: ${value}"),
+      () => this.errors.push("Error al actualizar disponibilidad del día ${day}.")
     );
   }
 }
-
 }
+
+

@@ -49,16 +49,6 @@
       </select>
     </div>
 
-    <!-- 🔹 Categoría -->
-    <div class="form-group">
-      <label for="category">Categoría</label>
-      <select id="category" [(ngModel)]="service.category" name="category" required>
-        <option *ngFor="let category of categories" [value]="category.id">
-          {{ category.name }}
-        </option>
-      </select>
-    </div>
-
     <!-- 🔹 Empleados Asignados -->
     <div class="form-group">
       <label>Empleados Asignados</label>
@@ -83,14 +73,14 @@
             type="checkbox" 
             [value]="day" 
             (change)="toggleDaySelection(day, $event)"
-             />
+            [checked]="isDayAvailable(day)" />
           {{ day }}
         </label>
       </div>
     </div>
 
     <!-- 🔹 Horarios de disponibilidad -->
-    <div *ngFor="let avail of service.availability; let i = index" class="form-group">
+    <div *ngFor="let avail of availabilities; let i = index" class="form-group">
       <label>Horario para {{ avail.day_of_week }}</label>
       <div class="time-group">
         <input 
