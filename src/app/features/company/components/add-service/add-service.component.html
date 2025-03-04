@@ -79,6 +79,28 @@
       </div>
     </div>
 
+    <!-- 🔹 Horarios de disponibilidad -->
+    <div *ngFor="let avail of availabilities; let i = index" class="form-group">
+      <label>Horario para {{ avail.day_of_week }}</label>
+      <div class="time-group">
+        <input 
+          type="time" 
+          [(ngModel)]="avail.start_time" 
+          name="start_time_{{i}}" 
+          [ngModelOptions]="{standalone: true}" 
+          required
+        />
+        a
+        <input 
+          type="time" 
+          [(ngModel)]="avail.end_time" 
+          name="end_time_{{i}}" 
+          [ngModelOptions]="{standalone: true}" 
+          required
+        />
+      </div>
+    </div>
+
     <!-- 🔹 Mensajes de Error -->
     <div class="error-messages" *ngIf="errors.length > 0">
       <ul>

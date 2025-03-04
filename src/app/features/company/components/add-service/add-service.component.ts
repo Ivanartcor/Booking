@@ -15,6 +15,7 @@ export class AddServiceComponent implements OnInit {
 
   service = {
     name: '',
+    company: null,
     description: '',
     type: 'in_person',
     price: 0,
@@ -27,6 +28,8 @@ export class AddServiceComponent implements OnInit {
   availableDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   availabilities: any[] = [];
   errors: string[] = [];
+  currentCompany: any = null; // Guardaremos la empresa aquí
+
 
   constructor(
     private serviceService: ServiceService,
@@ -34,10 +37,25 @@ export class AddServiceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadCurrentCompany();
     this.loadEmployees();
   }
 
-  /** 🔹 Cargar empleados SOLO de la empresa actual */
+/** 🔹 Obtener la empresa del usuario actual */
+  loadCurrentCompany(): void {
+    const userData = localStorage.getItem('user'); // Obtener el usuario actual
+    if (userData) {
+      const user = JSON.parse(userData);
+      if (user.company) {
+        this.currentCompany = user.company;
+        this.service.company =  this.currentCompany ; // Asignar la empresa al servicio
+      }
+    }
+    console.log("📌 Empresa asignada al servicio:", this.service.company);
+  }
+
+
+  /** 🔹 Cargar empleados de la empresa actual */
   loadEmployees(): void {
     this.authService.getEmployeesByCompany(this.companyId).subscribe(
       (employees) => {
@@ -91,6 +109,8 @@ export class AddServiceComponent implements OnInit {
   /** 🔹 Guardar servicio */
   addService(): void {
     if (!this.validateForm()) return;
+
+    console.log("Enviando servicio:", this.service);
 
     this.serviceService.createService(this.service).subscribe(
       (newService) => {
