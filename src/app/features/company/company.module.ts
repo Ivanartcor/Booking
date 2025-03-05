@@ -13,6 +13,8 @@ import { CompanyEmployeesComponent } from './components/company-employees/compan
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EditServiceComponent } from './components/edit-service/edit-service.component';
 import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.module';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { CompanyEmployeesDetailsComponent } from './components/company-employees-details/company-employees-details.component';
 
 
 @NgModule({
@@ -25,12 +27,14 @@ import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.modul
     CompanyEmployeesComponent,
     AddEmployeeComponent,
     EditServiceComponent,
+    CompanyEmployeesDetailsComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     CompanyRoutingModule,
-    SharedCookiesModule
+    SharedCookiesModule,
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
   ]
 })
 export class CompanyModule { }

@@ -21,8 +21,13 @@
     </div>
 
     <div class="form-group">
-      <label for="profile_picture">Foto de Perfil (URL opcional)</label>
-      <input type="text" id="profile_picture" [(ngModel)]="newEmployee.profile_picture" name="profile_picture" />
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" [(ngModel)]="newEmployee.password" name="password" required />
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirmar Contraseña</label>
+      <input type="password" id="confirmPassword" [(ngModel)]="newEmployee.confirmPassword" name="confirmPassword" required />
     </div>
 
     <!-- Mostrar mensajes de error -->
@@ -32,6 +37,8 @@
       </ul>
     </div>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="submit" class="btn btn-success" [disabled]="loading">
+      {{ loading ? 'Guardando...' : 'Guardar' }}
+    </button>
   </form>
 </div>

@@ -286,6 +286,5 @@ getEmployeesByCompany(companyId: number): Observable<any[]> {
       })
     );
   }
-
 }
 

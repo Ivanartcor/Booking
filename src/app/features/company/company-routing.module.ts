@@ -5,6 +5,7 @@ import { CompanyDashboardComponent } from './components/company-dashboard/compan
 import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { CompanyEmployeesComponent } from './components/company-employees/company-employees.component';
+import { CompanyEmployeesDetailsComponent } from './components/company-employees-details/company-employees-details.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'company-dashboard', component: CompanyDashboardComponent },
       { path: 'company-profile', component: CompanyProfileComponent },
       { path: 'company-employees', component: CompanyEmployeesComponent },
+      { path: 'company/employees/:id', component: CompanyEmployeesDetailsComponent },
       { path: 'services/:id', component: ServiceDetailsComponent },
       { path: '', redirectTo: 'company-dashboard', pathMatch: 'full' },
     ],

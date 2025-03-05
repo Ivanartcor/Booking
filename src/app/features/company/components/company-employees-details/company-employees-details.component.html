@@ -1,0 +1,32 @@
+<div class="employee-details-container" *ngIf="!loading; else loadingTemplate">
+    <button class="back-btn" (click)="goBack()">← Volver</button>
+  
+    <h2>Detalles del Empleado</h2>
+  
+    <!-- 🔹 Mensaje de error -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="employee">
+      <div class="profile-section">
+        <img
+          [src]="employee.profile_picture || '/assets/images/default-profile.png'"
+          class="profile-img"
+          alt="Foto de {{ employee.name }}"
+        />
+        <h3>{{ employee.name }}</h3>
+        <p><strong>Correo:</strong> {{ employee.email }}</p>
+        <p><strong>Teléfono:</strong> {{ employee.phone || 'No disponible' }}</p>
+        <p><strong>Fecha de Registro:</strong> {{ employee.registered_at | date: 'dd/MM/yyyy' }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 🔹 Pantalla de Carga -->
+  <ng-template #loadingTemplate>
+    <div class="loading-container">
+      <p>Cargando detalles del empleado...</p>
+    </div>
+  </ng-template>
+  

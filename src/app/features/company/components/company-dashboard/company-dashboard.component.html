@@ -9,50 +9,58 @@
   </div>
 
   <!-- 🔹 Cabecera de Empresa -->
-  <div class="row g-3 align-items-stretch">
-    <div class="col-12 d-flex p-0 bg-white rounded shadow position-relative">
-      <!-- 🔹 Imagen de Empresa -->
-      <div class="w-60 position-relative" style="flex: 1.5;">
-        <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa" class="img-fluid h-100 w-100 rounded-start"
-          style="object-fit: cover;" />
-        <div class="text-overlay position-absolute bottom-0 start-0 bg-white text-green p-2 rounded-end">
-          <h1 class="fs-3 fw-bold mb-0">{{ company?.name || 'Empresa' }}</h1>
-        </div>
+  <div class="company-header bg-white rounded shadow position-relative">
+    <div class="company-banner">
+      <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa" class="img-fluid h-100 w-100 rounded-top"
+        style="object-fit: cover;" />
+      <div class="text-overlay bg-white text-green p-3 rounded">
+        <h1 class="fs-3 fw-bold mb-0">{{ company?.name || 'Empresa' }}</h1>
       </div>
+    </div>
+  </div>
+<!-- 🔹 Sección de Estadísticas -->
+<div class="statistics-section bg-white rounded shadow p-4 mt-3">
+  <h2 class=" fw-bold text-secondary text-center mb-4">Estadísticas</h2>
 
-      <!-- 🔹 Estadísticas -->
-      <div class="w-40 bg-light d-flex flex-column align-items-center p-3 rounded-end shadow" style="flex: 1;">
-        <h2 class="fs-5 fw-bold text-secondary mb-3">Estadísticas</h2>
-        <div class="stats-box p-3 border rounded shadow-sm w-100">
-          <div class="stat-item mb-3">
-            <h3 class="fs-6 fw-bold text-green">Pacientes Atendidos</h3>
-            <h4 class="fs-3 fw-bold text-green">1,234</h4>
-          </div>
-          <div class="stat-item mb-3">
-            <h3 class="fs-6 fw-bold text-green">Consultas Realizadas</h3>
-            <h4 class="fs-3 fw-bold text-green">3,567</h4>
-          </div>
-          <div class="stat-item mb-3">
-            <h3 class="fs-6 fw-bold text-green">Servicios Prestados</h3>
-            <h4 class="fs-3 fw-bold text-green">{{ services.length }}</h4>
-          </div>
-        </div>
+  <div class="row" [ngClass]="{'horizontal-stats': isScreenLarge}">
+    <div *ngIf="statistics" class="col-md-4">
+      <!-- 📊 Gráfico de citas -->
+      <div class="chart-container">
+        <div class="chart-title">Citas</div>
+        <echarts [options]="appointmentsOptions" class="echart"></echarts>
+      </div>
+    </div>
+
+    <div *ngIf="statistics" class="col-md-4">
+      <!-- ⭐ Gráfico de calificación promedio -->
+      <div class="chart-container">
+        <div class="chart-title">Valoración Promedio</div>
+        <echarts [options]="ratingOptions" class="echart"></echarts>
+      </div>
+    </div>
+
+    <div *ngIf="statistics" class="col-md-4">
+      <!-- 👥 Gráfico de clientes activos -->
+      <div class="chart-container">
+        <div class="chart-title">Clientes Activos</div>
+        <echarts [options]="activeClientsOptions" class="echart"></echarts>
       </div>
     </div>
   </div>
 
+  <p *ngIf="!statistics" class="text-muted">Cargando estadísticas...</p>
+</div>
+
+
   <!-- 🔹 Lista de Servicios -->
-  <div class="row g-3 mt-4">
-    <div class="col-12 bg-white rounded shadow p-3">
-      <h3 class="">Servicios</h3>
+  <div class="services-section bg-white rounded shadow p-4 mt-3">
+    <h3>Servicios</h3>
 
-      <!-- Mostrar mensaje si no hay servicios -->
-      <p *ngIf="services.length === 0" class="text-muted">No hay servicios disponibles.</p>
+    <p *ngIf="services.length === 0" class="text-muted">No hay servicios disponibles.</p>
 
-      <div class="row">
-        <div class="col-md-4 w-100" *ngFor="let service of services" (click)="openServiceDetails(service.id)">
-          <app-service-card [service]="service"></app-service-card>
-        </div>
+    <div class="row">
+      <div class="col-md-4 w-100" *ngFor="let service of services" (click)="openServiceDetails(service.id)">
+        <app-service-card [service]="service"></app-service-card>
       </div>
     </div>
   </div>
@@ -66,14 +74,13 @@
   </app-service-details>
 
   <!-- 🔹 Botón Añadir Servicio -->
-<div class="row g-3 mt-3 add-service-btn">
-  <div class="col-12 text-center">
-    <button class="btn btn-primary btn-lg" (click)="openAddServiceModal()">
-      Añadir Servicio
-    </button>
+  <div class="row g-3 mt-3 add-service-btn">
+    <div class="col-12 text-center">
+      <button class="btn btn-primary btn-lg" (click)="openAddServiceModal()">
+        Añadir Servicio
+      </button>
+    </div>
   </div>
-</div>
-
 
   <!-- 🔹 Modal de Añadir Servicio -->
   <app-add-service 

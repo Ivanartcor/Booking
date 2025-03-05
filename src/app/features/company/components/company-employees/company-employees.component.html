@@ -1,44 +1,66 @@
 <div class="employees-container">
-    <h2 class="title">Gestión de Empleados</h2>
-  
-    <!-- Lista de empleados -->
-    <div *ngIf="employees.length; else noEmployees">
-      <table class="employees-table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Posición</th>
-            <th>Fecha de Contratación</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let employee of employees">
-            <td>{{ employee.name }}</td>
-            <td>{{ employee.email }}</td>
-            <td>{{ employee.position }}</td>
-            <td>{{ employee.hireDate | date: 'dd/MM/yyyy' }}</td>
-            <td>
-              <button class="btn btn-danger">Baja</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <ng-template #noEmployees>
-      <p class="no-employees">No hay empleados registrados.</p>
-    </ng-template>
-  
-    <!-- Botón para agregar empleados -->
-    <button class="btn btn-success add-employee-btn" (click)="openAddEmployeeModal()">Añadir Empleado</button>
-  
-    <!-- Modal para añadir empleados -->
-    <app-add-employee
-      *ngIf="showAddEmployeeModal"
-      (employeeAdded)="onEmployeeAdded($event)"
-      (close)="closeAddEmployeeModal()"
-    ></app-add-employee>
+  <h2 class="title">Gestión de Empleados</h2>
+
+  <!-- 🔹 Mensajes de Error -->
+  <div class="alert alert-danger" *ngIf="errors.length > 0">
+    <ul>
+      <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
   </div>
-  
+
+  <!-- 🔹 Tabla de empleados -->
+  <div *ngIf="employees.length; else noEmployees">
+    <table class="employees-table">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Fecha de Contratación</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees" (click)="viewEmployeeDetails(employee.id)" class="clickable-row">
+          <td>
+            <img
+              [src]="employee.profile_picture || '/assets/images/default-profile.png'"
+              class="profile-img"
+              alt="Foto de {{ employee.name }}"
+            />
+          </td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.phone || 'No disponible' }}</td>
+          <td>{{ employee.registered_at | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            <span [ngClass]="getStatusClass(employee.status)">{{ getStatusText(employee.status) }}</span>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="confirmDelete(employee.id, employee.name, $event)">
+              Baja
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 🔹 Mensaje si no hay empleados -->
+  <ng-template #noEmployees>
+    <p class="no-employees">No hay empleados registrados.</p>
+  </ng-template>
+
+  <!-- 🔹 Botón para agregar empleados -->
+  <button class="btn btn-success add-employee-btn" (click)="openAddEmployeeModal()">Añadir Empleado</button>
+
+  <!-- 🔹 Modal para añadir empleados -->
+  <app-add-employee
+    *ngIf="showAddEmployeeModal"
+    [companyId]="companyId"
+    (employeeAdded)="onEmployeeAdded($event)"
+    (close)="closeAddEmployeeModal()"
+  ></app-add-employee>
+</div>
