@@ -23,6 +23,7 @@ import { ServiceService } from './core/services/service.service';
 import { PoliticaPrivacidadComponent } from './features/politica-privacidad/politica-privacidad.component';
 import { FaqComponent } from './features/faq/faq.component';
 import { ContactoComponent } from './features/contacto/contacto.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 
@@ -50,6 +51,7 @@ import { ContactoComponent } from './features/contacto/contacto.component';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') }),
   ],
   providers: [
     AuthService,
