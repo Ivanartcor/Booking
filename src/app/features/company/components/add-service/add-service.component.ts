@@ -8,7 +8,7 @@ import { ServiceService } from 'src/app/core/services/service.service';
   styleUrls: ['./add-service.component.scss'],
 })
 export class AddServiceComponent implements OnInit {
-  
+
   @Input() companyId!: number;
   @Output() close = new EventEmitter<void>();
   @Output() serviceAdded = new EventEmitter<any>();
@@ -34,21 +34,21 @@ export class AddServiceComponent implements OnInit {
   constructor(
     private serviceService: ServiceService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadCurrentCompany();
     this.loadEmployees();
   }
 
-/** 🔹 Obtener la empresa del usuario actual */
+  /** 🔹 Obtener la empresa del usuario actual */
   loadCurrentCompany(): void {
     const userData = localStorage.getItem('user'); // Obtener el usuario actual
     if (userData) {
       const user = JSON.parse(userData);
       if (user.company) {
         this.currentCompany = user.company;
-        this.service.company =  this.currentCompany ; // Asignar la empresa al servicio
+        this.service.company = this.currentCompany; // Asignar la empresa al servicio
       }
     }
     console.log("📌 Empresa asignada al servicio:", this.service.company);
@@ -81,7 +81,13 @@ export class AddServiceComponent implements OnInit {
 
     if (isChecked) {
       if (!this.isDayAvailable(day)) {
-        this.availabilities.push({ service_id: null, day_of_week: day, start_time: '08:00', end_time: '17:00' });
+        this.availabilities.push(
+          {
+            service: null,
+            day_of_week: day,
+            start_time: '08:00',
+            end_time: '17:00'
+          });
       }
     } else {
       this.availabilities = this.availabilities.filter((a) => a.day_of_week !== day);
@@ -109,18 +115,26 @@ export class AddServiceComponent implements OnInit {
   /** 🔹 Guardar servicio */
   addService(): void {
     if (!this.validateForm()) return;
-
-    console.log("Enviando servicio:", this.service);
-
+  
+    console.log("🚀 Enviando servicio:", this.service);
+  
     this.serviceService.createService(this.service).subscribe(
       (newService) => {
+        if (!newService || !newService.id) {  // 🔥 Asegurar que se creó correctamente
+          this.errors.push("Error: No se pudo crear el servicio.");
+          return;
+        }
+  
         this.assignEmployeesToService(newService.id);
-        this.addAvailabilities(newService.id);
+        this.addAvailabilities(newService);
         this.serviceAdded.emit(newService);
-        alert('Servicio agregado con éxito.');
+        alert('✅ Servicio agregado con éxito.');
         this.closeModal();
       },
-      () => this.errors.push('Error al guardar el servicio.')
+      (error) => {
+        console.error("Error al guardar el servicio:", error);
+        this.errors.push('Error al guardar el servicio.');
+      }
     );
   }
 
@@ -132,9 +146,9 @@ export class AddServiceComponent implements OnInit {
   }
 
   /** 🔹 Agregar disponibilidad al servicio */
-  addAvailabilities(serviceId: number): void {
+  addAvailabilities(service: any): void {
     this.availabilities.forEach((availability) => {
-      availability.service_id = serviceId;
+      availability.service = service;
       this.serviceService.createAvailability(availability).subscribe();
     });
   }

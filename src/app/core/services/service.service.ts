@@ -106,15 +106,15 @@ export class ServiceService {
 
   /** 🔹 Obtener disponibilidad por servicio */
   getAvailabilitiesByService(serviceId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.availabilityUrl}?serviceId=${serviceId}`).pipe(
-      tap(() => console.log(`Disponibilidad obtenida para servicio ID: ${serviceId}`)),
+    return this.http.get<any[]>(`${this.availabilityUrl}/service/${serviceId}`).pipe(
+      tap(() => console.log(` Disponibilidades obtenidas para servicio ID: ${serviceId}`)),
       catchError(error => {
-        console.error(`Error obteniendo disponibilidad del servicio ID: ${serviceId}`, error);
+        console.error(` Error obteniendo disponibilidad del servicio ID: ${serviceId}`, error);
         return of([]);
       })
     );
   }
-
+  
   /** 🔹 Crear una nueva disponibilidad */
   createAvailability(availabilityData: any): Observable<any> {
     return this.http.post(this.availabilityUrl, availabilityData).pipe(

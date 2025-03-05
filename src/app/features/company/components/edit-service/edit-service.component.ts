@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ServiceService } from 'src/app/core/services/service.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-service',
@@ -26,6 +27,7 @@ export class EditServiceComponent implements OnInit {
   assignedEmployees: number[] = [];
   availableDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   availabilities: any[] = [];
+  originalAvailabilities: any[] = [];
   errors: string[] = [];
 
   constructor(
@@ -80,7 +82,10 @@ export class EditServiceComponent implements OnInit {
   /** 🔹 Cargar disponibilidad del servicio */
   loadServiceAvailability(): void {
     this.serviceService.getAvailabilitiesByService(this.serviceId).subscribe(
-      (availabilities) => (this.availabilities = availabilities || []),
+      (availabilities) => {
+        this.availabilities = availabilities || [];
+        this.originalAvailabilities = JSON.parse(JSON.stringify(availabilities)); // 📌 Copia profunda
+      },
       () => this.errors.push('Error al cargar la disponibilidad del servicio.')
     );
   }
@@ -104,15 +109,22 @@ export class EditServiceComponent implements OnInit {
   /** 🔹 Seleccionar/Deseleccionar días de disponibilidad */
   toggleDaySelection(day: string, event: Event): void {
     const isChecked = (event.target as HTMLInputElement).checked;
-
+  
     if (isChecked) {
       if (!this.isDayAvailable(day)) {
-        this.availabilities.push({ service_id: this.serviceId, day_of_week: day, start_time: '08:00', end_time: '17:00' });
+        this.availabilities.push({ 
+          service: { id: this.serviceId },  // Relación correcta
+          day_of_week: day, 
+          start_time: '08:00', 
+          end_time: '17:00',
+          isNew: true  //  Marcarlo como nuevo
+        });
       }
     } else {
       this.availabilities = this.availabilities.filter((a) => a.day_of_week !== day);
     }
   }
+  
 
   /** 🔹 Validar formulario antes de actualizar */
   validateForm(): boolean {
@@ -134,7 +146,7 @@ export class EditServiceComponent implements OnInit {
     this.serviceService.updateService(this.serviceId, this.service).subscribe(
       (updatedService) => {
         this.updateAssignedEmployees();
-        //this.updateAvailabilities();
+        this.updateAvailabilities();
         this.serviceUpdated.emit(updatedService);
         alert('Servicio actualizado con éxito.');
         this.closeModal();
@@ -168,18 +180,62 @@ export class EditServiceComponent implements OnInit {
   }
 
     /** 🔹 Actualizar disponibilidad de un día */
-updateAvailability(day: string, field: 'start_time' | 'end_time', event: Event): void {
-  const value = (event.target as HTMLInputElement).value;
-  const availability = this.availabilities.find(a => a.day_of_week === day);
+    updateAvailability(day: string, field: 'start_time' | 'end_time', event: Event): void {
+      const value = (event.target as HTMLInputElement).value;
+      const availability = this.availabilities.find(a => a.day_of_week === day);
+    
+      if (availability) {
+        availability[field] = value; // Solo actualizar el valor localmente
+      }
+    }
+    
 
-  if (availability) {
-    availability[field] = value;
-    this.serviceService.updateAvailability(availability.id, availability).subscribe(
-      () => console.log("Disponibilidad actualizada: ${day} - ${field}: ${value}"),
-      () => this.errors.push("Error al actualizar disponibilidad del día ${day}.")
-    );
-  }
-}
+    updateAvailabilities(): void {
+      const requests: Observable<any>[] = [];
+    
+      // 📌 Buscar disponibilidades eliminadas y enviarlas al backend
+      const deletedAvailabilities = this.originalAvailabilities.filter(
+        original => !this.availabilities.some(a => a.day_of_week === original.day_of_week)
+      );
+    
+      deletedAvailabilities.forEach(deleted => {
+        requests.push(
+          this.serviceService.deleteAvailability(deleted.id).pipe(
+            tap(() => console.log(`🗑 Disponibilidad eliminada para ${deleted.day_of_week}`))
+          )
+        );
+      });
+    
+      // 📌 Crear nuevas disponibilidades si son nuevas
+      this.availabilities.forEach(availability => {
+        if (availability.isNew) {
+          requests.push(
+            this.serviceService.createAvailability(availability).pipe(
+              tap(createdAvailability => {
+                console.log(`✔ Disponibilidad creada para ${availability.day_of_week}`, createdAvailability);
+                availability.id = createdAvailability.id; // ✅ Asignar ID después de crearse
+                delete availability.isNew; // ✅ Marcarla como no nueva
+              })
+            )
+          );
+        } else {
+          // 📌 Actualizar disponibilidad existente
+          requests.push(
+            this.serviceService.updateAvailability(availability.id, availability).pipe(
+              tap(() => console.log(`✔ Disponibilidad actualizada: ${availability.day_of_week}`))
+            )
+          );
+        }
+      });
+    
+      // 📌 Ejecutar todas las peticiones en paralelo
+      Promise.all(requests.map(req => req.toPromise()))
+        .then(() => console.log("✔ Todas las disponibilidades actualizadas y eliminadas correctamente"))
+        .catch(() => this.errors.push("❌ Error al actualizar las disponibilidades"));
+    }
+    
+
+
 }
 
 

@@ -12,12 +12,28 @@ export class CompanyDashboardComponent implements OnInit {
   services: any[] = [];
   company: any = null;
   companyId: number = 0;
-  
+  statistics: any = null;
+
+
   showServiceDetailsModal = false;
   showAddServiceModal = false;
   selectedServiceId: number | null = null;
 
   errors: string[] = [];
+
+
+  // Datos para gráficos
+  appointmentsData: ChartData<'bar'> | null = null;
+  ratingData: ChartData<'doughnut'> | null = null;
+  activeClientsData: ChartData<'pie'> | null = null;
+  chartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: { enabled: true },
+    },
+  };
 
   constructor(
     private authService: AuthService,
