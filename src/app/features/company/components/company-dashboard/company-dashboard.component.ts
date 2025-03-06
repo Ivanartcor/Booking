@@ -121,8 +121,8 @@ isScreenLarge: boolean = true; // Para cambiar la disposición de estadísticas
         type: 'gauge',
         min: 0,
         max: 5,
-        detail: { formatter: '{value}★' },
-        data: [{ value: this.statistics.average_rating, name: 'Rating' }],
+        detail: { formatter: '{value}' },
+        data: [{ value: this.statistics.average_rating}],
         axisLine: { lineStyle: { color: [[0.4, '#e74c3c'], [0.7, '#f1c40f'], [1, '#2ecc71']] } }
       }
     ]

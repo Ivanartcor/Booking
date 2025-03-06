@@ -32,7 +32,7 @@
 
 <main class="main-container">
   <section class="company-card" *ngFor="let company of filteredCompanies" (click)="goToCompanyDetails(company.id)">
-    <img [src]="company.logo || 'assets/default-logo.png'" [alt]="company.name" class="company-image">
+    <img [src]="company.logo || 'assets/images/default-logo.png'" [alt]="company.name" class="company-image">
     <div class="company-info">
       <h1>{{ company.name }}</h1>
       <p>{{ company.short_description }}</p>

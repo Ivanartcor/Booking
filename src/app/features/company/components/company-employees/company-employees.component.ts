@@ -54,7 +54,7 @@ export class CompanyEmployeesComponent implements OnInit {
 
   /** 🔹 Ver detalles del empleado */
   viewEmployeeDetails(employeeId: number): void {
-    this.router.navigate(['/company/employees', employeeId]);
+    this.router.navigate(['/company/employee/', employeeId]);
   }
 
  /** 🔹 Confirmar eliminación de un empleado */

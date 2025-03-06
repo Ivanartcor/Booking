@@ -11,7 +11,7 @@
   <!-- 🔹 Cabecera de Empresa -->
   <div class="company-header bg-white rounded shadow position-relative">
     <div class="company-banner">
-      <img src="/assets/images/doctor-service.jpg" alt="Imagen de Empresa" class="img-fluid h-100 w-100 rounded-top"
+      <img [src]="company?.banner_image ? company.banner_image : '/assets/images/doctor-service.jpg'" alt="Imagen de Empresa" class="img-fluid h-100 w-100 rounded-top"
         style="object-fit: cover;" />
       <div class="text-overlay bg-white text-green p-3 rounded">
         <h1 class="fs-3 fw-bold mb-0">{{ company?.name || 'Empresa' }}</h1>

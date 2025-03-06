@@ -8,6 +8,7 @@ import { ClientAppointmentsComponent } from './components/client-appointments/cl
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { FormsModule } from '@angular/forms';
 import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.module';
+import { CreateAppointmentModalComponent } from './components/create-appointment-modal/create-appointment-modal.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SharedCookiesModule } from 'src/app/shared-cookies/shared-cookies.modul
     ClientProfileComponent,
     ClientAppointmentsComponent,
     CompanyDetailsComponent,
+    CreateAppointmentModalComponent,
 
   ],
   imports: [

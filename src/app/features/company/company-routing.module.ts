@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'company-dashboard', component: CompanyDashboardComponent },
       { path: 'company-profile', component: CompanyProfileComponent },
       { path: 'company-employees', component: CompanyEmployeesComponent },
-      { path: 'company/employees/:id', component: CompanyEmployeesDetailsComponent },
+      { path: 'employee/:id', component: CompanyEmployeesDetailsComponent },
       { path: 'services/:id', component: ServiceDetailsComponent },
       { path: '', redirectTo: 'company-dashboard', pathMatch: 'full' },
     ],

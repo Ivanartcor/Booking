@@ -1,0 +1,58 @@
+<div class="modal-overlay" (click)="close.emit()"></div>
+
+<div class="modal-content">
+  <!-- Botón de cierre -->
+  <button class="close-btn" (click)="close.emit()">×</button>
+
+  <!-- Título del servicio -->
+  <h2 class="modal-title">Reservar Cita</h2>
+
+
+  <!-- Horarios Disponibles -->
+  <h3>Horarios Disponibles</h3>
+  <div class="availability-container">
+    <ul class="availability-list">
+      <li *ngFor="let avail of availabilities">
+        <strong>{{ avail.day_of_week }}:</strong> {{ avail.start_time }} - {{ avail.end_time }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- 📌 Selector de fecha -->
+  <label for="date">Fecha:</label>
+  <input 
+    id="date" 
+    type="date" 
+    [(ngModel)]="appointmentDate" 
+    (change)="onDateChange($event)"
+    [min]="minDate"
+    required>
+
+  <p class="error-msg" *ngIf="invalidDateMessage">{{ invalidDateMessage }}</p>
+
+  <!-- 📌 Selector de hora -->
+  <label for="time">Hora:</label>
+  <input 
+    id="time" 
+    type="time" 
+    [(ngModel)]="appointmentTime" 
+    (change)="validateSelectedTime()"
+    [min]="minTime"
+    [max]="maxTime"
+    [disabled]="appointmentDate === ''"
+    required>
+
+  <p class="error-msg" *ngIf="invalidTimeMessage">{{ invalidTimeMessage }}</p>
+
+  <!-- 📌 Campo para notas -->
+  <label for="notes">Notas:</label>
+  <textarea id="notes" [(ngModel)]="appointmentNotes" placeholder="Añadir nota (opcional)"></textarea>
+
+  <!-- 📌 Mensaje de error general -->
+  <p class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <!-- 📌 Botón de confirmación -->
+  <button class="confirm-btn" (click)="createAppointment()" [disabled]="loading || appointmentDate === '' || appointmentTime === ''">
+    {{ loading ? 'Reservando...' : 'Confirmar Reserva' }}
+  </button>
+</div>

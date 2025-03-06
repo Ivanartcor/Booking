@@ -1,80 +1,194 @@
+// 🔹 Contenedor principal
 .company-details {
   padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+// 🔹 Banner de la empresa
+.banner img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+// 🔹 Información de la empresa
+.company-info {
+  text-align: center;
+  padding: 1.5rem;
+
+  .company-logo {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #437a90;
+  }
 
   h1 {
     color: #437a90;
-    font-size: 2rem; /* Tamaño de fuente más destacado */
-    margin-bottom: 1rem; /* Separación con el párrafo */
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
   }
 
-  p {
+  .company-description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  // 🔹 Categoría de la empresa
+  .company-category {
+    background: #eef6ff;
+    padding: 10px;
+    border-radius: 6px;
     font-size: 1rem;
-    color: #555; /* Color gris suave para el texto */
-    line-height: 1.5; /* Mejora la legibilidad */
-    margin-bottom: 2rem; /* Espaciado con el siguiente título */
-    margin-left: 2%;
-  }
-
-  h2 {
-    margin-top: 2rem;
-    color: #437a90;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #437a90; /* Línea decorativa debajo del título */
-    padding-bottom: 0.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+    i {
+      color: #0056b3;
+    }
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  // 🔹 Información de contacto
+  .contact-info {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+    margin-bottom: 15px;
 
-    li {
-      margin-left: 2%;
-      margin-bottom: 1.5rem; /* Separación entre servicios */
-      padding: 1rem;
-      background-color: #f9f9f9; /* Fondo claro */
-      border: 1px solid #ddd; /* Borde sutil */
-      border-radius: 8px; /* Bordes redondeados */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    p {
+      margin: 5px 0;
       display: flex;
       align-items: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      gap: 10px;
+    }
+
+    i {
+      color: #437a90;
+    }
+
+    a {
+      color: #437a90;
+      text-decoration: none;
+      font-weight: bold;
 
       &:hover {
-        transform: scale(1.001); /* Pequeño aumento al pasar el cursor */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-      }
-
-      /* Nombre y precio del servicio */
-      span {
-        font-size: 1rem;
-        font-weight: 500;
-        color: #333;
-      }
-
-      /* Botón de reserva */
-      button {
-        background-color: #437a90;
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-
-        &:hover {
-          background-color: #365f72;
-          transform: scale(1.05); /* Resaltar ligeramente al pasar el cursor */
-        }
-      }
-
-      /* Mensaje de reservado */
-      .reserved-msg {
-        color: #ff6b6b; /* Rojo claro para destacar el estado */
-        font-weight: bold;
+        text-decoration: underline;
       }
     }
   }
+
+  // 🔹 Dirección
+  .address {
+    margin-top: 10px;
+    background: #f0f8ff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
+
+    h3 {
+      font-size: 1.1rem;
+      color: #437a90;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+    }
+  }
+}
+
+// 🔹 Sección de Servicios
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  color: #437a90;
+  font-size: 1.8rem;
+}
+
+// 🔹 Tabla de Servicios
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+  tr {
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: 12px;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  // 🔹 Nombre del servicio
+  .service-name {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    padding-left: 15px;
+  }
+
+  // 🔹 Precio del servicio
+  .service-price {
+    color: #437a90;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .service-button{
+    
+
+  // 🔹 Botón de reservar
+  .reserve-btn {
+    
+    background: #437a90;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    
+    &:hover {
+      background: #005f6b;
+    }
+  }
+  }
+}
+
+// 🔹 Mensajes de error y carga
+.loading, .error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.error {
+  color: #c00;
 }

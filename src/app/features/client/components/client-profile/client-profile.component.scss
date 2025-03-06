@@ -1,4 +1,4 @@
-/* Contenedor principal del perfil */
+/* 🔹 Contenedor principal */
 .profile-container {
   max-width: 600px;
   margin: 2rem auto;
@@ -14,18 +14,67 @@
     margin-bottom: 1.5rem;
   }
 
+  /* 🔹 Foto de perfil */
   .profile-picture {
+    position: relative;
+    display: -webkit-inline-flex;
+    align-items: center;
+    width: 160px;
+    height: 160px;
     margin-bottom: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #437a90;
+    transition: transform 0.3s ease;
+    text-align: center;
 
     img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border: 3px solid #437a90;
+      transition: transform 0.3s ease;
+    }
+
+    /* 🔹 Efecto de hover */
+    &:hover {
+      transform: scale(1.05);
+
+      img {
+        filter: brightness(0.7); /* Oscurece la imagen al pasar el mouse */
+      }
+
+      .camera-icon {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🔹 Ícono de la cámara */
+    .camera-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 95, 107, 0.85);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    /* 🔹 Input de archivo oculto */
+    input[type="file"] {
+      display: none;
     }
   }
 
+  /* 🔹 Información del usuario */
   .profile-info {
     display: flex;
     flex-direction: column;
@@ -47,6 +96,7 @@
     }
   }
 
+  /* 🔹 Botón de editar */
   .btn {
     margin-top: 2rem;
     padding: 0.75rem 2rem;
@@ -65,7 +115,7 @@
   }
 }
 
-/* Modal de edición */
+/* 🔹 Modal de edición */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -113,52 +163,7 @@
   }
 }
 
-.profile-picture-edit {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  position: relative;
-
-  label {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    color: #437a90;
-
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #437a90;
-      transition: transform 0.3s ease;
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-    }
-
-    .camera-icon {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      background: rgba(0, 95, 107, 0.8);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-size: 1.5rem;
-    }
-  }
-
-  .error-text {
-    color: red;
-    font-size: 0.9rem;
-  }
-}
-
+/* 🔹 Formulario */
 .form-group {
   margin-bottom: 1.5rem;
   text-align: left;
@@ -180,6 +185,7 @@
   }
 }
 
+/* 🔹 Botón de guardar */
 .btn-success {
   display: block;
   margin: 2rem auto 0;

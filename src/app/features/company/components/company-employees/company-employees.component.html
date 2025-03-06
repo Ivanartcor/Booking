@@ -39,7 +39,7 @@
             <span [ngClass]="getStatusClass(employee.status)">{{ getStatusText(employee.status) }}</span>
           </td>
           <td>
-            <button class="btn btn-danger btn-sm" (click)="confirmDelete(employee.id, employee.name, $event)">
+            <button class="btn btn-danger btn-sm" (click)="confirmDelete(employee.id, employee.name, $event); $event.stopPropagation();">
               Baja
             </button>
           </td>

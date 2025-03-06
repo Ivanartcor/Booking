@@ -3,22 +3,61 @@
   <button class="close-btn" (click)="closeModal()">×</button>
   <h2 class="modal-title">Mis Citas</h2>
 
-  <div class="appointments-list" *ngIf="appointments.length; else noAppointments">
+  <!-- ✅ Mostrar citas si existen -->
+  <div class="appointments-list" *ngIf="appointments.length > 0; else noAppointments">
     <div class="appointment-card" *ngFor="let appointment of appointments">
-      <div class="appointment-info">
-        <p class="appointment-company"><strong>Empresa:</strong> {{ appointment.companyName }}</p>
+      
+      <!-- ✅ Logo de la empresa -->
+      <div class="company-logo-container">
+        <img [src]="appointment.companyLogo" alt="Logo de {{ appointment.companyName }}">
+      </div>
+
+      <div class="appointment-details">
+        <h3 class="appointment-company">{{ appointment.companyName }}</h3>
         <p class="appointment-service"><strong>Servicio:</strong> {{ appointment.serviceName }}</p>
         <p class="appointment-price"><strong>Precio:</strong> {{ appointment.price | currency: 'EUR' }}</p>
-        <p class="appointment-status"><strong>Estado:</strong> {{ appointment.status | uppercase }}</p>
+        
+        <p class="appointment-status">
+          <strong>Estado:</strong> 
+          <span [ngClass]="{
+            'status-pending': appointment.status === 'Pendiente',
+            'status-confirmed': appointment.status === 'Confirmada',
+            'status-canceled': appointment.status === 'Cancelada',
+            'status-completed': appointment.status === 'Completada',
+            'status-rescheduled': appointment.status === 'Reprogramada'
+          }">
+            {{ appointment.status }}
+          </span>
+        </p>
+
+        <p class="appointment-payment">
+          <strong>Método de Pago:</strong> {{ appointment.paymentMethod }}
+        </p>
+
+        <p class="appointment-payment-status">
+          <strong>Estado del Pago:</strong> 
+          <span [ngClass]="{
+            'payment-pending': appointment.paymentStatus === 'Pendiente de pago',
+            'payment-paid': appointment.paymentStatus === 'Pagado',
+            'payment-refunded': appointment.paymentStatus === 'Reembolsado'
+          }">
+            {{ appointment.paymentStatus }}
+          </span>
+        </p>
       </div>
+
+      <!-- ✅ Fecha y Hora -->
       <div class="appointment-date">
         <p><strong>Fecha:</strong> {{ appointment.date }}</p>
         <p><strong>Hora:</strong> {{ appointment.time }}</p>
       </div>
+
+      <!-- ✅ Botón de cancelar -->
       <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancelar</button>
     </div>
   </div>
 
+  <!-- ✅ Mensaje cuando no hay citas -->
   <ng-template #noAppointments>
     <p class="no-appointments-msg">No tienes citas programadas.</p>
   </ng-template>

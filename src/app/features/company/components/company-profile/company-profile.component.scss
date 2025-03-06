@@ -1,193 +1,293 @@
-// Fondo oscuro semitransparente detrás del modal
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+// 📌 Contenedor principal
+.company-profile-container {
+  max-width: 750px;
+  margin: auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  position: relative;
+
+  h2 {
+    color: #437a90;
+    margin-bottom: 1rem;
+    font-size: 2rem;
   }
-  
-  // Contenedor del modal
-  .modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 2rem;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-  
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #333;
-      cursor: pointer;
-  
-      &:hover {
-        color: #437a90;
-      }
+}
+
+/* 🔹 Banner de la empresa con imagen centrada */
+.company-banner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 🔥 Asegura que la imagen se mantenga centrada verticalmente */
+
+  img {
+    width: 100%;
+    height: auto; /* 🔥 Permite que la imagen mantenga su proporción */
+    max-height: 100%;
+    object-fit: contain; /* 🔥 Evita que se recorte la imagen */
+    object-position: center; /* 🔥 Centra la imagen dentro del contenedor */
+    transition: filter 0.3s ease;
+  }
+
+  &:hover {
+    img {
+      filter: brightness(0.7); /* Oscurece la imagen al pasar el mouse */
     }
-  
-    .modal-title {
-      text-align: center;
-      font-size: 1.8rem;
+
+    .camera-icon {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 🔹 Ícono de la cámara */
+  .camera-icon {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 95, 107, 0.85);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.6rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  /* 🔹 Input de archivo oculto */
+  input[type="file"] {
+    display: none;
+  }
+}
+
+/* 🔹 Logo de la empresa (ahora con animación y efecto hover) */
+.company-logo-container {
+  position: relative;
+  display: -webkit-inline-flex;
+  align-items: center;
+  margin-top: -50px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #437a90;
+  transition: transform 0.3s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  /* 🔹 Efecto hover sobre el logo */
+  &:hover {
+    transform: scale(1.05);
+
+    img {
+      filter: brightness(0.7);
+    }
+
+    .camera-icon {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 🔹 Ícono de la cámara */
+  .camera-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 95, 107, 0.85);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  /* 🔹 Input de archivo oculto */
+  input[type="file"] {
+    display: none;
+  }
+}
+
+// 📌 Información de la empresa
+.company-info {
+  text-align: center;
+  margin-top: 1rem;
+
+  h3 {
+    font-size: 1.5rem;
+    color: #437a90;
+    margin-bottom: 0.5rem;
+  }
+
+  .company-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .contact-info,
+  .company-address {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #333;
+    text-align: left;
+    margin-bottom: 15px;
+
+    h4 {
+      font-size: 1rem;
       color: #437a90;
-      margin-bottom: 1.5rem;
-    }
-  
-    .appointments-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-  
-      .appointment-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #f0f0f0;
-        padding: 1rem;
-        border-radius: 8px;
-  
-        .appointment-info {
-          flex: 1;
-  
-          .appointment-company {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-          }
-  
-          .appointment-service {
-            margin-bottom: 0.5rem;
-          }
-  
-          .appointment-price {
-            font-weight: bold;
-            color: #333;
-          }
-        }
-  
-        .appointment-date {
-          text-align: right;
-  
-          p {
-            margin: 0;
-            color: #437a90;
-            font-size: 0.9rem;
-          }
-        }
-  
-        .cancel-btn {
-          background-color: #437a90;
-          color: #fff;
-          border: none;
-          padding: 0.5rem 1rem;
-          margin-left: 15px;
-          border-radius: 5px;
-          font-weight: bold;
-          cursor: pointer;
-  
-          &:hover {
-            background-color: #365f72;
-          }
-        }
-      }
+      margin-bottom: 5px;
     }
   }
-  
-
-
-
-
-  //Isaac
-  /* Estilos personalizados */
-/* Asegúrate de que el body tenga el alto total y permita el scroll */
-body {
-  height: 100vh; /* Altura completa de la ventana */
-  overflow-y: auto; /* Permite desplazamiento vertical */
-  margin: 0; /* Elimina márgenes por defecto */
 }
 
-/* Contenedor principal */
-.container {
-  max-width: 1200px;
-  margin: 0 auto; /* Centra el contenido */
-  padding: 20px;
-  height: 100%; /* Asegura que ocupe el 100% del alto disponible */
-  overflow-y: auto; /* Activa scroll dentro del contenedor si el contenido es más alto */
-}
-
-.card {
+// 📌 Botón de edición
+.edit-btn {
+  background: #437a90;
+  color: white;
   border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-}
-
-/* Contenedor de la información de la empresa */
-.card-body {
-  overflow-y: auto; /* Permite desplazamiento en este bloque si es necesario */
-  max-height: 70vh; /* Limita la altura y permite el scroll si es necesario */
-}
-
-.text-muted {
-  font-size: 0.9rem;
-  color: #6c757d;
-}
-
-.badge {
+  padding: 12px 18px;
   font-size: 1rem;
-}
-
-.list-group-item {
-  font-size: 1.1rem;
-  padding: 10px 20px;
-}
-
-.list-group-item:hover {
-  background-color: #f1f1f1;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+
+  &:hover {
+    background: #005f6b;
+  }
 }
 
-.bg-primary {
-  background-color: #437a90 !important;
+// /* 🔹 Modal de edición */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
 }
 
-.btn-primary {
-  background-color: #437a90;  /* Color rojo para el fondo */
-  border-color: #437a90;      /* Borde rojo */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  width: 90%;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+
+    &:hover {
+      color: #005f6b;
+      transform: scale(1.05);
+    }
+  }
+
+  .modal-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #437a90;
+    margin-bottom: 1.5rem;
+  }
 }
 
-.modal-footer .btn-primary:hover {
-  background-color: #005f6b;  /* Color rojo oscuro al pasar el mouse */
-  border-color: #005f6b;      /* Borde rojo oscuro */
+/* ✅ Formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+
+  label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #437a90;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 }
 
-/* Cambiar el color del botón de guardar */
-.modal-footer .btn-primary {
-  background-color: #437a90;  /* Color rojo para el fondo */
-  border-color: #437a90;      /* Borde rojo */
+/* ✅ Botones */
+.btn-success {
+  display: block;
+  margin: 2rem auto 0;
+  background: #437a90;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    background: #005f6b;
+    transform: scale(1.05);
+  }
 }
 
-.modal-footer .btn-primary:hover {
-  background-color: #005f6b;  /* Color rojo oscuro al pasar el mouse */
-  border-color: #005f6b;      /* Borde rojo oscuro */
+.btn-cancel {
+  display: block;
+  margin: 1rem auto;
+  background: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    background: #999;
+  }
 }
 
-/* Espaciado superior para el botón de editar */
-.card-body .btn-primary {
-  margin-top: 20px;  /* Aumenta la distancia entre el botón y la parte superior */
-}

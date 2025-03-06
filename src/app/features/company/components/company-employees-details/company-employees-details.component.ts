@@ -46,6 +46,6 @@ export class CompanyEmployeesDetailsComponent implements OnInit {
 
   /** 🔹 Volver a la lista de empleados */
   goBack(): void {
-    this.router.navigate(['/company/employees']);
+    this.router.navigate(['/company/company-employees']);
   }
 }

@@ -4,14 +4,14 @@
 <div class="profile-container">
   <h2>Mis Datos</h2>
 
-  <!-- Imagen de Perfil -->
+  <!-- Imagen de Perfil con Animación -->
   <div class="profile-picture">
     <label for="profilePictureInput">
       <img [src]="currentUser?.profile_picture || '/assets/images/foto-perfil.jpg'" alt="Foto de perfil">
       <div class="camera-icon">
         <i class="fas fa-camera"></i>
       </div>
-      <input type="file" id="profilePictureInput" accept="image/*" (change)="onFileSelected($event)" hidden>
+      <input type="file" id="profilePictureInput" accept="image/*" (change)="onFileSelected($event)">
     </label>
   </div>
 
@@ -44,6 +44,7 @@
   <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
   <div *ngIf="uploadError" class="error-message">{{ uploadError }}</div>
 </div>
+
 
 <!-- Modal de Edición -->
 <div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()"></div>

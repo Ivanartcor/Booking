@@ -1,111 +1,181 @@
-// Fondo oscuro semitransparente detrás del modal
+// 🔹 Modal y fondo
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 800px; // 📌 Más ancho para mejor presentación
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  max-height: 90vh; // 📌 Ajuste para evitar desbordamientos
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      color: #d9534f;
+      transform: scale(1.1);
+    }
   }
-  
-  // Contenedor del modal
-  .modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 2rem;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-  
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #333;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      
-  
-      &:hover {
+
+  .modal-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #437a90;
+    margin-bottom: 1rem;
+  }
+}
+
+// 🔹 Lista de citas
+.appointments-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+
+  .appointment-card {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+    justify-content: space-between;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .company-logo-container {
+      flex: 0 0 70px;
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #437a90;
+      }
+    }
+
+    .appointment-details {
+      flex: 1;
+      margin-left: 1rem;
+
+      h3 {
         color: #437a90;
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 1rem;
+        margin: 5px 0;
+      }
+
+      // 🔹 Estados de cita (solo cambia color de texto)
+      .status-pending {
+        color: #d39e00; // Amarillo oscuro
+        font-weight: bold;
+      }
+
+      .status-confirmed {
+        color: #28a745; // Verde
+        font-weight: bold;
+      }
+
+      .status-canceled {
+        color: #dc3545; // Rojo
+        font-weight: bold;
+      }
+
+      .status-completed {
+        color: #007bff; // Azul
+        font-weight: bold;
+      }
+
+      .status-rescheduled {
+        color: #6f42c1; // Morado
+        font-weight: bold;
+      }
+
+      // 🔹 Estado del pago (solo cambia color de texto)
+      .payment-pending {
+        color: #d39e00; // Amarillo oscuro
+      }
+
+      .payment-paid {
+        color: #28a745; // Verde
+      }
+
+      .payment-refunded {
+        color: #dc3545; // Rojo
+      }
+    }
+
+    .appointment-date {
+      text-align: right;
+      margin-right: 1rem;
+
+      p {
+        color: #437a90;
+        font-size: 0.95rem;
+      }
+    }
+
+    .cancel-btn {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: #c9302c;
         transform: scale(1.05);
       }
     }
-  
-    .modal-title {
-      text-align: center;
-      font-size: 1.8rem;
-      color: #437a90;
-      margin-bottom: 1.5rem;
-    }
-  
-    .appointments-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-  
-      .appointment-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #f0f0f0;
-        padding: 1rem;
-        border-radius: 8px;
-  
-        .appointment-info {
-          flex: 1;
-  
-          .appointment-company {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-          }
-  
-          .appointment-service {
-            margin-bottom: 0.5rem;
-          }
-  
-          .appointment-price {
-            font-weight: bold;
-            color: #333;
-          }
-        }
-  
-        .appointment-date {
-          text-align: right;
-  
-          p {
-            margin: 0;
-            color: #437a90;
-            font-size: 0.9rem;
-          }
-        }
-  
-        .cancel-btn {
-          background-color: #437a90;
-          color: #fff;
-          border: none;
-          padding: 0.5rem 1rem;
-          margin-left: 15px;
-          border-radius: 5px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: transform 0.3s ease;
-  
-          &:hover {
-            background-color: #365f72;
-            transform: scale(1.05);
-          }
-        }
-      }
-    }
   }
-  
+}
+
+// 🔹 Mensaje cuando no hay citas
+.no-appointments-msg {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 2rem;
+}
